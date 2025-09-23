@@ -1,16 +1,26 @@
-# noor
+# Noor App (Flutter)
 
-A new Flutter project.
+A modern Flutter application for Quran recitation and Islamic content.  
+The app allows users to listen to the Holy Quran with different reciters, read full Surahs, and explore additional features such as Hadiths and daily Azkar.  
+It is designed with a clean UI, supports both Light & Dark themes, and follows MVVM architecture for scalability.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Features
+- Full Quran with Surah list and verse details  
+- Audio playback with Play/Pause, Next, and Previous controls  
+- Support for multiple reciters  
+- Daily Azkar and Hadith section (planned)  
+- Light & Dark mode support  
+- Settings screen (reciter selection, translation, theme)  
+- MVVM architecture with clean code structure  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tech Stack
+- Framework: Flutter (Dart)  
+- State Management: BLoC / Provider
+- Audio: just_audio / audioplayers  
+- Local Storage: Hive  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
