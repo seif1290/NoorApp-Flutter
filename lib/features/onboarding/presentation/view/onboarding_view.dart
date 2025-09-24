@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
-import 'package:noor/features/onboarding/presentation/view/onboarding_details_column.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:noor/features/onboarding/presentation/view/build_page_view.dart';
+import 'package:noor/features/onboarding/presentation/view/onboarding_bottom.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({
@@ -43,56 +44,48 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          TextButton(
-            onPressed: () async {
-              await _finishOnboarding();
-            },
-            child: Text('Skip'),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          if (_currentIndex == widget._onboardings.length - 1) {
-            await _finishOnboarding();
-          } else {
-            _pageController.animateToPage(
-              _currentIndex + 1,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.ease,
-            );
-          }
-        },
-        child: const Icon(Icons.arrow_forward_ios),
-      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppValues.appBarHeight,
-          horizontal: AppValues.md,
+        padding: EdgeInsets.only(
+          top: AppValues.appBarHeight.h,
+          bottom: AppValues.lg.h,
+          left: AppValues.lg.w,
+          right: AppValues.lg.w,
         ),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PageView(
-              controller: _pageController,
-              onPageChanged: (value) {
-                _currentIndex = value;
-              },
-              children: List.generate(widget._onboardings.length, (index) {
-                return OnboardingDetailsColumn(
-                  onboardingModel: widget._onboardings[index],
-                );
-              }),
-            ),
-
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: SmoothPageIndicator(
-                controller: _pageController,
-                count: widget._onboardings.length,
+            Expanded(
+              child: BuildPageView(
+                onboardings: widget._onboardings,
+                pageController: _pageController,
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentIndex = value;
+                  });
+                },
               ),
             ),
+            if (_currentIndex != widget._onboardings.length - 1)
+              OnboardingBottom(
+                pageController: _pageController,
+                length: widget._onboardings.length,
+                onNextPressed: () async {
+                  _pageController.animateToPage(
+                    _currentIndex + 1,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease,
+                  );
+                },
+                onSkipPressed: _finishOnboarding,
+              ),
+            if (_currentIndex == widget._onboardings.length - 1)
+              OnboardingBottom(
+                pageController: _pageController,
+                length: widget._onboardings.length,
+                isLastPage: true,
+                onFinishPressed: _finishOnboarding,
+              ),
           ],
         ),
       ),

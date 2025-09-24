@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_colors.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_fonts.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 
 class AppElevatedButtonTheme {
   AppElevatedButtonTheme._();
 
   static final _baseStyle = ElevatedButton.styleFrom(
-    textStyle: const TextStyle(
-      fontFamily: AppFonts.cairo,
-      fontSize: AppValues.fontMd,
-      fontWeight: FontWeight.w600,
-    ),
+    textStyle: const TextStyle(fontSize: AppValues.fontLg),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(AppValues.buttonRadius)),
     ),
@@ -25,15 +20,15 @@ class AppElevatedButtonTheme {
 
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: _baseStyle.copyWith(
-      backgroundColor: WidgetStateProperty.all(AppColors.buttonLightBg),
-      foregroundColor: WidgetStateProperty.all(AppColors.buttonLightFg),
+      backgroundColor: WidgetStateProperty.all(AppColors.lightButtonBg),
+      foregroundColor: WidgetStateProperty.all(AppColors.lightButtonFg),
     ),
   );
 
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: _baseStyle.copyWith(
-      backgroundColor: WidgetStateProperty.all(AppColors.buttonDarkBg),
-      foregroundColor: WidgetStateProperty.all(AppColors.buttonDarkFg),
+      backgroundColor: WidgetStateProperty.all(AppColors.darkButtonBg),
+      foregroundColor: WidgetStateProperty.all(AppColors.darkButtonFg),
     ),
   );
 }

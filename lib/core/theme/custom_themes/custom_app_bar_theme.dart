@@ -5,16 +5,24 @@ class CustomAppBarTheme {
   CustomAppBarTheme._();
 
   static const lightAppBartheme = AppBarTheme(
-    backgroundColor: AppColors.primary,
-    foregroundColor: Colors.white,
-    elevation: 0,
+    backgroundColor: AppColors.lightSurface,
+    foregroundColor: AppColors.lightTextPrimary,
+    actionsIconTheme: IconThemeData(
+      color: AppColors.lightIconPrimary,
+      size: 14.0,
+    ),
+    elevation: 2,
     centerTitle: true,
   );
 
   static const darkAppBartheme = AppBarTheme(
-    backgroundColor: AppColors.darkBackground,
-    foregroundColor: AppColors.secondary,
-    elevation: 0,
+    backgroundColor: AppColors.darkSurface,
+    foregroundColor: AppColors.darkTextPrimary,
+    actionsIconTheme: IconThemeData(
+      color: AppColors.darkIconPrimary,
+      size: 14.0,
+    ),
+    elevation: 2,
     centerTitle: true,
   );
 }

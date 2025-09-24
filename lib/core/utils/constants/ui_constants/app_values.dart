@@ -21,7 +21,7 @@ class AppValues {
 
   // Button sizes (rounded + comfortable height)
   static const double buttonHeight = 48.0;
-  static const double buttonRadius = 24.0;
+  static const double buttonRadius = 16.0;
   static const double buttonWidth = 200.0;
   static const double buttonElevation = 2.0;
 
@@ -41,8 +41,8 @@ class AppValues {
   static const double borderRadiusMd = 12.0;
   static const double borderRadiusLg = 16.0;
 
-  // Divider
   static const double dividerThickness = 1.0;
+  static const double borderThickness = 1.5;
 
   // Cards (Surah list cards, Hadith blocks, etc.)
   static const double cardRadiusSm = 8.0;

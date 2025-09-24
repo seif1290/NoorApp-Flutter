@@ -6,7 +6,11 @@ class AppTextTheme {
   AppTextTheme._();
 
   static const TextTheme _baseTextTheme = TextTheme(
-    headlineLarge: TextStyle(fontFamily: AppFonts.cairo, fontSize: 30),
+    headlineLarge: TextStyle(
+      fontFamily: AppFonts.cairo,
+      fontSize: 30,
+      fontWeight: FontWeight.w700,
+    ),
     headlineSmall: TextStyle(fontFamily: AppFonts.cairo, fontSize: 20),
     titleLarge: TextStyle(fontFamily: AppFonts.amiriQuran, fontSize: 18),
     titleMedium: TextStyle(fontFamily: AppFonts.cairo, fontSize: 16),
