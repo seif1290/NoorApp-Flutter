@@ -1,6 +1,7 @@
 class AppStrings {
   AppStrings._();
-  static const String appName = 'Noor';
+  static const String arabicAppName = 'نور';
+  static const String englishAppName = 'Noor';
 
   // Onboarding
   static const String onboardingTitle1 = 'اقرأ القرآن الكريم';
