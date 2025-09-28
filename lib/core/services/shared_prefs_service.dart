@@ -22,6 +22,16 @@ class SharedPrefsService {
     }
   }
 
+  Future<void> setLocale({required String languageCode}) async {
+    try {
+      await _prefs.setString(AppKeys.appLocale, languageCode);
+    } catch (e) {
+      throw LocalException(message: e.toString());
+    }
+  }
+
+  String? get appLocale => _prefs.getString(AppKeys.appLocale);
+
   bool get isOnboardingFinished =>
       _prefs.getBool(AppKeys.isOnboardingFinished) ?? false;
 

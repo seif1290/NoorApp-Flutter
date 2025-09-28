@@ -8,7 +8,7 @@ class AppColors {
   // Light Mode Colors
 
   static const Color lightBackground = Color(0xFFFAFAFA);
-  static const Color lightSurface = Color(0XFFFFFFFF);
+  static const Color lightSurface = Colors.white;
   static const Color lightTextPrimary = Color(0XFF004D40);
   static const Color lightTextSecondary = Color(0XFF6B7280);
   static const Color lightButtonBg = Color(0xFF004D40);
@@ -21,7 +21,7 @@ class AppColors {
   // Dark Mode Colors
 
   static const Color darkBackground = Color(0xFF004D40);
-  static const Color darkSurface = Color(0xFF00332D);
+  static const Color darkSurface = Color(0xFF006B5A);
   static const Color darkTextPrimary = Color(0XFFFFFFFF);
   static const Color darkTextSecondary = Color(0XFFCDA434);
   static const Color darkButtonBg = Color(0xFFCDA434);

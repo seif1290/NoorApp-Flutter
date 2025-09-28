@@ -6,23 +6,21 @@ class CustomAppBarTheme {
 
   static const lightAppBartheme = AppBarTheme(
     backgroundColor: AppColors.lightSurface,
-    foregroundColor: AppColors.lightTextPrimary,
     actionsIconTheme: IconThemeData(
       color: AppColors.lightIconPrimary,
-      size: 14.0,
+      size: 20.0,
     ),
-    elevation: 2,
     centerTitle: true,
+    titleTextStyle: TextStyle(fontSize: 20, color: AppColors.lightTextPrimary),
   );
 
   static const darkAppBartheme = AppBarTheme(
     backgroundColor: AppColors.darkSurface,
-    foregroundColor: AppColors.darkTextPrimary,
     actionsIconTheme: IconThemeData(
       color: AppColors.darkIconPrimary,
-      size: 14.0,
+      size: 20.0,
     ),
-    elevation: 2,
     centerTitle: true,
+    titleTextStyle: TextStyle(fontSize: 20, color: AppColors.darkTextPrimary),
   );
 }

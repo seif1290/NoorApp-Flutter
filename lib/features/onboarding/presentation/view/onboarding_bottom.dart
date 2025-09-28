@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_strings.dart';
+import 'package:noor/core/localization/l10n/app_localizations.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -38,7 +38,7 @@ class OnboardingBottom extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  AppStrings.next,
+                  AppLocalizations.of(context)!.next,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(width: 4.0),
@@ -50,11 +50,14 @@ class OnboardingBottom extends StatelessWidget {
             ),
           ),
         if (!isLastPage)
-          TextButton(onPressed: onSkipPressed, child: Text(AppStrings.skip)),
+          TextButton(
+            onPressed: onSkipPressed,
+            child: Text(AppLocalizations.of(context)!.skip),
+          ),
         if (isLastPage)
           ElevatedButton(
             onPressed: onFinishPressed ?? onSkipPressed,
-            child: Text(AppStrings.getStarted),
+            child: Text(AppLocalizations.of(context)!.getStarted),
           ),
       ],
     );

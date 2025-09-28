@@ -1,0 +1,47 @@
+{
+    "@@locale": "ar",
+    "appName": "نور",
+    "@appName": {
+        "description": "الاسم العربي للتطبيق"
+    },
+    "onboardingTitle1": "اقرأ القرآن الكريم",
+    "@onboardingTitle1": {
+        "description": "عنوان شاشة الترحيب الأولى"
+    },
+    "onboardingTitle2": "استمع وتدبر",
+    "@onboardingTitle2": {
+        "description": "عنوان شاشة الترحيب الثانية"
+    },
+    "onboardingTitle3": "ابدأ رحلتك الروحانية",
+    "@onboardingTitle3": {
+        "description": "عنوان شاشة الترحيب الثالثة"
+    },
+    "onboardingSubtitle1": "استمتع بتلاوة القرآن الكريم بأصوات افضل القراء",
+    "@onboardingSubtitle1": {
+        "description": "النص التوضيحي للشاشة الأولى"
+    },
+    "onboardingSubtitle2": "تمتع بالاستماع إلى تلاوات القرآن الكريم في أي وقت وأي مكان",
+    "@onboardingSubtitle2": {
+        "description": "النص التوضيحي للشاشة الثانية"
+    },
+    "onboardingSubtitle3": "اجعل القرآن رفيقك اليومى",
+    "@onboardingSubtitle3": {
+        "description": "النص التوضيحي للشاشة الثالثة"
+    },
+    "next": "التالى",
+    "@next": {
+        "description": "زر للتنقل إلى الشاشة التالية"
+    },
+    "getStarted": "ابدأ الآن",
+    "@getStarted": {
+        "description": "زر لبدء استخدام التطبيق بعد الشاشات التعريفية"
+    },
+    "skip": "تخطى",
+    "@skip": {
+        "description": "زر لتخطي الشاشات التعريفية"
+    },
+    "homeTitle": "القرآن الكريم",
+    "@homeTitle": {
+        "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
+    }
+}

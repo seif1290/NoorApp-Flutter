@@ -32,5 +32,6 @@ class AppTheme {
     textButtonTheme: AppTextButtonTheme.darkTextButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
     colorScheme: AppColorScheme.darkColorScheme,
+    fontFamily: AppFonts.cairo,
   );
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:noor/core/routing/route_path.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
@@ -38,7 +40,8 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   Future<void> _finishOnboarding() async {
     await widget._onboardingRepo.finishOnboarding();
-    // TODO: Navigate to the next screen after onboarding
+    if (!mounted) return;
+    context.go(RoutePath.home);
   }
 
   @override
