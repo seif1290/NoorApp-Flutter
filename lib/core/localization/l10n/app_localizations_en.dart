@@ -42,4 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeTitle => 'Holy Quran';
+
+  @override
+  String ayah(int count) {
+    return '$count Ayahs';
+  }
 }

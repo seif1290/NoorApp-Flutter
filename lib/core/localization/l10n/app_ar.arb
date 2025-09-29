@@ -43,5 +43,14 @@
     "homeTitle": "القرآن الكريم",
     "@homeTitle": {
         "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
+    },
+    "ayah": "{count} آية",
+    "@ayah": {
+        "description": "عدد الآيات في السورة",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
     }
 }

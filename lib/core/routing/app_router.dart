@@ -11,7 +11,7 @@ class AppRouter {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: RoutePath.onboarding,
+    initialLocation: _initialLocation,
     routes: [
       // Onboarding
       GoRoute(

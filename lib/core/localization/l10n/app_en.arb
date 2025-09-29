@@ -10,5 +10,13 @@
     "next": "Next",
     "getStarted": "Get Started",
     "skip": "Skip",
-    "homeTitle": "Holy Quran"
+    "homeTitle": "Holy Quran",
+    "ayah": "{count} Ayahs",
+    "@ayah": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
 }

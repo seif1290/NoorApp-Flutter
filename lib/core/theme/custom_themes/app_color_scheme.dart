@@ -15,6 +15,7 @@ class AppColorScheme {
     surface: AppColors.lightSurface,
     onSurface: AppColors.lightTextPrimary,
     primaryContainer: AppColors.lightButtonBg,
+    secondaryContainer: AppColors.lightIconSecondary,
   );
 
   static const ColorScheme darkColorScheme = ColorScheme(
@@ -28,5 +29,6 @@ class AppColorScheme {
     surface: AppColors.darkSurface,
     onSurface: AppColors.darkTextPrimary,
     primaryContainer: AppColors.darkButtonBg,
+    secondaryContainer: AppColors.darkIconSecondary,
   );
 }

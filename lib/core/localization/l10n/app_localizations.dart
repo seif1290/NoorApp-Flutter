@@ -163,6 +163,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Holy Quran'**
   String get homeTitle;
+
+  /// No description provided for @ayah.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Ayahs'**
+  String ayah(int count);
 }
 
 class _AppLocalizationsDelegate
