@@ -1,30 +1,21 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:noor/features/home/data/models/ayah_model.dart';
 import 'package:noor/features/home/data/models/revelation_type.dart';
 
-class SurahModel extends Equatable {
-  final int number;
-  final String name;
-  final String englishName;
-  final String englishNameTranslation;
-  final RevelationType revelationType;
-  final List<AyahModel> ayahs;
+part 'surah_model.freezed.dart';
+part 'surah_model.g.dart';
 
-  const SurahModel({
-    required this.number,
-    required this.name,
-    required this.englishName,
-    required this.englishNameTranslation,
-    required this.revelationType,
-    required this.ayahs,
-  });
-  @override
-  List<Object?> get props => [
-    number,
-    name,
-    englishName,
-    englishNameTranslation,
-    revelationType,
-    ayahs,
-  ];
+@freezed
+abstract class SurahModel with _$SurahModel {
+  const factory SurahModel({
+    required int number,
+    required String name,
+    required String englishName,
+    required String englishNameTranslation,
+    required RevelationType revelationType,
+    required List<AyahModel> ayahs,
+  }) = _SurahModel;
+
+  factory SurahModel.fromJson(Map<String, dynamic> json) =>
+      _$SurahModelFromJson(json);
 }
