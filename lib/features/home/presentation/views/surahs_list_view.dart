@@ -3,15 +3,9 @@ import 'package:noor/features/home/data/models/surah_model.dart';
 import 'package:noor/features/home/presentation/views/surah_card.dart';
 
 class SurahsListView extends StatelessWidget {
-  const SurahsListView({
-    super.key,
-    required this.surahs,
-    this.onCardTab,
-    this.onPlayButtonTap,
-  });
+  const SurahsListView({super.key, required this.surahs, this.onCardTab});
   final List<SurahModel> surahs;
-  final VoidCallback? onCardTab;
-  final VoidCallback? onPlayButtonTap;
+  final Function(SurahModel)? onCardTab;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -19,8 +13,11 @@ class SurahsListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return SurahCard(
           surahModel: surahs[index],
-          onCardTab: onCardTab,
-          onPlayButtonTap: onPlayButtonTap,
+          onCardTab: onCardTab != null
+              ? () {
+                  onCardTab!(surahs[index]);
+                }
+              : () {},
         );
       },
     );

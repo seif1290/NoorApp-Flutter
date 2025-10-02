@@ -6,20 +6,14 @@ class CustomAppBarTheme {
 
   static const lightAppBartheme = AppBarTheme(
     backgroundColor: AppColors.lightSurface,
-    actionsIconTheme: IconThemeData(
-      color: AppColors.lightIconPrimary,
-      size: 20.0,
-    ),
+    iconTheme: IconThemeData(color: AppColors.lightIconPrimary),
     centerTitle: true,
     titleTextStyle: TextStyle(fontSize: 20, color: AppColors.lightTextPrimary),
   );
 
   static const darkAppBartheme = AppBarTheme(
     backgroundColor: AppColors.darkSurface,
-    actionsIconTheme: IconThemeData(
-      color: AppColors.darkIconPrimary,
-      size: 20.0,
-    ),
+    iconTheme: IconThemeData(color: AppColors.darkIconPrimary),
     centerTitle: true,
     titleTextStyle: TextStyle(fontSize: 20, color: AppColors.darkTextPrimary),
   );

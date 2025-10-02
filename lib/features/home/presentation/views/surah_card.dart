@@ -6,26 +6,17 @@ import 'package:noor/features/home/data/models/revelation_type.dart';
 import 'package:noor/features/home/data/models/surah_model.dart';
 
 class SurahCard extends StatelessWidget {
-  const SurahCard({
-    super.key,
-    required this.surahModel,
-    this.onCardTab,
-    this.onPlayButtonTap,
-  });
+  const SurahCard({super.key, required this.surahModel, this.onCardTab});
   final SurahModel surahModel;
   final VoidCallback? onCardTab;
-  final VoidCallback? onPlayButtonTap;
   @override
   Widget build(BuildContext context) {
     final languageCode = Localizations.localeOf(context).languageCode;
     return Card(
       child: ListTile(
-        leading: IconButton(
-          onPressed: onPlayButtonTap,
-          icon: Icon(
-            Icons.play_circle_outline,
-            color: Theme.of(context).colorScheme.primaryContainer,
-          ),
+        leading: Icon(
+          Icons.play_circle_outline,
+          color: Theme.of(context).colorScheme.primaryContainer,
         ),
         title: Text(
           languageCode == 'ar' ? surahModel.name : surahModel.englishName,
