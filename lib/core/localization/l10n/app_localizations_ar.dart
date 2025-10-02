@@ -47,4 +47,41 @@ class AppLocalizationsAr extends AppLocalizations {
   String ayah(int count) {
     return '$count آية';
   }
+
+  @override
+  String get noInternetConnection =>
+      'لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.';
+
+  @override
+  String get connectionTimeout => 'انتهت مهلة الاتصال. حاول مرة أخرى.';
+
+  @override
+  String get receiveTimeout => 'الخادم استغرق وقتاً طويلاً للرد. حاول لاحقاً.';
+
+  @override
+  String get sendTimeout => 'استغرق إرسال الطلب وقتاً طويلاً. حاول مرة أخرى.';
+
+  @override
+  String get requestCancelled => 'تم إلغاء الطلب. يرجى المحاولة مجدداً.';
+
+  @override
+  String get unauthorisedRequest => 'غير مصرح لك. يرجى تسجيل الدخول مرة أخرى.';
+
+  @override
+  String get badRequest => 'طلب غير صالح. تحقق من بياناتك.';
+
+  @override
+  String get notFound => 'المورد المطلوب غير موجود.';
+
+  @override
+  String get conflict => 'حدث تعارض. حاول مرة أخرى.';
+
+  @override
+  String get internalServerError => 'خطأ في الخادم الداخلي. حاول لاحقاً.';
+
+  @override
+  String get serviceUnavailable => 'الخدمة غير متاحة حالياً. حاول لاحقاً.';
+
+  @override
+  String get unknownError => 'حدث خطأ ما. حاول مرة أخرى.';
 }

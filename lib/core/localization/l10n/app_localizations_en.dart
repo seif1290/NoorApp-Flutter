@@ -47,4 +47,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String ayah(int count) {
     return '$count Ayahs';
   }
+
+  @override
+  String get noInternetConnection =>
+      'No internet connection. Please check your network.';
+
+  @override
+  String get connectionTimeout => 'Connection timed out. Please try again.';
+
+  @override
+  String get receiveTimeout =>
+      'The server took too long to respond. Please try later.';
+
+  @override
+  String get sendTimeout =>
+      'The request took too long to send. Please try again.';
+
+  @override
+  String get requestCancelled => 'The request was cancelled. Please retry.';
+
+  @override
+  String get unauthorisedRequest =>
+      'You are not authorized. Please login again.';
+
+  @override
+  String get badRequest => 'Invalid request. Please check your input.';
+
+  @override
+  String get notFound => 'The requested resource was not found.';
+
+  @override
+  String get conflict => 'Conflict occurred. Please try again.';
+
+  @override
+  String get internalServerError => 'Internal server error. Please try later.';
+
+  @override
+  String get serviceUnavailable =>
+      'The service is currently unavailable. Try again later.';
+
+  @override
+  String get unknownError => 'Something went wrong. Please try again.';
 }

@@ -52,5 +52,53 @@
                 "type": "int"
             }
         }
+    },
+    "noInternetConnection": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.",
+    "@noInternetConnection": {
+        "description": "تظهر عند عدم وجود اتصال بالإنترنت"
+    },
+    "connectionTimeout": "انتهت مهلة الاتصال. حاول مرة أخرى.",
+    "@connectionTimeout": {
+        "description": "تظهر عند فشل الاتصال بالخادم في الوقت المحدد"
+    },
+    "receiveTimeout": "الخادم استغرق وقتاً طويلاً للرد. حاول لاحقاً.",
+    "@receiveTimeout": {
+        "description": "تظهر عند تأخر استجابة الخادم"
+    },
+    "sendTimeout": "استغرق إرسال الطلب وقتاً طويلاً. حاول مرة أخرى.",
+    "@sendTimeout": {
+        "description": "تظهر عند تأخر إرسال البيانات للخادم"
+    },
+    "requestCancelled": "تم إلغاء الطلب. يرجى المحاولة مجدداً.",
+    "@requestCancelled": {
+        "description": "تظهر عند إلغاء الطلب"
+    },
+    "unauthorisedRequest": "غير مصرح لك. يرجى تسجيل الدخول مرة أخرى.",
+    "@unauthorisedRequest": {
+        "description": "تظهر عند فشل المصادقة"
+    },
+    "badRequest": "طلب غير صالح. تحقق من بياناتك.",
+    "@badRequest": {
+        "description": "تظهر عند إرسال طلب غير صحيح"
+    },
+    "notFound": "المورد المطلوب غير موجود.",
+    "@notFound": {
+        "description": "تظهر عند خطأ 404"
+    },
+    "conflict": "حدث تعارض. حاول مرة أخرى.",
+    "@conflict": {
+        "description": "تظهر عند خطأ 409 تعارض"
+    },
+    "internalServerError": "خطأ في الخادم الداخلي. حاول لاحقاً.",
+    "@internalServerError": {
+        "description": "تظهر عند خطأ 500"
+    },
+    "serviceUnavailable": "الخدمة غير متاحة حالياً. حاول لاحقاً.",
+    "@serviceUnavailable": {
+        "description": "تظهر عند خطأ 503"
+    },
+    "unknownError": "حدث خطأ ما. حاول مرة أخرى.",
+    "@unknownError": {
+        "description": "رسالة افتراضية للأخطاء غير المعروفة"
     }
 }

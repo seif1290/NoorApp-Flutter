@@ -169,6 +169,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} Ayahs'**
   String ayah(int count);
+
+  /// Shown when the device has no internet
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please check your network.'**
+  String get noInternetConnection;
+
+  /// Shown when connection to server takes too long
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timed out. Please try again.'**
+  String get connectionTimeout;
+
+  /// Shown when waiting for server response times out
+  ///
+  /// In en, this message translates to:
+  /// **'The server took too long to respond. Please try later.'**
+  String get receiveTimeout;
+
+  /// Shown when sending data takes too long
+  ///
+  /// In en, this message translates to:
+  /// **'The request took too long to send. Please try again.'**
+  String get sendTimeout;
+
+  /// Shown when the request was cancelled
+  ///
+  /// In en, this message translates to:
+  /// **'The request was cancelled. Please retry.'**
+  String get requestCancelled;
+
+  /// Shown when user is unauthorized
+  ///
+  /// In en, this message translates to:
+  /// **'You are not authorized. Please login again.'**
+  String get unauthorisedRequest;
+
+  /// Shown when API receives invalid request
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid request. Please check your input.'**
+  String get badRequest;
+
+  /// Shown when API returns 404 not found
+  ///
+  /// In en, this message translates to:
+  /// **'The requested resource was not found.'**
+  String get notFound;
+
+  /// Shown when there is a conflict (409)
+  ///
+  /// In en, this message translates to:
+  /// **'Conflict occurred. Please try again.'**
+  String get conflict;
+
+  /// Shown when server crashes (500)
+  ///
+  /// In en, this message translates to:
+  /// **'Internal server error. Please try later.'**
+  String get internalServerError;
+
+  /// Shown when service is down (503)
+  ///
+  /// In en, this message translates to:
+  /// **'The service is currently unavailable. Try again later.'**
+  String get serviceUnavailable;
+
+  /// Fallback message for unknown errors
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get unknownError;
 }
 
 class _AppLocalizationsDelegate
