@@ -41,7 +41,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Future<void> _finishOnboarding() async {
     await widget._onboardingRepo.finishOnboarding();
     if (!mounted) return;
-    context.go(RoutePath.home);
+    context.go(RoutePath.homeWrapper);
   }
 
   @override
