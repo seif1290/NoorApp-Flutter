@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// No description provided for @ayah.
   ///
   /// In en, this message translates to:
-  /// **'{count} Ayahs'**
+  /// **'{count} Verses'**
   String ayah(int count);
 
   /// Shown when the device has no internet

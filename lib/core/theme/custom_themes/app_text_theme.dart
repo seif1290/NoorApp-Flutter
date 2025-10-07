@@ -12,7 +12,7 @@ class AppTextTheme {
       fontWeight: FontWeight.w700,
     ),
     headlineSmall: TextStyle(fontFamily: AppFonts.cairo, fontSize: 20),
-    titleLarge: TextStyle(fontFamily: AppFonts.amiriQuran, fontSize: 20),
+    titleLarge: TextStyle(fontFamily: AppFonts.quran, fontSize: 32),
     titleMedium: TextStyle(fontFamily: AppFonts.cairo, fontSize: 16),
     bodyLarge: TextStyle(fontFamily: AppFonts.cairo, fontSize: 18),
     labelLarge: TextStyle(fontFamily: AppFonts.cairo, fontSize: 18),

@@ -94,6 +94,6 @@ flutter:
     - family: Cairo
       fonts:
         - asset: assets/fonts/cairo.ttf
-    - family: AmiriQuran
+    - family: Quran
       fonts:
-        - asset: assets/fonts/amiri_quran.ttf
+        - asset: assets/fonts/quran.ttf

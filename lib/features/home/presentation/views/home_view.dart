@@ -36,11 +36,13 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(
-          vertical: AppValues.md.h,
-          horizontal: AppValues.sm.w,
+        padding: EdgeInsetsGeometry.only(
+          top: AppValues.md.h,
+          right: AppValues.sm.w,
+          left: AppValues.sm.w,
         ),
         child: SurahsListView(
+          key: PageStorageKey<String>('home'),
           surahs: surahs,
           onCardTab: onSurahCardTab ?? (surahModel) {},
         ),

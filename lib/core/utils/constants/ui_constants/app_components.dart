@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_colors.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 import 'package:noor/core/utils/constants/ui_constants/snack_bar_state.dart';
@@ -31,6 +32,9 @@ class AppComponents {
       duration: duration,
     ),
   );
+
+  static String numToArabic({required num number}) =>
+      NumberFormat(null, 'ar_EG').format(number);
 
   static double screenWidth(BuildContext context) =>
       MediaQuery.sizeOf(context).width;

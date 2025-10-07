@@ -45,7 +45,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String ayah(int count) {
-    return '$count Ayahs';
+    return '$count Verses';
   }
 
   @override
