@@ -13,6 +13,7 @@ class SurahsListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return SurahCard(
           surahModel: surahs[index],
+          surahNumber: index + 1,
           onCardTab: onCardTab != null
               ? () {
                   onCardTab!(surahs[index]);

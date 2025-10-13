@@ -15,8 +15,8 @@ class QuranDataSourceImpl implements QuranDataSource {
   @override
   Future<List<SurahModel>> getQuran() async {
     try {
-      final response = await _dio.get(NetworkConstants.quranEndPoint);
-      return (response.data['data']['surahs'] as List)
+      final response = await _dio.get(NetworkConstants.allQuranEndPoint);
+      return (response.data as List)
           .map((surah) => SurahModel.fromJson(surah))
           .toList();
     } on DioException catch (e) {

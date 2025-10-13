@@ -1,7 +1,7 @@
 class NetworkConstants {
   NetworkConstants._();
 
-  static const String quranBaseUrl = 'https://api.alquran.cloud/v1/';
+  static const String quranBaseUrl = 'https://quranapi.pages.dev/api/';
 
-  static const quranEndPoint = 'quran/ar.alafasy';
+  static const allQuranEndPoint = 'surah.json';
 }

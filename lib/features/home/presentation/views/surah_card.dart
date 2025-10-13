@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/localization/l10n/app_localizations.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
-import 'package:noor/features/home/data/models/revelation_type.dart';
+import 'package:noor/features/home/data/models/revelation_place.dart';
 import 'package:noor/features/home/data/models/surah_model.dart';
 
 class SurahCard extends StatelessWidget {
-  const SurahCard({super.key, required this.surahModel, this.onCardTab});
+  const SurahCard({
+    super.key,
+    required this.surahModel,
+    this.onCardTab,
+    required this.surahNumber,
+  });
   final SurahModel surahModel;
+  final int surahNumber;
   final VoidCallback? onCardTab;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,9 @@ class SurahCard extends StatelessWidget {
           color: Theme.of(context).colorScheme.primaryContainer,
         ),
         title: Text(
-          languageCode == 'ar' ? surahModel.name : surahModel.englishName,
+          languageCode == 'ar'
+              ? surahModel.surahNameArabicLong
+              : surahModel.surahName,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         subtitle: Row(
@@ -27,7 +35,7 @@ class SurahCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: AppValues.sm),
               child: Text(
-                surahModel.revelationType.getRevelationType(
+                surahModel.revelationPlace.getRevelationPlace(
                   languageCode: languageCode,
                 ),
 
@@ -38,7 +46,7 @@ class SurahCard extends StatelessWidget {
             ),
             const SizedBox(width: AppValues.md),
             Text(
-              AppLocalizations.of(context)!.ayah(surahModel.ayahs.length),
+              AppLocalizations.of(context)!.ayah(surahModel.totalAyah),
               style: Theme.of(context).textTheme.labelSmall,
             ),
           ],
@@ -52,7 +60,7 @@ class SurahCard extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondaryContainer,
           ),
           child: Text(
-            surahModel.number.toString(),
+            surahNumber.toString(),
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
