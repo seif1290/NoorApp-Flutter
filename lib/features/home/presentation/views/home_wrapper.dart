@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:noor/core/localization/l10n/app_localizations.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
+import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
 import 'package:noor/features/home/presentation/views/bottom_player.dart';
 import 'package:noor/features/home/presentation/views/error_view.dart';
 import 'package:noor/features/home/presentation/views/home_view.dart';
@@ -26,47 +29,42 @@ class _HomeWrapperState extends State<HomeWrapper> {
   }
 
   Future<void> _getQuran() async {
-    await _homeCubit.getQuran(context);
+    await _homeCubit.getQuran();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              return state.when(
-                initial: () {
-                  return Shimmer(
-                    child: Container(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  );
-                },
-                getQuranLoading: () {
-                  return Shimmer(
-                    child: Container(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  );
-                },
-                getQuranSuccess: (surahs) {
-                  return PopScope(
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () {
+            return Shimmer(
+              child: Container(color: Theme.of(context).colorScheme.surface),
+            );
+          },
+          getQuranLoading: () {
+            return Shimmer(
+              child: ColoredBox(color: Theme.of(context).colorScheme.surface),
+            );
+          },
+          getQuranSuccess: (surahs) {
+            return Column(
+              children: [
+                Expanded(
+                  child: PopScope(
                     canPop: false,
                     child: Navigator(
-                      onGenerateRoute: (settings) {
+                      onGenerateRoute: (_) {
                         return MaterialPageRoute(
                           builder: (context) {
                             return HomeView(
                               surahs: surahs,
-                              onSurahCardTab: (currentSurah) {
+                              onSurahCardTab: (surahNumber) {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) {
                                       return SurahDetailsView(
-                                        ayahs: currentSurah.ayahs,
-                                        surahName: currentSurah.name,
+                                        surahNumber: surahNumber,
                                       );
                                     },
                                   ),
@@ -77,17 +75,42 @@ class _HomeWrapperState extends State<HomeWrapper> {
                         );
                       },
                     ),
-                  );
-                },
-                getQuranFailed: (errMsg) {
-                  return ErrorView(errMsg: errMsg);
-                },
-              );
-            },
-          ),
-        ),
-        Align(alignment: Alignment.bottomCenter, child: BottomPlayer()),
-      ],
+                  ),
+                ),
+
+                BlocBuilder<SurahDetailsCubit, SurahDetailsState>(
+                  builder: (context, state) {
+                    return state.whenOrNull(
+                          getSurahSuccess: (surah) {
+                            return SizedBox(
+                              height: 200.h,
+                              width: double.infinity,
+                              child: Material(
+                                child: BottomPlayer(
+                                  audio: surah.audio,
+                                  surahName:
+                                      AppLocalizations.of(
+                                            context,
+                                          )?.localeName ==
+                                          'ar'
+                                      ? surah.surahNameArabicLong
+                                      : surah.surahName,
+                                ),
+                              ),
+                            );
+                          },
+                        ) ??
+                        const SizedBox.shrink();
+                  },
+                ),
+              ],
+            );
+          },
+          getQuranfailed: (errMsg) {
+            return ErrorView(errMsg: errMsg);
+          },
+        );
+      },
     );
   }
 }

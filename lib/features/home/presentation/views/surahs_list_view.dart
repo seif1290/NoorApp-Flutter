@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:noor/features/home/data/models/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/presentation/views/surah_card.dart';
 
 class SurahsListView extends StatelessWidget {
   const SurahsListView({super.key, required this.surahs, this.onCardTab});
   final List<SurahModel> surahs;
-  final Function(SurahModel)? onCardTab;
+  final Function(int surahNumber)? onCardTab;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -16,7 +16,7 @@ class SurahsListView extends StatelessWidget {
           surahNumber: index + 1,
           onCardTab: onCardTab != null
               ? () {
-                  onCardTab!(surahs[index]);
+                  onCardTab!(index + 1);
                 }
               : () {},
         );

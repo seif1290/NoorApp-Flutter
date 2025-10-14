@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/di/setup.dart';
+import 'package:noor/core/error_handling/localized_err_msg.dart';
 import 'package:noor/core/localization/l10n/app_localizations.dart';
 import 'package:noor/core/localization/l10n/l_10n.dart';
 import 'package:noor/core/localization/locale_provider.dart';
@@ -20,6 +21,7 @@ class NoorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LocalizedErrMsg.init(context);
     return ScreenUtilInit(
       designSize: const Size(393, 852),
       minTextAdapt: true,

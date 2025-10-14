@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noor/core/theme/custom_themes/app_color_scheme.dart';
 import 'package:noor/core/theme/custom_themes/app_outlined_button_theme.dart';
+import 'package:noor/core/theme/custom_themes/app_slider_theme_data.dart';
 import 'package:noor/core/theme/custom_themes/app_text_button_theme.dart';
 import 'package:noor/core/theme/custom_themes/app_text_theme.dart';
 import 'package:noor/core/theme/custom_themes/custom_app_bar_theme.dart';
@@ -21,6 +22,7 @@ class AppTheme {
     textButtonTheme: AppTextButtonTheme.lightTextButtonTheme,
     outlinedButtonTheme: AppOutlinedButtonTheme.lightOutlinedButtonTheme,
     colorScheme: AppColorScheme.lightColorScheme,
+    sliderTheme: AppSliderThemeData.lightSliderThemeData,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -33,5 +35,6 @@ class AppTheme {
     outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
     colorScheme: AppColorScheme.darkColorScheme,
     fontFamily: AppFonts.cairo,
+    sliderTheme: AppSliderThemeData.darkSliderThemeData,
   );
 }

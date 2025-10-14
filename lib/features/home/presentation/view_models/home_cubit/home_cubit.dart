@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:noor/features/home/data/models/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/data/repos/quran_repo.dart';
 
 part 'home_state.dart';
@@ -13,12 +12,12 @@ class HomeCubit extends Cubit<HomeState> {
     _quranRepo = quranRepo;
   }
 
-  Future<void> getQuran(BuildContext context) async {
+  Future<void> getQuran() async {
     emit(HomeState.getQuranLoading());
-    final result = await _quranRepo.getQuran(context);
+    final result = await _quranRepo.getQuran();
     return result.fold(
       (failure) {
-        emit(HomeState.getQuranFailed(errMsg: failure.msg));
+        emit(HomeState.getQuranfailed(errMsg: failure.msg));
       },
       (surahs) {
         emit(HomeState.getQuranSuccess(surahs: surahs));

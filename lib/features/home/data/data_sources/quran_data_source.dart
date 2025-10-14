@@ -2,10 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:noor/core/error_handling/dio_exception_handler.dart';
 import 'package:noor/core/error_handling/network_exception.dart';
 import 'package:noor/core/network/network_constants.dart';
-import 'package:noor/features/home/data/models/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model_with_audio/surah_model_with_audio.dart';
 
 abstract class QuranDataSource {
   Future<List<SurahModel>> getQuran();
+  Future<SurahModelWithAudio> getSurah({required int surahNumber});
 }
 
 class QuranDataSourceImpl implements QuranDataSource {
@@ -19,6 +21,21 @@ class QuranDataSourceImpl implements QuranDataSource {
       return (response.data as List)
           .map((surah) => SurahModel.fromJson(surah))
           .toList();
+    } on DioException catch (e) {
+      throw DioExceptionHandler.handle(e);
+    } catch (e) {
+      throw NetworkException(
+        NetworkExceptionType.unknown,
+        message: e.toString(),
+      );
+    }
+  }
+
+  @override
+  Future<SurahModelWithAudio> getSurah({required int surahNumber}) async {
+    try {
+      final response = await _dio.get('$surahNumber.json');
+      return SurahModelWithAudio.fromJson(response.data);
     } on DioException catch (e) {
       throw DioExceptionHandler.handle(e);
     } catch (e) {

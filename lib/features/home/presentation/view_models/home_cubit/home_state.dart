@@ -6,6 +6,7 @@ class HomeState with _$HomeState {
   const factory HomeState.getQuranLoading() = _GetQuranLoading;
   const factory HomeState.getQuranSuccess({required List<SurahModel> surahs}) =
       _GetQuranSuccess;
-  const factory HomeState.getQuranFailed({required String errMsg}) =
+
+  const factory HomeState.getQuranfailed({required String errMsg}) =
       _GetQuranFailed;
 }

@@ -55,14 +55,14 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _GetQuranLoading value)?  getQuranLoading,TResult Function( _GetQuranSuccess value)?  getQuranSuccess,TResult Function( _GetQuranFailed value)?  getQuranFailed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _GetQuranLoading value)?  getQuranLoading,TResult Function( _GetQuranSuccess value)?  getQuranSuccess,TResult Function( _GetQuranFailed value)?  getQuranfailed,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading(_that);case _GetQuranSuccess() when getQuranSuccess != null:
-return getQuranSuccess(_that);case _GetQuranFailed() when getQuranFailed != null:
-return getQuranFailed(_that);case _:
+return getQuranSuccess(_that);case _GetQuranFailed() when getQuranfailed != null:
+return getQuranfailed(_that);case _:
   return orElse();
 
 }
@@ -80,14 +80,14 @@ return getQuranFailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _GetQuranLoading value)  getQuranLoading,required TResult Function( _GetQuranSuccess value)  getQuranSuccess,required TResult Function( _GetQuranFailed value)  getQuranFailed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _GetQuranLoading value)  getQuranLoading,required TResult Function( _GetQuranSuccess value)  getQuranSuccess,required TResult Function( _GetQuranFailed value)  getQuranfailed,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case _GetQuranLoading():
 return getQuranLoading(_that);case _GetQuranSuccess():
 return getQuranSuccess(_that);case _GetQuranFailed():
-return getQuranFailed(_that);case _:
+return getQuranfailed(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +104,14 @@ return getQuranFailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _GetQuranLoading value)?  getQuranLoading,TResult? Function( _GetQuranSuccess value)?  getQuranSuccess,TResult? Function( _GetQuranFailed value)?  getQuranFailed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _GetQuranLoading value)?  getQuranLoading,TResult? Function( _GetQuranSuccess value)?  getQuranSuccess,TResult? Function( _GetQuranFailed value)?  getQuranfailed,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading(_that);case _GetQuranSuccess() when getQuranSuccess != null:
-return getQuranSuccess(_that);case _GetQuranFailed() when getQuranFailed != null:
-return getQuranFailed(_that);case _:
+return getQuranSuccess(_that);case _GetQuranFailed() when getQuranfailed != null:
+return getQuranfailed(_that);case _:
   return null;
 
 }
@@ -128,13 +128,13 @@ return getQuranFailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( String errMsg)?  getQuranFailed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( String errMsg)?  getQuranfailed,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
-return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranFailed != null:
-return getQuranFailed(_that.errMsg);case _:
+return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
+return getQuranfailed(_that.errMsg);case _:
   return orElse();
 
 }
@@ -152,13 +152,13 @@ return getQuranFailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( String errMsg)  getQuranFailed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( String errMsg)  getQuranfailed,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _GetQuranLoading():
 return getQuranLoading();case _GetQuranSuccess():
 return getQuranSuccess(_that.surahs);case _GetQuranFailed():
-return getQuranFailed(_that.errMsg);case _:
+return getQuranfailed(_that.errMsg);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +175,13 @@ return getQuranFailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( String errMsg)?  getQuranFailed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( String errMsg)?  getQuranfailed,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
-return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranFailed != null:
-return getQuranFailed(_that.errMsg);case _:
+return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
+return getQuranfailed(_that.errMsg);case _:
   return null;
 
 }
@@ -353,7 +353,7 @@ int get hashCode => Object.hash(runtimeType,errMsg);
 
 @override
 String toString() {
-  return 'HomeState.getQuranFailed(errMsg: $errMsg)';
+  return 'HomeState.getQuranfailed(errMsg: $errMsg)';
 }
 
 

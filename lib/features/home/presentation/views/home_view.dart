@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/localization/l10n/app_localizations.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
-import 'package:noor/features/home/data/models/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/presentation/views/locale_picker.dart';
 import 'package:noor/features/home/presentation/views/surahs_list_view.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ import 'package:noor/core/localization/locale_provider.dart';
 
 class HomeView extends StatelessWidget {
   final List<SurahModel> surahs;
-  final Function(SurahModel)? onSurahCardTab;
+  final Function(int surahNumber)? onSurahCardTab;
   const HomeView({super.key, required this.surahs, this.onSurahCardTab});
   @override
   Widget build(BuildContext context) {
@@ -36,15 +36,11 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.only(
-          top: AppValues.md.h,
-          right: AppValues.sm.w,
-          left: AppValues.sm.w,
-        ),
+        padding: EdgeInsetsGeometry.symmetric(horizontal: AppValues.sm.w),
         child: SurahsListView(
           key: PageStorageKey<String>('home'),
           surahs: surahs,
-          onCardTab: onSurahCardTab ?? (surahModel) {},
+          onCardTab: onSurahCardTab ?? (_) {},
         ),
       ),
     );

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/constants/ui_constants/app_components.dart';
 import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
 import 'package:noor/features/home/data/models/revelation_place.dart';
-import 'package:noor/features/home/data/models/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 
 class SurahCard extends StatelessWidget {
   const SurahCard({
@@ -60,7 +61,9 @@ class SurahCard extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondaryContainer,
           ),
           child: Text(
-            surahNumber.toString(),
+            languageCode == 'ar'
+                ? AppComponents.numToArabic(number: surahNumber)
+                : surahNumber.toString(),
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),

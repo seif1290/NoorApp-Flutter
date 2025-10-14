@@ -33,7 +33,7 @@ class AppComponents {
     ),
   );
 
-  static String numToArabic({required num number}) =>
+  static String numToArabic({required int number}) =>
       NumberFormat(null, 'ar_EG').format(number);
 
   static double screenWidth(BuildContext context) =>
