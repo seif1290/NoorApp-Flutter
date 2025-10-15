@@ -13,6 +13,7 @@ class SurahDetailsCubit extends Cubit<SurahDetailsState> {
     : super(SurahDetailsState.initial()) {
     _quranRepo = quranRepo;
   }
+  int? nextSurahNumber;
 
   Future<void> getSurah({required int surahNumber}) async {
     emit(SurahDetailsState.getSurahLoading());
@@ -22,6 +23,7 @@ class SurahDetailsCubit extends Cubit<SurahDetailsState> {
         emit(SurahDetailsState.getSurahFailed(errMsg: failure.msg));
       },
       (surah) {
+        nextSurahNumber = surahNumber + 1;
         emit(SurahDetailsState.getSurahSuccess(surah: surah));
       },
     );

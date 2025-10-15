@@ -19,101 +19,110 @@ class SurahDetailsView extends StatefulWidget {
 
 class _SurahDetailsViewState extends State<SurahDetailsView> {
   late final SurahDetailsCubit _surahDetailsCubit;
-
   bool showBasmala = false;
   @override
   void initState() {
     super.initState();
     _surahDetailsCubit = context.read<SurahDetailsCubit>();
 
-    _getSurah();
+    _getSurah(surahNumber: widget.surahNumber);
   }
 
-  Future<void> _getSurah() async {
-    await _surahDetailsCubit.getSurah(surahNumber: widget.surahNumber);
+  Future<void> _getSurah({required int surahNumber}) async {
+    await _surahDetailsCubit.getSurah(surahNumber: surahNumber);
   }
 
   @override
   Widget build(BuildContext context) {
     final localeName = AppLocalizations.of(context)?.localeName;
-    return BlocConsumer<SurahDetailsCubit, SurahDetailsState>(
+    return BlocListener<AudioPlayerCubit, AudioPlayerState>(
       listener: (context, state) {
-        state.whenOrNull(
-          getSurahSuccess: (surah) async {
-            await context.read<AudioPlayerCubit>().loadSurah(
-              surahUrl: surah.audio.originalUrl,
-            );
-          },
-        );
+        if (state is AudioFinished) {
+          _getSurah(
+            surahNumber:
+                _surahDetailsCubit.nextSurahNumber ?? widget.surahNumber,
+          );
+        }
       },
-      builder: (context, state) {
-        return state.whenOrNull(
-              getSurahLoading: () {
-                return Shimmer(
-                  child: ColoredBox(
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
-                );
-              },
-              getSurahFailed: (errMsg) {
-                AppComponents.showSnackBar(
-                  context,
-                  snackMessage: errMsg,
-                  snackBarState: SnackBarState.error,
-                );
-                return null;
-              },
-              getSurahSuccess: (surah) {
-                return Scaffold(
-                  appBar: AppBar(
-                    title: Text(
-                      localeName == 'ar'
-                          ? surah.surahNameArabicLong
-                          : surah.surahName,
+      child: BlocConsumer<SurahDetailsCubit, SurahDetailsState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            getSurahSuccess: (surah) async {
+              await context.read<AudioPlayerCubit>().loadSurah(
+                surahUrl: surah.audio.originalUrl,
+              );
+            },
+          );
+        },
+        builder: (context, state) {
+          return state.whenOrNull(
+                getSurahLoading: () {
+                  return Shimmer(
+                    child: ColoredBox(
+                      color: Theme.of(context).colorScheme.surface,
                     ),
-                  ),
-
-                  body: Padding(
-                    padding: EdgeInsetsGeometry.only(
-                      top: AppValues.md.h,
-                      right: AppValues.sm.w,
-                      left: AppValues.sm.w,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (showBasmala)
-                            Text(
-                              AppStrings.basmala,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleLarge!.copyWith(fontSize: 36),
-                              textAlign: TextAlign.center,
-                            ),
-                          SizedBox(
-                            height: AppComponents.screenHeight(context) * 0.1,
-                          ),
-                          Center(
-                            child: Text(
-                              localeName == 'ar'
-                                  ? '${surah.arabic1[0]}\uFD3F${AppComponents.numToArabic(number: 1)}\uFD3E'
-                                  : '1. ${surah.english[0]}',
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleLarge!.copyWith(height: 1.5.h),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
+                  );
+                },
+                getSurahFailed: (errMsg) {
+                  AppComponents.showSnackBar(
+                    context,
+                    snackMessage: errMsg,
+                    snackBarState: SnackBarState.error,
+                  );
+                  return null;
+                },
+                getSurahSuccess: (surah) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: Text(
+                        localeName == 'ar'
+                            ? surah.surahNameArabicLong
+                            : surah.surahName,
                       ),
                     ),
-                  ),
-                );
-              },
-            ) ??
-            const SizedBox.shrink();
-      },
+
+                    body: Padding(
+                      padding: EdgeInsetsGeometry.only(
+                        top: AppValues.md.h,
+                        right: AppValues.sm.w,
+                        left: AppValues.sm.w,
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (showBasmala)
+                              Text(
+                                AppStrings.basmala,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleLarge!.copyWith(fontSize: 36),
+                                textAlign: TextAlign.center,
+                              ),
+                            SizedBox(
+                              height: AppComponents.screenHeight(context) * 0.1,
+                            ),
+                            Center(
+                              child: Text(
+                                localeName == 'ar'
+                                    ? '${surah.arabic1[0]}\uFD3F${AppComponents.numToArabic(number: 1)}\uFD3E'
+                                    : '1. ${surah.english[0]}',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleLarge!.copyWith(height: 1.5.h),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ) ??
+              const SizedBox.shrink();
+        },
+      ),
     );
   }
 }

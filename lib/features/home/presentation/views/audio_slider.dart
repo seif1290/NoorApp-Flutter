@@ -13,9 +13,10 @@ class _AudioSliderState extends State<AudioSlider> {
   late AudioPlayerCubit _audioPlayerCubit;
 
   String _formatTime({required Duration duration}) {
+    final hours = duration.inHours.remainder(60).toString().padLeft(2, '0');
     final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
     final seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
+    return hours == '00' ? '$minutes:$seconds' : '$hours:$minutes:$seconds';
   }
 
   @override
