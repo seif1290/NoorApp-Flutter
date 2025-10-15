@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
@@ -11,7 +9,9 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
 
   Duration _duration = Duration.zero;
 
-  AudioPlayerCubit() : super(Initial());
+  AudioPlayerCubit() : super(Initial()) {
+    _listenToPosition();
+  }
 
   Future<void> seek({required Duration position}) async {
     await _audioPlayer.seek(position);
@@ -23,7 +23,6 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
       await _audioPlayer.setUrl(surahUrl);
       emit(AudioPlaying());
       await _audioPlayer.play();
-      _listenToPosition();
     } on PlayerException {
       emit(AudioFailed());
     } on PlayerInterruptedException {

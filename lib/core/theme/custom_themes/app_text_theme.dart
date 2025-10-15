@@ -46,32 +46,4 @@ class AppTextTheme {
       color: AppColors.lightTextSecondary,
     ),
   );
-
-  // Dark Text Theme
-  static final TextTheme darkTextTheme = _baseTextTheme.copyWith(
-    headlineLarge: _baseTextTheme.headlineLarge?.copyWith(
-      color: AppColors.darkTextPrimary,
-    ),
-    headlineSmall: _baseTextTheme.headlineSmall?.copyWith(
-      color: AppColors.darkTextPrimary,
-    ),
-    titleLarge: _baseTextTheme.titleLarge?.copyWith(
-      color: AppColors.darkTextPrimary,
-    ),
-    titleMedium: _baseTextTheme.titleMedium?.copyWith(
-      color: AppColors.darkTextPrimary,
-    ),
-    bodyLarge: _baseTextTheme.bodyLarge?.copyWith(
-      color: AppColors.darkTextSecondary,
-    ),
-    labelLarge: _baseTextTheme.labelLarge?.copyWith(
-      color: AppColors.darkSurface,
-    ),
-    labelMedium: _baseTextTheme.labelMedium?.copyWith(
-      color: AppColors.darkTextSecondary,
-    ),
-    labelSmall: _baseTextTheme.labelSmall?.copyWith(
-      color: AppColors.darkTextSecondary,
-    ),
-  );
 }

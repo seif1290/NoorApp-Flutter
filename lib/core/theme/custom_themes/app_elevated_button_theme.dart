@@ -24,11 +24,4 @@ class AppElevatedButtonTheme {
       foregroundColor: WidgetStateProperty.all(AppColors.lightButtonFg),
     ),
   );
-
-  static final darkElevatedButtonTheme = ElevatedButtonThemeData(
-    style: _baseStyle.copyWith(
-      backgroundColor: WidgetStateProperty.all(AppColors.darkButtonBg),
-      foregroundColor: WidgetStateProperty.all(AppColors.darkButtonFg),
-    ),
-  );
 }

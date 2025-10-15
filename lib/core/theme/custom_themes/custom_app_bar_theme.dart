@@ -10,11 +10,4 @@ class CustomAppBarTheme {
     centerTitle: true,
     titleTextStyle: TextStyle(fontSize: 20, color: AppColors.lightTextPrimary),
   );
-
-  static const darkAppBartheme = AppBarTheme(
-    backgroundColor: AppColors.darkSurface,
-    iconTheme: IconThemeData(color: AppColors.darkIconPrimary),
-    centerTitle: true,
-    titleTextStyle: TextStyle(fontSize: 20, color: AppColors.darkTextPrimary),
-  );
 }

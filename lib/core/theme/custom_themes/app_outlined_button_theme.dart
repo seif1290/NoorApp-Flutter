@@ -22,11 +22,4 @@ abstract class AppOutlinedButtonTheme {
       side: WidgetStateProperty.all(const BorderSide()),
     ),
   );
-
-  static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
-    style: _baseStyle.copyWith(
-      foregroundColor: WidgetStateProperty.all(AppColors.darkTextPrimary),
-      side: WidgetStateProperty.all(const BorderSide()),
-    ),
-  );
 }

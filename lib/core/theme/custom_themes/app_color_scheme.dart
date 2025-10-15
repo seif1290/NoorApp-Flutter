@@ -17,18 +17,4 @@ class AppColorScheme {
     primaryContainer: AppColors.lightButtonBg,
     secondaryContainer: AppColors.lightIconSecondary,
   );
-
-  static const ColorScheme darkColorScheme = ColorScheme(
-    brightness: Brightness.dark,
-    primary: AppColors.primary,
-    onPrimary: AppColors.darkButtonFg,
-    secondary: AppColors.secondary,
-    onSecondary: AppColors.darkTextPrimary,
-    error: AppColors.error,
-    onError: Colors.black,
-    surface: AppColors.darkSurface,
-    onSurface: AppColors.darkTextPrimary,
-    primaryContainer: AppColors.darkButtonBg,
-    secondaryContainer: AppColors.darkIconSecondary,
-  );
 }

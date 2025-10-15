@@ -12,12 +12,4 @@ class AppSliderThemeData {
     inactiveTrackColor: AppColors.lightIconPrimary,
     thumbColor: AppColors.lightSurface,
   );
-  static final darkSliderThemeData = SliderThemeData(
-    trackHeight: 12.0.h,
-    thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
-    overlayShape: SliderComponentShape.noOverlay,
-    activeTrackColor: AppColors.darkButtonBg,
-    inactiveTrackColor: AppColors.darkButtonFg,
-    thumbColor: AppColors.darkSurface,
-  );
 }

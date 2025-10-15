@@ -14,10 +14,4 @@ class AppTextButtonTheme {
       foregroundColor: WidgetStateProperty.all(AppColors.lightTextSecondary),
     ),
   );
-
-  static final darkTextButtonTheme = TextButtonThemeData(
-    style: _baseStyle.copyWith(
-      foregroundColor: WidgetStateProperty.all(AppColors.darkTextSecondary),
-    ),
-  );
 }

@@ -24,17 +24,4 @@ class AppTheme {
     colorScheme: AppColorScheme.lightColorScheme,
     sliderTheme: AppSliderThemeData.lightSliderThemeData,
   );
-
-  static ThemeData darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.darkBackground,
-    appBarTheme: CustomAppBarTheme.darkAppBartheme,
-    textTheme: AppTextTheme.darkTextTheme,
-    elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
-    textButtonTheme: AppTextButtonTheme.darkTextButtonTheme,
-    outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
-    colorScheme: AppColorScheme.darkColorScheme,
-    fontFamily: AppFonts.cairo,
-    sliderTheme: AppSliderThemeData.darkSliderThemeData,
-  );
 }
