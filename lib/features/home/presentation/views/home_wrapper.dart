@@ -87,7 +87,6 @@ class _HomeWrapperState extends State<HomeWrapper> {
                               width: double.infinity,
                               child: Material(
                                 child: BottomPlayer(
-                                  audio: surah.audio,
                                   surahName:
                                       AppLocalizations.of(
                                             context,
@@ -95,6 +94,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                           'ar'
                                       ? surah.surahNameArabicLong
                                       : surah.surahName,
+                                  reciter: surah.audio.reciter,
                                 ),
                               ),
                             );

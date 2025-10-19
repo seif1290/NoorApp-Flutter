@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noor/features/home/data/models/audio_model/audio_model.dart';
+import 'package:noor/core/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/constants/ui_constants/app_components.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
+import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
 import 'package:noor/features/home/presentation/views/audio_slider.dart';
 
 class BottomPlayer extends StatelessWidget {
-  const BottomPlayer({super.key, required this.surahName, required this.audio});
+  const BottomPlayer({
+    super.key,
+    required this.surahName,
+    required this.reciter,
+  });
   final String surahName;
-  final AudioModel audio;
+  final String reciter;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,9 @@ class BottomPlayer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<SurahDetailsCubit>().getNextSurah();
+                  },
                   icon: Icon(
                     Icons.skip_next_outlined,
                     color: Theme.of(context).colorScheme.primaryContainer,
@@ -57,13 +65,21 @@ class BottomPlayer extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await context.read<SurahDetailsCubit>().getPreviousSurah();
+                  },
                   icon: Icon(
                     Icons.skip_previous_outlined,
                     color: Theme.of(context).colorScheme.primaryContainer,
                   ),
                 ),
               ],
+            ),
+            Text(
+              AppLocalizations.of(context)?.localeName == 'ar'
+                  ? AppComponents.reciterNameToArabic(reciterName: reciter)
+                  : reciter,
+              style: Theme.of(context).textTheme.labelSmall,
             ),
           ],
         ),

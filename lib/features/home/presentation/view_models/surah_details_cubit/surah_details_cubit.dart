@@ -13,7 +13,8 @@ class SurahDetailsCubit extends Cubit<SurahDetailsState> {
     : super(SurahDetailsState.initial()) {
     _quranRepo = quranRepo;
   }
-  int? nextSurahNumber;
+  int? _nextSurahNumber;
+  int? _previousSurahNumber;
 
   Future<void> getSurah({required int surahNumber}) async {
     emit(SurahDetailsState.getSurahLoading());
@@ -23,9 +24,20 @@ class SurahDetailsCubit extends Cubit<SurahDetailsState> {
         emit(SurahDetailsState.getSurahFailed(errMsg: failure.msg));
       },
       (surah) {
-        nextSurahNumber = surahNumber + 1;
+        /// [_nextSurahNumber] and [_previousSurahNumber] will be always between 1 and 114
+        /// surahs number of quran is 114
+        _nextSurahNumber = (surahNumber + 1) % 114;
+        _previousSurahNumber = surahNumber == 1 ? 114 : surahNumber - 1;
         emit(SurahDetailsState.getSurahSuccess(surah: surah));
       },
     );
+  }
+
+  Future<void> getNextSurah() async {
+    await getSurah(surahNumber: _nextSurahNumber ?? 1);
+  }
+
+  Future<void> getPreviousSurah() async {
+    await getSurah(surahNumber: _previousSurahNumber ?? 1);
   }
 }

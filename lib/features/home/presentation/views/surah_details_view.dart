@@ -32,16 +32,17 @@ class _SurahDetailsViewState extends State<SurahDetailsView> {
     await _surahDetailsCubit.getSurah(surahNumber: surahNumber);
   }
 
+  Future<void> _getNextSurah() async {
+    await _surahDetailsCubit.getNextSurah();
+  }
+
   @override
   Widget build(BuildContext context) {
     final localeName = AppLocalizations.of(context)?.localeName;
     return BlocListener<AudioPlayerCubit, AudioPlayerState>(
       listener: (context, state) {
         if (state is AudioFinished) {
-          _getSurah(
-            surahNumber:
-                _surahDetailsCubit.nextSurahNumber ?? widget.surahNumber,
-          );
+          _getNextSurah();
         }
       },
       child: BlocConsumer<SurahDetailsCubit, SurahDetailsState>(

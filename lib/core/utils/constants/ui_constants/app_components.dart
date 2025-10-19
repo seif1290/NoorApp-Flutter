@@ -36,6 +36,23 @@ class AppComponents {
   static String numToArabic({required int number}) =>
       NumberFormat(null, 'ar_EG').format(number);
 
+  static String reciterNameToArabic({required String reciterName}) {
+    switch (reciterName) {
+      case 'Mishary Rashid Al Afasy':
+        return 'مشارى بن راشد العفاسى';
+      case 'Abu Bakr Al Shatri':
+        return 'أبو بكر الشاطرى';
+      case 'Nasser Al Qatami':
+        return 'ناصر القطامى';
+      case 'Yasser Al Dosari':
+        return 'ياسر الدوسرى';
+      case 'Hani Ar Rifai':
+        return 'هانى الرفاعى';
+      default:
+        return reciterName;
+    }
+  }
+
   static double screenWidth(BuildContext context) =>
       MediaQuery.sizeOf(context).width;
   static double screenHeight(BuildContext context) =>
