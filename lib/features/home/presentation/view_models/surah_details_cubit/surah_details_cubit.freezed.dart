@@ -128,13 +128,13 @@ return getSurahFailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getSurahLoading,TResult Function( SurahModelWithAudio surah)?  getSurahSuccess,TResult Function( String errMsg)?  getSurahFailed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getSurahLoading,TResult Function( SurahModelWithAudio surah,  int surahNumber)?  getSurahSuccess,TResult Function( Failure failure)?  getSurahFailed,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetSurahLoading() when getSurahLoading != null:
 return getSurahLoading();case _GetSurahSuccess() when getSurahSuccess != null:
-return getSurahSuccess(_that.surah);case _GetSurahFailed() when getSurahFailed != null:
-return getSurahFailed(_that.errMsg);case _:
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that.failure);case _:
   return orElse();
 
 }
@@ -152,13 +152,13 @@ return getSurahFailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getSurahLoading,required TResult Function( SurahModelWithAudio surah)  getSurahSuccess,required TResult Function( String errMsg)  getSurahFailed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getSurahLoading,required TResult Function( SurahModelWithAudio surah,  int surahNumber)  getSurahSuccess,required TResult Function( Failure failure)  getSurahFailed,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _GetSurahLoading():
 return getSurahLoading();case _GetSurahSuccess():
-return getSurahSuccess(_that.surah);case _GetSurahFailed():
-return getSurahFailed(_that.errMsg);case _:
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed():
+return getSurahFailed(_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +175,13 @@ return getSurahFailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getSurahLoading,TResult? Function( SurahModelWithAudio surah)?  getSurahSuccess,TResult? Function( String errMsg)?  getSurahFailed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getSurahLoading,TResult? Function( SurahModelWithAudio surah,  int surahNumber)?  getSurahSuccess,TResult? Function( Failure failure)?  getSurahFailed,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetSurahLoading() when getSurahLoading != null:
 return getSurahLoading();case _GetSurahSuccess() when getSurahSuccess != null:
-return getSurahSuccess(_that.surah);case _GetSurahFailed() when getSurahFailed != null:
-return getSurahFailed(_that.errMsg);case _:
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that.failure);case _:
   return null;
 
 }
@@ -257,10 +257,11 @@ String toString() {
 
 
 class _GetSurahSuccess implements SurahDetailsState {
-  const _GetSurahSuccess({required this.surah});
+  const _GetSurahSuccess({required this.surah, required this.surahNumber});
   
 
  final  SurahModelWithAudio surah;
+ final  int surahNumber;
 
 /// Create a copy of SurahDetailsState
 /// with the given fields replaced by the non-null parameter values.
@@ -272,16 +273,16 @@ _$GetSurahSuccessCopyWith<_GetSurahSuccess> get copyWith => __$GetSurahSuccessCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahSuccess&&(identical(other.surah, surah) || other.surah == surah));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahSuccess&&(identical(other.surah, surah) || other.surah == surah)&&(identical(other.surahNumber, surahNumber) || other.surahNumber == surahNumber));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,surah);
+int get hashCode => Object.hash(runtimeType,surah,surahNumber);
 
 @override
 String toString() {
-  return 'SurahDetailsState.getSurahSuccess(surah: $surah)';
+  return 'SurahDetailsState.getSurahSuccess(surah: $surah, surahNumber: $surahNumber)';
 }
 
 
@@ -292,7 +293,7 @@ abstract mixin class _$GetSurahSuccessCopyWith<$Res> implements $SurahDetailsSta
   factory _$GetSurahSuccessCopyWith(_GetSurahSuccess value, $Res Function(_GetSurahSuccess) _then) = __$GetSurahSuccessCopyWithImpl;
 @useResult
 $Res call({
- SurahModelWithAudio surah
+ SurahModelWithAudio surah, int surahNumber
 });
 
 
@@ -309,10 +310,11 @@ class __$GetSurahSuccessCopyWithImpl<$Res>
 
 /// Create a copy of SurahDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? surah = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? surah = null,Object? surahNumber = null,}) {
   return _then(_GetSurahSuccess(
 surah: null == surah ? _self.surah : surah // ignore: cast_nullable_to_non_nullable
-as SurahModelWithAudio,
+as SurahModelWithAudio,surahNumber: null == surahNumber ? _self.surahNumber : surahNumber // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -332,10 +334,10 @@ $SurahModelWithAudioCopyWith<$Res> get surah {
 
 
 class _GetSurahFailed implements SurahDetailsState {
-  const _GetSurahFailed({required this.errMsg});
+  const _GetSurahFailed({required this.failure});
   
 
- final  String errMsg;
+ final  Failure failure;
 
 /// Create a copy of SurahDetailsState
 /// with the given fields replaced by the non-null parameter values.
@@ -347,16 +349,16 @@ _$GetSurahFailedCopyWith<_GetSurahFailed> get copyWith => __$GetSurahFailedCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahFailed&&(identical(other.errMsg, errMsg) || other.errMsg == errMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahFailed&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errMsg);
+int get hashCode => Object.hash(runtimeType,failure);
 
 @override
 String toString() {
-  return 'SurahDetailsState.getSurahFailed(errMsg: $errMsg)';
+  return 'SurahDetailsState.getSurahFailed(failure: $failure)';
 }
 
 
@@ -367,7 +369,7 @@ abstract mixin class _$GetSurahFailedCopyWith<$Res> implements $SurahDetailsStat
   factory _$GetSurahFailedCopyWith(_GetSurahFailed value, $Res Function(_GetSurahFailed) _then) = __$GetSurahFailedCopyWithImpl;
 @useResult
 $Res call({
- String errMsg
+ Failure failure
 });
 
 
@@ -384,10 +386,10 @@ class __$GetSurahFailedCopyWithImpl<$Res>
 
 /// Create a copy of SurahDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errMsg = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? failure = null,}) {
   return _then(_GetSurahFailed(
-errMsg: null == errMsg ? _self.errMsg : errMsg // ignore: cast_nullable_to_non_nullable
-as String,
+failure: null == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure,
   ));
 }
 

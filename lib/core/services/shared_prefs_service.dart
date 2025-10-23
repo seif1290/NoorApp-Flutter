@@ -1,5 +1,5 @@
 import 'package:noor/core/error_handling/local_exception.dart';
-import 'package:noor/core/utils/constants/data_constants/app_keys.dart';
+import 'package:noor/core/utils/app_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsService {
@@ -22,15 +22,16 @@ class SharedPrefsService {
     }
   }
 
-  Future<void> setLocale({required String languageCode}) async {
+  Future<String> setLanguageCode({required String languageCode}) async {
     try {
-      await _prefs.setString(AppKeys.appLocale, languageCode);
+      await _prefs.setString(AppKeys.appLanguageCode, languageCode);
+      return languageCode;
     } catch (e) {
       throw LocalException(message: e.toString());
     }
   }
 
-  String? get appLocale => _prefs.getString(AppKeys.appLocale);
+  String? get appLanguageCode => _prefs.getString(AppKeys.appLanguageCode);
 
   bool get isOnboardingFinished =>
       _prefs.getBool(AppKeys.isOnboardingFinished) ?? false;

@@ -10,7 +10,10 @@ final class AudioFailed extends AudioPlayerState {}
 
 final class AudioFinished extends AudioPlayerState {}
 
-final class AudioPlaying extends AudioPlayerState {}
+final class AudioPlaying extends AudioPlayerState {
+  final int surahNumber;
+  AudioPlaying({required this.surahNumber});
+}
 
 final class AudioPaused extends AudioPlayerState {}
 

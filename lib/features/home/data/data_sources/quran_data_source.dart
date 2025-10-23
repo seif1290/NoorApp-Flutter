@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:noor/core/error_handling/dio_exception_handler.dart';
-import 'package:noor/core/error_handling/network_exception.dart';
-import 'package:noor/core/network/network_constants.dart';
+import 'package:noor/core/utils/endpoints.dart';
+import 'package:noor/core/services/quran_api_service.dart';
 import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/data/models/surah_model_with_audio/surah_model_with_audio.dart';
 
@@ -11,38 +9,21 @@ abstract class QuranDataSource {
 }
 
 class QuranDataSourceImpl implements QuranDataSource {
-  final Dio _dio;
-  QuranDataSourceImpl({required Dio dio}) : _dio = dio;
+  final QuranApiService _quranApiService;
+  QuranDataSourceImpl({required QuranApiService quranApiService})
+    : _quranApiService = quranApiService;
 
   @override
   Future<List<SurahModel>> getQuran() async {
-    try {
-      final response = await _dio.get(NetworkConstants.allQuranEndPoint);
-      return (response.data as List)
-          .map((surah) => SurahModel.fromJson(surah))
-          .toList();
-    } on DioException catch (e) {
-      throw DioExceptionHandler.handle(e);
-    } catch (e) {
-      throw NetworkException(
-        NetworkExceptionType.unknown,
-        message: e.toString(),
-      );
-    }
+    final data = await _quranApiService.get(
+      endPoint: Endpoints.allQuranEndPoint,
+    );
+    return (data as List).map((surah) => SurahModel.fromJson(surah)).toList();
   }
 
   @override
   Future<SurahModelWithAudio> getSurah({required int surahNumber}) async {
-    try {
-      final response = await _dio.get('$surahNumber.json');
-      return SurahModelWithAudio.fromJson(response.data);
-    } on DioException catch (e) {
-      throw DioExceptionHandler.handle(e);
-    } catch (e) {
-      throw NetworkException(
-        NetworkExceptionType.unknown,
-        message: e.toString(),
-      );
-    }
+    final data = await _quranApiService.get(endPoint: '$surahNumber.json');
+    return SurahModelWithAudio.fromJson(data);
   }
 }

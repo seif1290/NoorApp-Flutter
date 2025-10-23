@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_components.dart';
+import 'package:noor/core/helper_functions/reciter_name_to_arabic.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
 import 'package:noor/features/home/presentation/views/audio_slider.dart';
@@ -11,9 +11,11 @@ class BottomPlayer extends StatelessWidget {
     super.key,
     required this.surahName,
     required this.reciter,
+    required this.surahNumber,
   });
   final String surahName;
   final String reciter;
+  final int surahNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +42,13 @@ class BottomPlayer extends StatelessWidget {
 
                 InkWell(
                   onTap: () async {
-                    await context.read<AudioPlayerCubit>().playOrPause();
+                    await context.read<AudioPlayerCubit>().playOrPause(
+                      surahNumber: surahNumber,
+                    );
                   },
                   child: Container(
-                    padding: EdgeInsets.all(14.0),
-                    margin: EdgeInsets.all(14.0),
+                    padding: const EdgeInsets.all(14.0),
+                    margin: const EdgeInsets.all(14.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Theme.of(context).colorScheme.primaryContainer,
@@ -77,7 +81,7 @@ class BottomPlayer extends StatelessWidget {
             ),
             Text(
               AppLocalizations.of(context)?.localeName == 'ar'
-                  ? AppComponents.reciterNameToArabic(reciterName: reciter)
+                  ? reciterNameToArabic(reciterName: reciter)
                   : reciter,
               style: Theme.of(context).textTheme.labelSmall,
             ),

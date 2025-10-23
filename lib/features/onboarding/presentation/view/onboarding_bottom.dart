@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/app_values.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingBottom extends StatelessWidget {
@@ -30,7 +30,7 @@ class OnboardingBottom extends StatelessWidget {
             activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
-        const SizedBox(height: AppValues.md),
+        const SizedBox(height: AppValues.padding16),
         if (!isLastPage)
           TextButton(
             onPressed: onNextPressed,

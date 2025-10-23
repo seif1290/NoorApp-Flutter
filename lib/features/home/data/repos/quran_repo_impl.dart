@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:noor/core/error_handling/failure.dart';
-import 'package:noor/core/error_handling/network_exception.dart';
+import 'package:noor/core/error_handling/server_failure.dart';
 import 'package:noor/features/home/data/data_sources/quran_data_source.dart';
 import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/data/models/surah_model_with_audio/surah_model_with_audio.dart';
@@ -15,10 +16,10 @@ class QuranRepoImpl implements QuranRepo {
     try {
       final result = await _quranDataSource.getQuran();
       return Right(result);
-    } on NetworkException catch (e) {
-      return Left(Failure(type: e.type));
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioException(e));
     } catch (e) {
-      return Left(Failure(type: NetworkExceptionType.unknown));
+      return Left(ServerFailure.fromResponse());
     }
   }
 
@@ -29,10 +30,10 @@ class QuranRepoImpl implements QuranRepo {
     try {
       final result = await _quranDataSource.getSurah(surahNumber: surahNumber);
       return Right(result);
-    } on NetworkException catch (e) {
-      return Left(Failure(type: e.type));
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioException(e));
     } catch (e) {
-      return Left(Failure(type: NetworkExceptionType.unknown));
+      return Left(ServerFailure.fromResponse());
     }
   }
 }

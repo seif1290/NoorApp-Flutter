@@ -17,11 +17,14 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
     await _audioPlayer.seek(position);
   }
 
-  Future<void> loadSurah({required String surahUrl}) async {
+  Future<void> loadSurah({
+    required String surahUrl,
+    required int surahNumber,
+  }) async {
     try {
       emit(AudioLoading());
       await _audioPlayer.setUrl(surahUrl);
-      emit(AudioPlaying());
+      emit(AudioPlaying(surahNumber: surahNumber));
       await _audioPlayer.play();
     } on PlayerException {
       emit(AudioFailed());
@@ -33,13 +36,13 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
     }
   }
 
-  Future<void> playOrPause() async {
+  Future<void> playOrPause({required int surahNumber}) async {
     try {
       if (_audioPlayer.playing) {
         await _audioPlayer.pause();
         emit(AudioPaused());
       } else {
-        emit(AudioPlaying());
+        emit(AudioPlaying(surahNumber: surahNumber));
         await _audioPlayer.play();
       }
     } on PlayerException {

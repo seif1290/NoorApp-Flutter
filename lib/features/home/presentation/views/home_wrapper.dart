@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
+import 'package:noor/core/theme/styles/app_colors.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
 import 'package:noor/features/home/presentation/views/bottom_player.dart';
@@ -38,14 +39,10 @@ class _HomeWrapperState extends State<HomeWrapper> {
       builder: (context, state) {
         return state.when(
           initial: () {
-            return Shimmer(
-              child: Container(color: Theme.of(context).colorScheme.surface),
-            );
+            return Shimmer(child: const ColoredBox(color: AppColors.primary));
           },
           getQuranLoading: () {
-            return Shimmer(
-              child: ColoredBox(color: Theme.of(context).colorScheme.surface),
-            );
+            return Shimmer(child: const ColoredBox(color: AppColors.primary));
           },
           getQuranSuccess: (surahs) {
             return Column(
@@ -81,7 +78,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                 BlocBuilder<SurahDetailsCubit, SurahDetailsState>(
                   builder: (context, state) {
                     return state.whenOrNull(
-                          getSurahSuccess: (surah) {
+                          getSurahSuccess: (surah, surahNumber) {
                             return SizedBox(
                               height: 200.h,
                               width: double.infinity,
@@ -95,6 +92,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                       ? surah.surahNameArabicLong
                                       : surah.surahName,
                                   reciter: surah.audio.reciter,
+                                  surahNumber: surahNumber,
                                 ),
                               ),
                             );
@@ -106,8 +104,8 @@ class _HomeWrapperState extends State<HomeWrapper> {
               ],
             );
           },
-          getQuranfailed: (errMsg) {
-            return ErrorView(errMsg: errMsg);
+          getQuranfailed: (failure) {
+            return ErrorView(arMsg: failure.arMsg, enMsg: failure.enMsg);
           },
         );
       },

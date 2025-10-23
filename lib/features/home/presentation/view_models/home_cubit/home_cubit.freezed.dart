@@ -128,13 +128,13 @@ return getQuranfailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( String errMsg)?  getQuranfailed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( Failure failure)?  getQuranfailed,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that.errMsg);case _:
+return getQuranfailed(_that.failure);case _:
   return orElse();
 
 }
@@ -152,13 +152,13 @@ return getQuranfailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( String errMsg)  getQuranfailed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( Failure failure)  getQuranfailed,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _GetQuranLoading():
 return getQuranLoading();case _GetQuranSuccess():
 return getQuranSuccess(_that.surahs);case _GetQuranFailed():
-return getQuranfailed(_that.errMsg);case _:
+return getQuranfailed(_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +175,13 @@ return getQuranfailed(_that.errMsg);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( String errMsg)?  getQuranfailed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( Failure failure)?  getQuranfailed,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that.errMsg);case _:
+return getQuranfailed(_that.failure);case _:
   return null;
 
 }
@@ -329,10 +329,10 @@ as List<SurahModel>,
 
 
 class _GetQuranFailed implements HomeState {
-  const _GetQuranFailed({required this.errMsg});
+  const _GetQuranFailed({required this.failure});
   
 
- final  String errMsg;
+ final  Failure failure;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -344,16 +344,16 @@ _$GetQuranFailedCopyWith<_GetQuranFailed> get copyWith => __$GetQuranFailedCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetQuranFailed&&(identical(other.errMsg, errMsg) || other.errMsg == errMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetQuranFailed&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errMsg);
+int get hashCode => Object.hash(runtimeType,failure);
 
 @override
 String toString() {
-  return 'HomeState.getQuranfailed(errMsg: $errMsg)';
+  return 'HomeState.getQuranfailed(failure: $failure)';
 }
 
 
@@ -364,7 +364,7 @@ abstract mixin class _$GetQuranFailedCopyWith<$Res> implements $HomeStateCopyWit
   factory _$GetQuranFailedCopyWith(_GetQuranFailed value, $Res Function(_GetQuranFailed) _then) = __$GetQuranFailedCopyWithImpl;
 @useResult
 $Res call({
- String errMsg
+ Failure failure
 });
 
 
@@ -381,10 +381,10 @@ class __$GetQuranFailedCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errMsg = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? failure = null,}) {
   return _then(_GetQuranFailed(
-errMsg: null == errMsg ? _self.errMsg : errMsg // ignore: cast_nullable_to_non_nullable
-as String,
+failure: null == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure,
   ));
 }
 

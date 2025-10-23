@@ -1,0 +1,22 @@
+{
+    "@@locale": "en",
+    "appName": "Noor",
+    "onboardingTitle1": "Read the Holy Quran",
+    "onboardingTitle2": "Listen and Reflect",
+    "onboardingTitle3": "Begin Your Spiritual Journey",
+    "onboardingSubtitle1": "Enjoy recitations of the Holy Quran by the best reciters",
+    "onboardingSubtitle2": "Listen to Quran recitations anytime, anywhere",
+    "onboardingSubtitle3": "Make the Quran your daily companion",
+    "next": "Next",
+    "getStarted": "Get Started",
+    "skip": "Skip",
+    "homeTitle": "Holy Quran",
+    "ayah": "{count} Verses",
+    "@ayah": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    }
+}

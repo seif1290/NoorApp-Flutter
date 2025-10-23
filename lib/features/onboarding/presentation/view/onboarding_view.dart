@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/routing/route_path.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
+import 'package:noor/core/utils/app_values.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/view/build_page_view.dart';
@@ -49,10 +49,10 @@ class _OnboardingViewState extends State<OnboardingView> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(
-          top: AppValues.appBarHeight.h,
-          bottom: AppValues.lg.h,
-          left: AppValues.lg.w,
-          right: AppValues.lg.w,
+          top: AppValues.padding32.h,
+          bottom: AppValues.padding24.h,
+          left: AppValues.padding24.w,
+          right: AppValues.padding24.w,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_components.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_strings.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
-import 'package:noor/core/utils/constants/ui_constants/snack_bar_state.dart';
+import 'package:noor/core/helper_functions/num_to_arabic.dart';
+import 'package:noor/core/helper_functions/show_snack_bar.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/app_components.dart';
+import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/utils/snack_bar_state.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
@@ -48,9 +49,10 @@ class _SurahDetailsViewState extends State<SurahDetailsView> {
       child: BlocConsumer<SurahDetailsCubit, SurahDetailsState>(
         listener: (context, state) {
           state.whenOrNull(
-            getSurahSuccess: (surah) async {
+            getSurahSuccess: (surah, surahNumber) async {
               await context.read<AudioPlayerCubit>().loadSurah(
                 surahUrl: surah.audio.originalUrl,
+                surahNumber: surahNumber,
               );
             },
           );
@@ -64,15 +66,17 @@ class _SurahDetailsViewState extends State<SurahDetailsView> {
                     ),
                   );
                 },
-                getSurahFailed: (errMsg) {
-                  AppComponents.showSnackBar(
+                getSurahFailed: (failure) {
+                  showSnackBar(
                     context,
-                    snackMessage: errMsg,
+                    snackMessage: localeName == 'ar'
+                        ? failure.arMsg
+                        : failure.enMsg,
                     snackBarState: SnackBarState.error,
                   );
                   return null;
                 },
-                getSurahSuccess: (surah) {
+                getSurahSuccess: (surah, surahNumber) {
                   return Scaffold(
                     appBar: AppBar(
                       title: Text(
@@ -84,29 +88,21 @@ class _SurahDetailsViewState extends State<SurahDetailsView> {
 
                     body: Padding(
                       padding: EdgeInsetsGeometry.only(
-                        top: AppValues.md.h,
-                        right: AppValues.sm.w,
-                        left: AppValues.sm.w,
+                        top: AppValues.padding16.h,
+                        right: AppValues.padding8.w,
+                        left: AppValues.padding8.w,
                       ),
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            if (showBasmala)
-                              Text(
-                                AppStrings.basmala,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.titleLarge!.copyWith(fontSize: 36),
-                                textAlign: TextAlign.center,
-                              ),
                             SizedBox(
                               height: AppComponents.screenHeight(context) * 0.1,
                             ),
                             Center(
                               child: Text(
                                 localeName == 'ar'
-                                    ? '${surah.arabic1[0]}\uFD3F${AppComponents.numToArabic(number: 1)}\uFD3E'
+                                    ? '${surah.arabic1[0]}\uFD3F${numToArabic(number: 1)}\uFD3E'
                                     : '1. ${surah.english[0]}',
                                 style: Theme.of(
                                   context,

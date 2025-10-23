@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_images.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/app_images.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 
 List<OnboardingModel> onboardingsList(BuildContext context) =>

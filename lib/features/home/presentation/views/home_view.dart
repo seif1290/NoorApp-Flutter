@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/constants/ui_constants/app_values.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
+import 'package:noor/core/utils/app_values.dart';
 import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/presentation/views/locale_picker.dart';
 import 'package:noor/features/home/presentation/views/surahs_list_view.dart';
 import 'package:provider/provider.dart';
 
-import 'package:noor/core/localization/locale_provider.dart';
+import 'package:noor/localization/locale_provider.dart';
 
 class HomeView extends StatelessWidget {
   final List<SurahModel> surahs;
@@ -25,7 +25,6 @@ class HomeView extends StatelessWidget {
       ),
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.homeTitle),
-
         actions: [
           IconButton(
             onPressed: () {
@@ -36,9 +35,9 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: AppValues.sm.w),
+        padding: EdgeInsetsGeometry.symmetric(horizontal: AppValues.padding8.w),
         child: SurahsListView(
-          key: PageStorageKey<String>('home'),
+          key: const PageStorageKey<String>('home'),
           surahs: surahs,
           onCardTab: onSurahCardTab ?? (_) {},
         ),

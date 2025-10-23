@@ -41,7 +41,7 @@ class AppRouter {
                   SurahDetailsCubit(quranRepo: getIt.get<QuranRepo>()),
             ),
           ],
-          child: HomeWrapper(),
+          child: const HomeWrapper(),
         ),
       ),
     ],

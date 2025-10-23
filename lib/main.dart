@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/di/setup.dart';
-import 'package:noor/core/error_handling/localized_err_msg.dart';
-import 'package:noor/core/localization/l10n/app_localizations.dart';
-import 'package:noor/core/localization/l10n/l_10n.dart';
-import 'package:noor/core/localization/locale_provider.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
+import 'package:noor/localization/l10n/l_10n.dart';
+import 'package:noor/localization/locale_provider.dart';
 import 'package:noor/core/routing/app_router.dart';
 import 'package:noor/core/services/shared_prefs_service.dart';
-import 'package:noor/core/theme/app_theme.dart';
+import 'package:noor/core/theme/app_theme_data.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -21,29 +20,26 @@ class NoorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LocalizedErrMsg.init(context);
     return ScreenUtilInit(
       designSize: const Size(393, 852),
       minTextAdapt: true,
       splitScreenMode: true,
       child: ChangeNotifierProvider(
-        create: (context) => LocaleProvider(),
+        create: (context) => LocaleProvider(getIt.get<SharedPrefsService>()),
         builder: (context, child) {
           final provider = Provider.of<LocaleProvider>(context);
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
+            theme: AppThemeData.lightTheme,
             routerConfig: AppRouter.router,
             supportedLocales: L10n.supportedLocales,
-            localizationsDelegates: [
+            localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            locale: getIt.get<SharedPrefsService>().appLocale != null
-                ? Locale(getIt.get<SharedPrefsService>().appLocale!)
-                : provider.locale,
+            locale: provider.locale,
           );
         },
       ),
