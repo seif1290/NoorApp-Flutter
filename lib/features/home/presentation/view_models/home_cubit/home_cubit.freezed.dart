@@ -55,14 +55,19 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _GetQuranLoading value)?  getQuranLoading,TResult Function( _GetQuranSuccess value)?  getQuranSuccess,TResult Function( _GetQuranFailed value)?  getQuranfailed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _GetQuranLoading value)?  getQuranLoading,TResult Function( _GetQuranSuccess value)?  getQuranSuccess,TResult Function( _GetQuranFailed value)?  getQuranfailed,TResult Function( _GetSurahLoading value)?  getSurahLoading,TResult Function( _GetSurahSuccess value)?  getSurahSuccess,TResult Function( _GetSurahFailed value)?  getSurahFailed,TResult Function( _SurahDetailsOpened value)?  surahDetailsOpened,TResult Function( _SurahDetailsClosed value)?  surahDetailsClosed,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading(_that);case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that);case _:
+return getQuranfailed(_that);case _GetSurahLoading() when getSurahLoading != null:
+return getSurahLoading(_that);case _GetSurahSuccess() when getSurahSuccess != null:
+return getSurahSuccess(_that);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that);case _SurahDetailsOpened() when surahDetailsOpened != null:
+return surahDetailsOpened(_that);case _SurahDetailsClosed() when surahDetailsClosed != null:
+return surahDetailsClosed(_that);case _:
   return orElse();
 
 }
@@ -80,14 +85,19 @@ return getQuranfailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _GetQuranLoading value)  getQuranLoading,required TResult Function( _GetQuranSuccess value)  getQuranSuccess,required TResult Function( _GetQuranFailed value)  getQuranfailed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _GetQuranLoading value)  getQuranLoading,required TResult Function( _GetQuranSuccess value)  getQuranSuccess,required TResult Function( _GetQuranFailed value)  getQuranfailed,required TResult Function( _GetSurahLoading value)  getSurahLoading,required TResult Function( _GetSurahSuccess value)  getSurahSuccess,required TResult Function( _GetSurahFailed value)  getSurahFailed,required TResult Function( _SurahDetailsOpened value)  surahDetailsOpened,required TResult Function( _SurahDetailsClosed value)  surahDetailsClosed,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case _GetQuranLoading():
 return getQuranLoading(_that);case _GetQuranSuccess():
 return getQuranSuccess(_that);case _GetQuranFailed():
-return getQuranfailed(_that);case _:
+return getQuranfailed(_that);case _GetSurahLoading():
+return getSurahLoading(_that);case _GetSurahSuccess():
+return getSurahSuccess(_that);case _GetSurahFailed():
+return getSurahFailed(_that);case _SurahDetailsOpened():
+return surahDetailsOpened(_that);case _SurahDetailsClosed():
+return surahDetailsClosed(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +114,19 @@ return getQuranfailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _GetQuranLoading value)?  getQuranLoading,TResult? Function( _GetQuranSuccess value)?  getQuranSuccess,TResult? Function( _GetQuranFailed value)?  getQuranfailed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _GetQuranLoading value)?  getQuranLoading,TResult? Function( _GetQuranSuccess value)?  getQuranSuccess,TResult? Function( _GetQuranFailed value)?  getQuranfailed,TResult? Function( _GetSurahLoading value)?  getSurahLoading,TResult? Function( _GetSurahSuccess value)?  getSurahSuccess,TResult? Function( _GetSurahFailed value)?  getSurahFailed,TResult? Function( _SurahDetailsOpened value)?  surahDetailsOpened,TResult? Function( _SurahDetailsClosed value)?  surahDetailsClosed,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading(_that);case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that);case _:
+return getQuranfailed(_that);case _GetSurahLoading() when getSurahLoading != null:
+return getSurahLoading(_that);case _GetSurahSuccess() when getSurahSuccess != null:
+return getSurahSuccess(_that);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that);case _SurahDetailsOpened() when surahDetailsOpened != null:
+return surahDetailsOpened(_that);case _SurahDetailsClosed() when surahDetailsClosed != null:
+return surahDetailsClosed(_that);case _:
   return null;
 
 }
@@ -128,13 +143,18 @@ return getQuranfailed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( Failure failure)?  getQuranfailed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getQuranLoading,TResult Function( List<SurahModel> surahs)?  getQuranSuccess,TResult Function( Failure failure)?  getQuranfailed,TResult Function()?  getSurahLoading,TResult Function( SurahModelWithAudio surah,  int surahNumber)?  getSurahSuccess,TResult Function( Failure failure)?  getSurahFailed,TResult Function()?  surahDetailsOpened,TResult Function()?  surahDetailsClosed,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that.failure);case _:
+return getQuranfailed(_that.failure);case _GetSurahLoading() when getSurahLoading != null:
+return getSurahLoading();case _GetSurahSuccess() when getSurahSuccess != null:
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that.failure);case _SurahDetailsOpened() when surahDetailsOpened != null:
+return surahDetailsOpened();case _SurahDetailsClosed() when surahDetailsClosed != null:
+return surahDetailsClosed();case _:
   return orElse();
 
 }
@@ -152,13 +172,18 @@ return getQuranfailed(_that.failure);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( Failure failure)  getQuranfailed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getQuranLoading,required TResult Function( List<SurahModel> surahs)  getQuranSuccess,required TResult Function( Failure failure)  getQuranfailed,required TResult Function()  getSurahLoading,required TResult Function( SurahModelWithAudio surah,  int surahNumber)  getSurahSuccess,required TResult Function( Failure failure)  getSurahFailed,required TResult Function()  surahDetailsOpened,required TResult Function()  surahDetailsClosed,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _GetQuranLoading():
 return getQuranLoading();case _GetQuranSuccess():
 return getQuranSuccess(_that.surahs);case _GetQuranFailed():
-return getQuranfailed(_that.failure);case _:
+return getQuranfailed(_that.failure);case _GetSurahLoading():
+return getSurahLoading();case _GetSurahSuccess():
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed():
+return getSurahFailed(_that.failure);case _SurahDetailsOpened():
+return surahDetailsOpened();case _SurahDetailsClosed():
+return surahDetailsClosed();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +200,18 @@ return getQuranfailed(_that.failure);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( Failure failure)?  getQuranfailed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getQuranLoading,TResult? Function( List<SurahModel> surahs)?  getQuranSuccess,TResult? Function( Failure failure)?  getQuranfailed,TResult? Function()?  getSurahLoading,TResult? Function( SurahModelWithAudio surah,  int surahNumber)?  getSurahSuccess,TResult? Function( Failure failure)?  getSurahFailed,TResult? Function()?  surahDetailsOpened,TResult? Function()?  surahDetailsClosed,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _GetQuranLoading() when getQuranLoading != null:
 return getQuranLoading();case _GetQuranSuccess() when getQuranSuccess != null:
 return getQuranSuccess(_that.surahs);case _GetQuranFailed() when getQuranfailed != null:
-return getQuranfailed(_that.failure);case _:
+return getQuranfailed(_that.failure);case _GetSurahLoading() when getSurahLoading != null:
+return getSurahLoading();case _GetSurahSuccess() when getSurahSuccess != null:
+return getSurahSuccess(_that.surah,_that.surahNumber);case _GetSurahFailed() when getSurahFailed != null:
+return getSurahFailed(_that.failure);case _SurahDetailsOpened() when surahDetailsOpened != null:
+return surahDetailsOpened();case _SurahDetailsClosed() when surahDetailsClosed != null:
+return surahDetailsClosed();case _:
   return null;
 
 }
@@ -390,5 +420,244 @@ as Failure,
 
 
 }
+
+/// @nodoc
+
+
+class _GetSurahLoading implements HomeState {
+  const _GetSurahLoading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahLoading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.getSurahLoading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _GetSurahSuccess implements HomeState {
+  const _GetSurahSuccess({required this.surah, required this.surahNumber});
+  
+
+ final  SurahModelWithAudio surah;
+ final  int surahNumber;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GetSurahSuccessCopyWith<_GetSurahSuccess> get copyWith => __$GetSurahSuccessCopyWithImpl<_GetSurahSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahSuccess&&(identical(other.surah, surah) || other.surah == surah)&&(identical(other.surahNumber, surahNumber) || other.surahNumber == surahNumber));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,surah,surahNumber);
+
+@override
+String toString() {
+  return 'HomeState.getSurahSuccess(surah: $surah, surahNumber: $surahNumber)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GetSurahSuccessCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$GetSurahSuccessCopyWith(_GetSurahSuccess value, $Res Function(_GetSurahSuccess) _then) = __$GetSurahSuccessCopyWithImpl;
+@useResult
+$Res call({
+ SurahModelWithAudio surah, int surahNumber
+});
+
+
+$SurahModelWithAudioCopyWith<$Res> get surah;
+
+}
+/// @nodoc
+class __$GetSurahSuccessCopyWithImpl<$Res>
+    implements _$GetSurahSuccessCopyWith<$Res> {
+  __$GetSurahSuccessCopyWithImpl(this._self, this._then);
+
+  final _GetSurahSuccess _self;
+  final $Res Function(_GetSurahSuccess) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? surah = null,Object? surahNumber = null,}) {
+  return _then(_GetSurahSuccess(
+surah: null == surah ? _self.surah : surah // ignore: cast_nullable_to_non_nullable
+as SurahModelWithAudio,surahNumber: null == surahNumber ? _self.surahNumber : surahNumber // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SurahModelWithAudioCopyWith<$Res> get surah {
+  
+  return $SurahModelWithAudioCopyWith<$Res>(_self.surah, (value) {
+    return _then(_self.copyWith(surah: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class _GetSurahFailed implements HomeState {
+  const _GetSurahFailed({required this.failure});
+  
+
+ final  Failure failure;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GetSurahFailedCopyWith<_GetSurahFailed> get copyWith => __$GetSurahFailedCopyWithImpl<_GetSurahFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetSurahFailed&&(identical(other.failure, failure) || other.failure == failure));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,failure);
+
+@override
+String toString() {
+  return 'HomeState.getSurahFailed(failure: $failure)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GetSurahFailedCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$GetSurahFailedCopyWith(_GetSurahFailed value, $Res Function(_GetSurahFailed) _then) = __$GetSurahFailedCopyWithImpl;
+@useResult
+$Res call({
+ Failure failure
+});
+
+
+
+
+}
+/// @nodoc
+class __$GetSurahFailedCopyWithImpl<$Res>
+    implements _$GetSurahFailedCopyWith<$Res> {
+  __$GetSurahFailedCopyWithImpl(this._self, this._then);
+
+  final _GetSurahFailed _self;
+  final $Res Function(_GetSurahFailed) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? failure = null,}) {
+  return _then(_GetSurahFailed(
+failure: null == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _SurahDetailsOpened implements HomeState {
+  const _SurahDetailsOpened();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahDetailsOpened);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.surahDetailsOpened()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _SurahDetailsClosed implements HomeState {
+  const _SurahDetailsClosed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahDetailsClosed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.surahDetailsClosed()';
+}
+
+
+}
+
+
+
 
 // dart format on

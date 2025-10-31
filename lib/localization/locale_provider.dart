@@ -7,16 +7,15 @@ class LocaleProvider extends ChangeNotifier {
   late Locale _locale;
 
   LocaleProvider(this._sharedPrefsService) {
-    _setLocale();
+    setLocale();
   }
 
   Locale get locale => _locale;
 
-  Future<void> _setLocale() async {
+  Future<void> setLocale() async {
     if (_sharedPrefsService.appLanguageCode == null) {
-      _locale = Locale(
-        await _sharedPrefsService.setLanguageCode(languageCode: 'ar'),
-      );
+      _locale = const Locale('ar');
+      await _sharedPrefsService.setLanguageCode(languageCode: 'ar');
     } else {
       _locale = Locale(_sharedPrefsService.appLanguageCode!);
     }

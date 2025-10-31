@@ -2,123 +2,145 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/helper_functions/num_to_arabic.dart';
-import 'package:noor/core/helper_functions/show_snack_bar.dart';
-import 'package:noor/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/app_components.dart';
+import 'package:noor/core/helper_functions/reciter_name_to_arabic.dart';
+import 'package:noor/core/theme/styles/app_colors.dart';
+import 'package:noor/core/theme/styles/app_text_styles.dart';
 import 'package:noor/core/utils/app_values.dart';
-import 'package:noor/core/utils/snack_bar_state.dart';
+import 'package:noor/features/home/data/models/surah_model_with_audio/surah_model_with_audio.dart';
+import 'package:noor/features/home/presentation/views/widgets/audio_slider.dart';
+import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
 
 class SurahDetailsView extends StatefulWidget {
-  const SurahDetailsView({super.key, required this.surahNumber});
-  final int surahNumber;
+  final SurahModelWithAudio surah;
+  final VoidCallback? onPlayButtonTap;
+  final VoidCallback? onGetNextSurah;
+  final VoidCallback? onGetPreviousSurah;
+  final VoidCallback? onCloseSurahDetails;
+  const SurahDetailsView({
+    super.key,
+    required this.surah,
+    this.onPlayButtonTap,
+    this.onGetNextSurah,
+    this.onGetPreviousSurah,
+    this.onCloseSurahDetails,
+  });
+
   @override
   State<SurahDetailsView> createState() => _SurahDetailsViewState();
 }
 
-class _SurahDetailsViewState extends State<SurahDetailsView> {
-  late final SurahDetailsCubit _surahDetailsCubit;
-  bool showBasmala = false;
+class _SurahDetailsViewState extends State<SurahDetailsView>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
-    _surahDetailsCubit = context.read<SurahDetailsCubit>();
-
-    _getSurah(surahNumber: widget.surahNumber);
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
   }
 
-  Future<void> _getSurah({required int surahNumber}) async {
-    await _surahDetailsCubit.getSurah(surahNumber: surahNumber);
-  }
-
-  Future<void> _getNextSurah() async {
-    await _surahDetailsCubit.getNextSurah();
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final localeName = AppLocalizations.of(context)?.localeName;
-    return BlocListener<AudioPlayerCubit, AudioPlayerState>(
-      listener: (context, state) {
-        if (state is AudioFinished) {
-          _getNextSurah();
-        }
-      },
-      child: BlocConsumer<SurahDetailsCubit, SurahDetailsState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            getSurahSuccess: (surah, surahNumber) async {
-              await context.read<AudioPlayerCubit>().loadSurah(
-                surahUrl: surah.audio.originalUrl,
-                surahNumber: surahNumber,
-              );
-            },
-          );
-        },
-        builder: (context, state) {
-          return state.whenOrNull(
-                getSurahLoading: () {
-                  return Shimmer(
-                    child: ColoredBox(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  );
-                },
-                getSurahFailed: (failure) {
-                  showSnackBar(
-                    context,
-                    snackMessage: localeName == 'ar'
-                        ? failure.arMsg
-                        : failure.enMsg,
-                    snackBarState: SnackBarState.error,
-                  );
-                  return null;
-                },
-                getSurahSuccess: (surah, surahNumber) {
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: Text(
-                        localeName == 'ar'
-                            ? surah.surahNameArabicLong
-                            : surah.surahName,
-                      ),
-                    ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: widget.onCloseSurahDetails,
+          icon: const Icon(Icons.arrow_downward),
+        ),
+        title: Text(
+          localeName == 'ar'
+              ? widget.surah.surahNameArabicLong
+              : widget.surah.surahName,
+          style: AppTextStyles.heading18,
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsetsGeometry.symmetric(
+          vertical: AppValues.padding16.h,
+          horizontal: AppValues.padding8.w,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                localeName == 'ar'
+                    ? '${widget.surah.arabic1[0]}\uFD3F${numToArabic(number: 1)}\uFD3E'
+                    : '1. ${widget.surah.english[0]}',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge!.copyWith(height: 1.5.h),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Spacer(),
+            AudioSlider(surahName: widget.surah.surahName),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: widget.onGetNextSurah,
+                  icon: Icon(
+                    Icons.skip_next_outlined,
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ),
 
-                    body: Padding(
-                      padding: EdgeInsetsGeometry.only(
-                        top: AppValues.padding16.h,
-                        right: AppValues.padding8.w,
-                        left: AppValues.padding8.w,
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: AppComponents.screenHeight(context) * 0.1,
-                            ),
-                            Center(
-                              child: Text(
-                                localeName == 'ar'
-                                    ? '${surah.arabic1[0]}\uFD3F${numToArabic(number: 1)}\uFD3E'
-                                    : '1. ${surah.english[0]}',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.titleLarge!.copyWith(height: 1.5.h),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
+                InkWell(
+                  onTap: widget.onPlayButtonTap,
+                  child: Container(
+                    padding: const EdgeInsets.all(14.0),
+                    margin: const EdgeInsets.all(14.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                    child: BlocListener<AudioPlayerCubit, AudioPlayerState>(
+                      listenWhen: (previous, current) =>
+                          current is AudioPlaying || current is AudioPaused,
+                      listener: (context, state) {
+                        if (state is AudioPlaying) {
+                          _animationController.forward();
+                        } else {
+                          _animationController.reverse();
+                        }
+                      },
+                      child: AnimatedIcon(
+                        icon: AnimatedIcons.play_pause,
+                        color: AppColors.white,
+                        progress: _animationController,
                       ),
                     ),
-                  );
-                },
-              ) ??
-              const SizedBox.shrink();
-        },
+                  ),
+                ),
+                IconButton(
+                  onPressed: widget.onGetPreviousSurah,
+                  icon: Icon(
+                    Icons.skip_previous_outlined,
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              AppLocalizations.of(context)?.localeName == 'ar'
+                  ? reciterNameToArabic(reciterName: widget.surah.audio.reciter)
+                  : widget.surah.audio.reciter,
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          ],
+        ),
       ),
     );
   }

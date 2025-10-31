@@ -1,47 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:noor/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/app_values.dart';
-import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
-import 'package:noor/features/home/presentation/views/locale_picker.dart';
-import 'package:noor/features/home/presentation/views/surahs_list_view.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
+import 'package:noor/features/home/presentation/views/widgets/home_scaffold.dart';
+import 'package:noor/features/home/presentation/views/widgets/surah_details_animated_layer.dart';
 
-import 'package:noor/localization/locale_provider.dart';
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
-class HomeView extends StatelessWidget {
-  final List<SurahModel> surahs;
-  final Function(int surahNumber)? onSurahCardTab;
-  const HomeView({super.key, required this.surahs, this.onSurahCardTab});
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    _getQuran();
+  }
+
+  Future<void> _getQuran() async {
+    await context.read<HomeCubit>().getQuran();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: [
-            LocalePicker(provider: Provider.of<LocaleProvider>(context)),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.homeTitle),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // TODO: Implement search functionality
-            },
-            icon: const Icon(Icons.search),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: AppValues.padding8.w),
-        child: SurahsListView(
-          key: const PageStorageKey<String>('home'),
-          surahs: surahs,
-          onCardTab: onSurahCardTab ?? (_) {},
-        ),
-      ),
-    );
+    return const Stack(children: [HomeScaffold(), SurahDetailsAnimatedLayer()]);
   }
 }

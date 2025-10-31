@@ -5,8 +5,7 @@ import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/features/home/data/repos/quran_repo.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/surah_details_cubit/surah_details_cubit.dart';
-import 'package:noor/features/home/presentation/views/home_wrapper.dart';
+import 'package:noor/features/home/presentation/views/home_view.dart';
 import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/view/onboarding_view.dart';
@@ -29,19 +28,15 @@ class AppRouter {
 
       // Home
       GoRoute(
-        path: RoutePath.homeWrapper,
+        path: RoutePath.home,
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
               create: (context) => HomeCubit(quranRepo: getIt.get<QuranRepo>()),
             ),
             BlocProvider(create: (context) => AudioPlayerCubit()),
-            BlocProvider(
-              create: (context) =>
-                  SurahDetailsCubit(quranRepo: getIt.get<QuranRepo>()),
-            ),
           ],
-          child: const HomeWrapper(),
+          child: const HomeView(),
         ),
       ),
     ],
@@ -49,7 +44,7 @@ class AppRouter {
 
   static String get _initialLocation {
     if (getIt.get<SharedPrefsService>().isOnboardingFinished) {
-      return RoutePath.homeWrapper;
+      return RoutePath.home;
     } else {
       return RoutePath.onboarding;
     }
