@@ -91,6 +91,9 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/logos/
+    - assets/fonts/
+    - assets/quran/
+    - assets/quran/surahs/
 
   fonts:
     - family: Amiri
