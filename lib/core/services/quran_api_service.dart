@@ -5,11 +5,12 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 class QuranApiService {
   final Dio dio;
 
-  static const String _quranBaseUrl = 'https://quranapi.pages.dev/api/';
+  static const String _quranAudioBaseUrl =
+      'https://cdn.islamic.network/quran/audio-surah/128/';
   QuranApiService._internal()
     : dio = Dio(
         BaseOptions(
-          baseUrl: _quranBaseUrl,
+          baseUrl: _quranAudioBaseUrl,
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 20),
           sendTimeout: const Duration(seconds: 20),
@@ -33,7 +34,7 @@ class QuranApiService {
   }
 
   Future<dynamic> get({required String endPoint}) async {
-    var response = await dio.get('$_quranBaseUrl$endPoint');
+    var response = await dio.get('$_quranAudioBaseUrl$endPoint');
     return response.data;
   }
 }
