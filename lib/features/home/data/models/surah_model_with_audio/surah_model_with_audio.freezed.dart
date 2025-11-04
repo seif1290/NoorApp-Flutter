@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SurahModelWithAudio {
 
- String get surahName; String get surahNameArabicLong; RevelationPlace get revelationPlace; int get totalAyah; AudioModel get audio; List<String> get english; List<String> get arabic1;
+ String get surahName; String get surahNameArabicLong; Type get revelationPlace; int get totalAyah; AudioModel get audio; List<String> get english; List<String> get arabic1;
 /// Create a copy of SurahModelWithAudio
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $SurahModelWithAudioCopyWith<$Res>  {
   factory $SurahModelWithAudioCopyWith(SurahModelWithAudio value, $Res Function(SurahModelWithAudio) _then) = _$SurahModelWithAudioCopyWithImpl;
 @useResult
 $Res call({
- String surahName, String surahNameArabicLong, RevelationPlace revelationPlace, int totalAyah, AudioModel audio, List<String> english, List<String> arabic1
+ String surahName, String surahNameArabicLong, Type revelationPlace, int totalAyah, AudioModel audio, List<String> english, List<String> arabic1
 });
 
 
@@ -70,7 +70,7 @@ class _$SurahModelWithAudioCopyWithImpl<$Res>
 surahName: null == surahName ? _self.surahName : surahName // ignore: cast_nullable_to_non_nullable
 as String,surahNameArabicLong: null == surahNameArabicLong ? _self.surahNameArabicLong : surahNameArabicLong // ignore: cast_nullable_to_non_nullable
 as String,revelationPlace: null == revelationPlace ? _self.revelationPlace : revelationPlace // ignore: cast_nullable_to_non_nullable
-as RevelationPlace,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
+as Type,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
 as int,audio: null == audio ? _self.audio : audio // ignore: cast_nullable_to_non_nullable
 as AudioModel,english: null == english ? _self.english : english // ignore: cast_nullable_to_non_nullable
 as List<String>,arabic1: null == arabic1 ? _self.arabic1 : arabic1 // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  Type revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SurahModelWithAudio() when $default != null:
 return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah,_that.audio,_that.english,_that.arabic1);case _:
@@ -189,7 +189,7 @@ return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  Type revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)  $default,) {final _that = this;
 switch (_that) {
 case _SurahModelWithAudio():
 return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah,_that.audio,_that.english,_that.arabic1);case _:
@@ -209,7 +209,7 @@ return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String surahName,  String surahNameArabicLong,  Type revelationPlace,  int totalAyah,  AudioModel audio,  List<String> english,  List<String> arabic1)?  $default,) {final _that = this;
 switch (_that) {
 case _SurahModelWithAudio() when $default != null:
 return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah,_that.audio,_that.english,_that.arabic1);case _:
@@ -229,7 +229,7 @@ class _SurahModelWithAudio implements SurahModelWithAudio {
 
 @override final  String surahName;
 @override final  String surahNameArabicLong;
-@override final  RevelationPlace revelationPlace;
+@override final  Type revelationPlace;
 @override final  int totalAyah;
 @override final  AudioModel audio;
  final  List<String> _english;
@@ -280,7 +280,7 @@ abstract mixin class _$SurahModelWithAudioCopyWith<$Res> implements $SurahModelW
   factory _$SurahModelWithAudioCopyWith(_SurahModelWithAudio value, $Res Function(_SurahModelWithAudio) _then) = __$SurahModelWithAudioCopyWithImpl;
 @override @useResult
 $Res call({
- String surahName, String surahNameArabicLong, RevelationPlace revelationPlace, int totalAyah, AudioModel audio, List<String> english, List<String> arabic1
+ String surahName, String surahNameArabicLong, Type revelationPlace, int totalAyah, AudioModel audio, List<String> english, List<String> arabic1
 });
 
 
@@ -302,7 +302,7 @@ class __$SurahModelWithAudioCopyWithImpl<$Res>
 surahName: null == surahName ? _self.surahName : surahName // ignore: cast_nullable_to_non_nullable
 as String,surahNameArabicLong: null == surahNameArabicLong ? _self.surahNameArabicLong : surahNameArabicLong // ignore: cast_nullable_to_non_nullable
 as String,revelationPlace: null == revelationPlace ? _self.revelationPlace : revelationPlace // ignore: cast_nullable_to_non_nullable
-as RevelationPlace,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
+as Type,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
 as int,audio: null == audio ? _self.audio : audio // ignore: cast_nullable_to_non_nullable
 as AudioModel,english: null == english ? _self._english : english // ignore: cast_nullable_to_non_nullable
 as List<String>,arabic1: null == arabic1 ? _self._arabic1 : arabic1 // ignore: cast_nullable_to_non_nullable

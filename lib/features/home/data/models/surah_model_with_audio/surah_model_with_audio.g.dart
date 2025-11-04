@@ -11,10 +11,7 @@ _SurahModelWithAudio _$SurahModelWithAudioFromJson(
 ) => _SurahModelWithAudio(
   surahName: json['surahName'] as String,
   surahNameArabicLong: json['surahNameArabicLong'] as String,
-  revelationPlace: $enumDecode(
-    _$RevelationPlaceEnumMap,
-    json['revelationPlace'],
-  ),
+  revelationPlace: $enumDecode(_$TypeEnumMap, json['revelationPlace']),
   totalAyah: (json['totalAyah'] as num).toInt(),
   audio: AudioModel.fromJson(json['audio'] as Map<String, dynamic>),
   english: (json['english'] as List<dynamic>).map((e) => e as String).toList(),
@@ -26,14 +23,11 @@ Map<String, dynamic> _$SurahModelWithAudioToJson(
 ) => <String, dynamic>{
   'surahName': instance.surahName,
   'surahNameArabicLong': instance.surahNameArabicLong,
-  'revelationPlace': _$RevelationPlaceEnumMap[instance.revelationPlace]!,
+  'revelationPlace': _$TypeEnumMap[instance.revelationPlace]!,
   'totalAyah': instance.totalAyah,
   'audio': instance.audio,
   'english': instance.english,
   'arabic1': instance.arabic1,
 };
 
-const _$RevelationPlaceEnumMap = {
-  RevelationPlace.Mecca: 'Mecca',
-  RevelationPlace.Madina: 'Madina',
-};
+const _$TypeEnumMap = {Type.meccan: 'meccan', Type.medinan: 'medinan'};

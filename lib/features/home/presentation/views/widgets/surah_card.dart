@@ -9,8 +9,8 @@ import 'package:noor/core/theme/styles/app_text_styles.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/core/utils/app_values.dart';
-import 'package:noor/features/home/data/models/revelation_place.dart';
-import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
+import 'package:noor/features/home/data/models/type.dart';
+import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
 
 class SurahCard extends StatefulWidget {
   const SurahCard({
@@ -21,7 +21,7 @@ class SurahCard extends StatefulWidget {
     required this.index,
     this.onPlayButtonTap,
   });
-  final SurahModel surahModel;
+  final SurahMetadataModel surahModel;
   final int surahNumber;
   final int index;
   final VoidCallback? onCardTab;
@@ -80,8 +80,8 @@ class _SurahCardState extends State<SurahCard>
           padding: EdgeInsets.only(bottom: 8.h),
           child: Text(
             languageCode == 'ar'
-                ? widget.surahModel.surahNameArabicLong
-                : widget.surahModel.surahName,
+                ? widget.surahModel.name
+                : widget.surahModel.transliteration,
             style: AppTextStyles.title16,
           ),
         ),
@@ -89,7 +89,7 @@ class _SurahCardState extends State<SurahCard>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              AppLocalizations.of(context)!.ayah(widget.surahModel.totalAyah),
+              AppLocalizations.of(context)!.ayah(widget.surahModel.totalVerses),
               style: AppTextStyles.title12,
             ),
             AppValues.gap12,
@@ -100,7 +100,7 @@ class _SurahCardState extends State<SurahCard>
               ),
               padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 2.h),
               child: Text(
-                widget.surahModel.revelationPlace.getRevelationPlace(
+                widget.surahModel.type.getRevelationPlace(
                   languageCode: languageCode,
                 ),
                 style: AppTextStyles.title12.copyWith(

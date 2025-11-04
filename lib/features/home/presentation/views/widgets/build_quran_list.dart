@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
+import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
 import 'package:noor/features/home/presentation/views/widgets/surah_card.dart';
 
 class BuildQuranList extends StatelessWidget {
@@ -9,7 +9,7 @@ class BuildQuranList extends StatelessWidget {
     this.onCardTab,
     this.onPlayButtonTap,
   });
-  final List<SurahModel> surahs;
+  final List<SurahMetadataModel> surahs;
   final Function(int surahNumber)? onCardTab;
   final Function(int surahNumber)? onPlayButtonTap;
   @override
