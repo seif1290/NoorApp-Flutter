@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:noor/core/routing/route_path.dart';
-import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/routing/routes.dart';
+import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/view/build_page_view.dart';
@@ -41,7 +41,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Future<void> _finishOnboarding() async {
     await widget._onboardingRepo.finishOnboarding();
     if (!mounted) return;
-    context.go(RoutePath.home);
+    context.go(Routes.home);
   }
 
   @override
