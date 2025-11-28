@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:noor/core/theme/styles/app_colors.dart';
-import 'package:noor/core/theme/styles/app_text_styles.dart';
-import 'package:noor/core/utils/app_fonts.dart';
-import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/theme/app_colors.dart';
+import 'package:noor/core/theme/app_text_styles.dart';
+import 'package:noor/core/ui/ui_utils/app_fonts.dart';
+import 'package:noor/core/ui/ui_utils/app_values.dart';
 
 class AppThemeData {
   AppThemeData._();
 
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme(BuildContext context) => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     fontFamily: AppFonts.cairo,
@@ -29,9 +29,7 @@ class AppThemeData {
       backgroundColor: AppColors.white,
       iconTheme: const IconThemeData(color: AppColors.lightGrey),
       centerTitle: true,
-      titleTextStyle: AppTextStyles.heading20.copyWith(
-        color: AppColors.primary,
-      ),
+      titleTextStyle: AppTextStyles.font20_24GreenRegular(context),
       elevation: 2.0,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
