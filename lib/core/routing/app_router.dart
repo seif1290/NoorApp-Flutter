@@ -2,8 +2,9 @@ import 'package:go_router/go_router.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/core/routing/routes.dart';
 import 'package:noor/core/services/shared_prefs_service.dart';
-import 'package:noor/features/home/data/repos/audio_repo/audio_repo.dart';
-import 'package:noor/features/home/data/repos/quran_repo/quran_repo.dart';
+import 'package:noor/features/home/data/repos/audio_repo.dart';
+import 'package:noor/features/home/data/repos/quran_repo.dart';
+import 'package:noor/features/home/domain/use_cases/load_surah_with_audio_use_case.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
 import 'package:noor/features/home/presentation/views/home_view.dart';
@@ -35,8 +36,13 @@ class AppRouter {
             BlocProvider(
               create: (context) => HomeCubit(quranRepo: getIt.get<QuranRepo>()),
             ),
+
             BlocProvider(
-              create: (context) => AudioPlayerCubit(getIt.get<AudioRepo>()),
+              create: (context) => AudioPlayerCubit(
+                audioRepo: getIt.get<AudioRepo>(),
+                loadSurahWithAudioUseCase: getIt
+                    .get<LoadSurahWithAudioUseCase>(),
+              ),
             ),
           ],
           child: const HomeView(),

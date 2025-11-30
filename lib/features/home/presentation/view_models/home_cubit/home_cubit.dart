@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:noor/core/error_handling/failure.dart';
 import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
-import 'package:noor/features/home/data/repos/quran_repo/quran_repo.dart';
+import 'package:noor/features/home/data/repos/quran_repo.dart';
 
 part 'home_state.dart';
 part 'home_cubit.freezed.dart';
@@ -24,13 +24,5 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeState.getQuranSuccess(surahs: surahs));
       },
     );
-  }
-
-  void openSurahDetails() {
-    emit(const HomeState.surahDetailsOpened());
-  }
-
-  void closeSurahDetails() {
-    emit(const HomeState.surahDetailsClosed());
   }
 }

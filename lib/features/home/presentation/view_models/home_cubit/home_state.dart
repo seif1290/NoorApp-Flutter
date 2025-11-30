@@ -10,7 +10,4 @@ class HomeState with _$HomeState {
 
   const factory HomeState.getQuranfailed({required Failure failure}) =
       _GetQuranFailed;
-
-  const factory HomeState.surahDetailsOpened() = _SurahDetailsOpened;
-  const factory HomeState.surahDetailsClosed() = _SurahDetailsClosed;
 }

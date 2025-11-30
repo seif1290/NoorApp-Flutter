@@ -1,11 +1,40 @@
 import 'package:dartz/dartz.dart';
+import 'package:noor/core/error_handling/assets_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
+import 'package:noor/features/home/data/data_sources/quran_data_source.dart';
 import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
-import 'package:noor/features/home/data/models/surah_model_with_audio/surah_model_with_audio.dart';
+import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 
 abstract interface class QuranRepo {
   Future<Either<Failure, List<SurahMetadataModel>>> getQuran();
-  Future<Either<Failure, SurahModelWithAudio>> getSurah({
-    required int surahNumber,
-  });
+  Future<Either<Failure, SurahModel>> getSurah({required int surahId});
+}
+
+class QuranRepoImpl implements QuranRepo {
+  final QuranDataSource _quranDataSource;
+  QuranRepoImpl({required QuranDataSource quranDataSource})
+    : _quranDataSource = quranDataSource;
+  @override
+  Future<Either<Failure, List<SurahMetadataModel>>> getQuran() async {
+    try {
+      final result = await _quranDataSource.getQuranMetadata();
+      return Right(result);
+    } on AssetFailure catch (e) {
+      return Left(AssetFailure.fromException(e));
+    } catch (e) {
+      return Left(AssetFailure.unknown());
+    }
+  }
+
+  @override
+  Future<Either<Failure, SurahModel>> getSurah({required int surahId}) async {
+    try {
+      final result = await _quranDataSource.getSurah(surahId: surahId);
+      return Right(result);
+    } on AssetFailure catch (e) {
+      return Left(AssetFailure.fromException(e));
+    } catch (e) {
+      return Left(AssetFailure.unknown());
+    }
+  }
 }

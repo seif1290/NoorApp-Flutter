@@ -10,8 +10,8 @@ class QuranListView extends StatelessWidget {
     this.onPlayButtonTap,
   });
   final List<SurahMetadataModel> surahs;
-  final Function(int surahNumber)? onCardTab;
-  final Function(int surahNumber)? onPlayButtonTap;
+  final Function(SurahMetadataModel surah)? onCardTab;
+  final Function(SurahMetadataModel surah)? onPlayButtonTap;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -23,12 +23,12 @@ class QuranListView extends StatelessWidget {
           index: index,
           onCardTab: onCardTab != null
               ? () {
-                  onCardTab!(surahs[index].id);
+                  onCardTab!(surahs[index]);
                 }
               : () {},
           onPlayButtonTap: onPlayButtonTap != null
               ? () {
-                  onPlayButtonTap!(surahs[index].id);
+                  onPlayButtonTap!(surahs[index]);
                 }
               : () {},
         );

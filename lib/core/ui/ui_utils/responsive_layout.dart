@@ -9,19 +9,19 @@ class ResponsiveLayout extends StatelessWidget {
     required this.mobile,
     required this.tablet,
   });
-  static const double tabletBreakPoint = 650;
+  static const double _tabletBreakPoint = 650;
 
   static bool isMobile(BuildContext context) =>
-      MediaQuery.sizeOf(context).shortestSide < tabletBreakPoint;
+      MediaQuery.sizeOf(context).width < _tabletBreakPoint;
 
   static bool isTablet(BuildContext context) =>
-      MediaQuery.sizeOf(context).shortestSide >= tabletBreakPoint;
+      MediaQuery.sizeOf(context).width >= _tabletBreakPoint;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < tabletBreakPoint) {
+        if (isMobile(context)) {
           return mobile;
         } else {
           return tablet;

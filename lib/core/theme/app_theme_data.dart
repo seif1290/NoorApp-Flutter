@@ -74,11 +74,11 @@ class AppThemeData {
       ),
     ),
     sliderTheme: SliderThemeData(
-      trackHeight: 12.0.h,
+      trackHeight: 16.h,
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
       overlayShape: SliderComponentShape.noOverlay,
       activeTrackColor: AppColors.primary,
-      inactiveTrackColor: AppColors.background,
+      inactiveTrackColor: AppColors.darkWhite,
       thumbColor: const Color(0XFFF5F5F5),
     ),
   );

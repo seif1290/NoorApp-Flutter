@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:noor/features/home/presentation/views/widgets/app_drawer.dart';
-import 'package:noor/features/home/presentation/views/widgets/build_bottom_player.dart';
 import 'package:noor/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:noor/features/home/presentation/views/widgets/build_quran_list.dart';
 
@@ -24,7 +24,10 @@ class _HomeScaffoldTabletState extends State<HomeScaffoldTablet> {
           Expanded(child: AppDrawer()),
           Expanded(
             flex: 8,
-            child: Stack(children: [BuildQuranList(), BuildBottomPlayer()]),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppValues.padding8),
+              child: BuildQuranList(),
+            ),
           ),
         ],
       ),

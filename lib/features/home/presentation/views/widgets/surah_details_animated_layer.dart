@@ -1,55 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
 import 'package:noor/features/home/presentation/views/surah_details_view.dart';
 
-class SurahDetailsAnimatedLayer extends StatelessWidget {
+class SurahDetailsAnimatedLayer extends StatefulWidget {
   const SurahDetailsAnimatedLayer({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final homeCubit = context.read<HomeCubit>();
-    final audioPlayerCubit = context.read<AudioPlayerCubit>();
+  State<SurahDetailsAnimatedLayer> createState() =>
+      _SurahDetailsAnimatedLayerState();
+}
 
-    return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) => current.maybeMap(
-        surahDetailsOpened: (_) => true,
-        surahDetailsClosed: (_) => true,
-        getSurahSuccess: (_) => true,
-        orElse: () => false,
-      ),
-      builder: (context, state) {
-        final bool isOpen = state.maybeWhen(
-          surahDetailsOpened: () => true,
-          getSurahSuccess: (_, _) => true,
-          orElse: () => false,
+class _SurahDetailsAnimatedLayerState extends State<SurahDetailsAnimatedLayer>
+    with SingleTickerProviderStateMixin {
+  late final Animation<Offset> _animation;
+  late final AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+    _animation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
         );
-        return AnimatedSlide(
-          offset: isOpen ? Offset.zero : const Offset(0, 1),
-          duration: const Duration(milliseconds: 250),
-          curve: Curves.easeInOutCirc,
-          child: homeCubit.currentSurah == null
-              ? const SizedBox.shrink()
-              : SurahDetailsView(
-                  surah: homeCubit.currentSurah!,
-                  onPlayButtonTap: () {
-                    audioPlayerCubit.playOrPause(
-                      surahNumber: homeCubit.currentSurahNumber!,
-                    );
-                  },
-                  onGetNextSurah: () {
-                    homeCubit.getNextSurah();
-                  },
-                  onGetPreviousSurah: () {
-                    homeCubit.getPreviousSurah();
-                  },
-                  onCloseSurahDetails: () {
-                    homeCubit.closeSurahDetails();
-                  },
-                ),
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<AudioPlayerCubit, AudioPlayerState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          surahDetailsOpened: () {
+            _animationController.forward();
+          },
+          surahDetailsClosed: () {
+            _animationController.reverse();
+          },
         );
       },
+      child: SlideTransition(
+        position: _animation,
+        child: SurahDetailsView(
+          onCloseSurahDetails: () {
+            context.read<AudioPlayerCubit>().closeSurahDetails();
+          },
+        ),
+      ),
     );
   }
 }

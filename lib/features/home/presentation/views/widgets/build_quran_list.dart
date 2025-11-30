@@ -12,15 +12,8 @@ class BuildQuranList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final audioPlayerCubit = context.read<AudioPlayerCubit>();
-
     final localeName = AppLocalizations.of(context)?.localeName;
     return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) => current.maybeMap(
-        getQuranLoading: (_) => true,
-        getQuranSuccess: (_) => true,
-        getQuranfailed: (_) => true,
-        orElse: () => false,
-      ),
       builder: (context, state) {
         return state.maybeMap(
           getQuranLoading: (_) {
@@ -30,16 +23,17 @@ class BuildQuranList extends StatelessWidget {
             return QuranListView(
               key: const PageStorageKey<String>('home'),
               surahs: state.surahs,
-              onCardTab: (surahNumber) async {
-                if (audioPlayerCubit.currentSurahNumber != surahNumber) {
-                  await audioPlayerCubit.loadSurah(surahNumber: surahNumber);
+              onCardTab: (surahMetadata) async {
+                if (audioPlayerCubit.currentSurahNumber != surahMetadata.id) {
+                  await audioPlayerCubit.getSurah(surahId: surahMetadata.id);
+                  audioPlayerCubit.openSurahDetails();
                 } else {
-                  await audioPlayerCubit.playOrPause();
+                  audioPlayerCubit.openSurahDetails();
                 }
               },
-              onPlayButtonTap: (surahNumber) async {
-                if (audioPlayerCubit.currentSurahNumber != surahNumber) {
-                  await audioPlayerCubit.loadSurah(surahNumber: surahNumber);
+              onPlayButtonTap: (surahMetadata) async {
+                if (audioPlayerCubit.currentSurahNumber != surahMetadata.id) {
+                  await audioPlayerCubit.getSurah(surahId: surahMetadata.id);
                 } else {
                   await audioPlayerCubit.playOrPause();
                 }

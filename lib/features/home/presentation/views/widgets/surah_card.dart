@@ -26,84 +26,117 @@ class SurahCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeName = AppLocalizations.of(context)?.localeName;
-    return Card(
-      child: ListTile(
-        onTap: onCardTab,
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 21,
-          horizontal: AppValues.padding16,
-        ),
-        leading: Container(
-          height: 40.h,
-          width: 40.w,
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.lightBlack,
+    return SizedBox(
+      height: 100,
+      child: Card(
+        child: ListTile(
+          onTap: onCardTab,
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 21.h,
+            horizontal: AppValues.padding16,
           ),
-          child: Text(
-            localeName == 'ar'
-                ? HelperFunctions.numToArabic(number: surah.id)
-                : surah.id.toString(),
-            style: AppTextStyles.font20_24GreenRegular(context),
-          ),
-        ),
-        title: Padding(
-          padding: EdgeInsets.only(bottom: 8.h),
-          child: Text(
-            localeName == 'ar' ? surah.name : surah.transliteration,
-            style: AppTextStyles.font16_20GreenSemiBold(context),
-          ),
-        ),
-        subtitle: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              AppLocalizations.of(context)!.ayah(surah.totalVerses),
-              style: AppTextStyles.font12_16RegularYellow(
-                context,
-              ).copyWith(color: AppColors.lightGrey),
-            ),
-            AppValues.gap12,
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0X1ACDA434),
-                borderRadius: BorderRadius.circular(AppValues.padding8),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 2.h),
-              child: Text(
-                surah.type.getRevelationPlace(locleName: localeName),
-                style: AppTextStyles.font12_16RegularYellow(
-                  context,
-                ).copyWith(color: AppColors.secondary),
-              ),
-            ),
-          ],
-        ),
-        trailing: InkWell(
-          onTap: onPlayButtonTap,
-          child: Container(
+          leading: Container(
             height: 40.h,
             width: 40.w,
             alignment: Alignment.center,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.offWhite,
+              color: AppColors.lightBlack,
             ),
-            child: BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-              buildWhen: (previous, current) =>
-                  current is AudioPlaying || current is AudioPaused,
+            child: Text(
+              localeName == 'ar'
+                  ? HelperFunctions.numToArabic(number: surah.id)
+                  : surah.id.toString(),
+              style: AppTextStyles.font20_24GreenRegular(context),
+            ),
+          ),
+          title: Padding(
+            padding: EdgeInsets.only(bottom: 8.h),
+            child: Text(
+              localeName == 'ar' ? surah.name : surah.transliteration,
+              style: AppTextStyles.font16_20GreenSemiBold(context),
+            ),
+          ),
+          subtitle: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.ayah(surah.totalVerses),
+                style: AppTextStyles.font12_16RegularYellow(
+                  context,
+                ).copyWith(color: AppColors.lightGrey),
+                overflow: TextOverflow.ellipsis,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(0X1ACDA434),
+                  borderRadius: BorderRadius.circular(AppValues.padding8),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 2.h),
+                child: Text(
+                  surah.type.getRevelationPlace(locleName: localeName),
+                  style: AppTextStyles.font12_16RegularYellow(
+                    context,
+                  ).copyWith(color: AppColors.secondary),
+                ),
+              ),
+            ],
+          ),
+          trailing: InkWell(
+            onTap: onPlayButtonTap,
+            child: Container(
+              height: 40.h,
+              width: 40.w,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.offWhite,
+              ),
+              child: BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
+                buildWhen: (previous, current) => current.maybeMap(
+                  audioPlaying: (_) => true,
+                  audioPaused: (_) => true,
+                  audioProgressUpdated: (_) => true,
+                  orElse: () => false,
+                ),
 
-              builder: (context, state) {
-                if (state is AudioPlaying && state.surahNumber == index + 1) {
-                  return const Icon(Icons.pause, color: AppColors.secondary);
-                } else {
-                  return const Icon(
-                    Icons.play_arrow,
-                    color: AppColors.secondary,
+                builder: (context, state) {
+                  return state.maybeMap(
+                    audioPlaying: (_) {
+                      if (context.read<AudioPlayerCubit>().currentSurahNumber ==
+                          index + 1) {
+                        return const Icon(
+                          Icons.pause,
+                          color: AppColors.secondary,
+                        );
+                      } else {
+                        return const Icon(
+                          Icons.play_arrow,
+                          color: AppColors.secondary,
+                        );
+                      }
+                    },
+                    audioProgressUpdated: (state) {
+                      if (context.read<AudioPlayerCubit>().currentSurahNumber ==
+                          index + 1) {
+                        return const Icon(
+                          Icons.pause,
+                          color: AppColors.secondary,
+                        );
+                      } else {
+                        return const Icon(
+                          Icons.play_arrow,
+                          color: AppColors.secondary,
+                        );
+                      }
+                    },
+                    orElse: () => const Icon(
+                      Icons.play_arrow,
+                      color: AppColors.secondary,
+                    ),
                   );
-                }
-              },
+                },
+              ),
             ),
           ),
         ),
