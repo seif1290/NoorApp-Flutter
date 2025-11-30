@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/utils/app_components.dart';
-import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
+import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
 
 class OnboardingDetailsColumn extends StatelessWidget {
@@ -13,8 +13,8 @@ class OnboardingDetailsColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: AppComponents.screenHeight(context) * 0.3,
-            width: AppComponents.screenHeight(context) * 0.3,
+            height: HelperFunctions.screenHeight(context) * 0.3,
+            width: HelperFunctions.screenHeight(context) * 0.3,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppValues.radius16),
               child: Image.asset(onboardingModel.image, fit: BoxFit.cover),

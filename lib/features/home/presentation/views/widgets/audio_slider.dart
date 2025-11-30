@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
+import 'package:noor/core/theme/app_colors.dart';
+import 'package:noor/core/theme/app_text_styles.dart';
+import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 
 class AudioSlider extends StatefulWidget {
@@ -12,13 +16,6 @@ class AudioSlider extends StatefulWidget {
 class _AudioSliderState extends State<AudioSlider> {
   late AudioPlayerCubit _audioPlayerCubit;
 
-  String _formatTime({required Duration duration}) {
-    final hours = duration.inHours.remainder(60).toString().padLeft(2, '0');
-    final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return hours == '00' ? '$minutes:$seconds' : '$hours:$minutes:$seconds';
-  }
-
   @override
   void initState() {
     super.initState();
@@ -30,18 +27,48 @@ class _AudioSliderState extends State<AudioSlider> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-      buildWhen: (previous, current) => current is AudioProgressUpdated,
+      buildWhen: (previous, current) => current.maybeMap(
+        audioProgressUpdated: (_) => true,
+        orElse: () => false,
+      ),
       builder: (context, state) {
         Duration currentPosition = Duration(seconds: lastPosition.toInt());
         Duration currentDuration = Duration(seconds: lastDuration.toInt());
-        if (state is AudioProgressUpdated) {
-          lastPosition = state.position.inSeconds.toDouble();
-          lastDuration = state.duration.inSeconds.toDouble();
-          currentPosition = state.position;
-          currentDuration = state.duration;
-        }
+        state.maybeMap(
+          audioProgressUpdated: (state) {
+            lastPosition = state.position.inSeconds.toDouble();
+            lastDuration = state.duration.inSeconds.toDouble();
+            currentPosition = state.position;
+            currentDuration = state.duration;
+          },
+          orElse: () {},
+        );
         return Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  HelperFunctions.formatDuration(duration: currentPosition),
+                  style: AppTextStyles.font12_16RegularYellow(
+                    context,
+                  ).copyWith(color: AppColors.lightGrey),
+                ),
+                Text(
+                  widget.surahName,
+                  style: AppTextStyles.font12_16RegularYellow(
+                    context,
+                  ).copyWith(color: AppColors.lightGrey),
+                ),
+                Text(
+                  HelperFunctions.formatDuration(duration: currentDuration),
+                  style: AppTextStyles.font12_16RegularYellow(
+                    context,
+                  ).copyWith(color: AppColors.lightGrey),
+                ),
+              ],
+            ),
+            const Gap(8),
             Slider.adaptive(
               min: 0.0,
               max: lastDuration,
@@ -52,23 +79,6 @@ class _AudioSliderState extends State<AudioSlider> {
                 );
                 lastPosition = value;
               },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _formatTime(duration: currentPosition),
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-                Text(
-                  widget.surahName,
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-                Text(
-                  _formatTime(duration: currentDuration),
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ],
             ),
           ],
         );

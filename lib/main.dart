@@ -30,7 +30,7 @@ class NoorApp extends StatelessWidget {
           final provider = Provider.of<LocaleProvider>(context);
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            theme: AppThemeData.lightTheme,
+            theme: AppThemeData.lightTheme(context),
             routerConfig: AppRouter.router,
             supportedLocales: L10n.supportedLocales,
             localizationsDelegates: const [

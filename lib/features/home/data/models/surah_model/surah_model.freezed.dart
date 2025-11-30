@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SurahModel {
 
- String get surahName; String get surahNameArabicLong; RevelationPlace get revelationPlace; int get totalAyah;
+ int get id; String get name; String get transliteration; Type get type; int get totalVerses; List<VerseModel> get verses;
 /// Create a copy of SurahModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $SurahModelCopyWith<SurahModel> get copyWith => _$SurahModelCopyWithImpl<SurahMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SurahModel&&(identical(other.surahName, surahName) || other.surahName == surahName)&&(identical(other.surahNameArabicLong, surahNameArabicLong) || other.surahNameArabicLong == surahNameArabicLong)&&(identical(other.revelationPlace, revelationPlace) || other.revelationPlace == revelationPlace)&&(identical(other.totalAyah, totalAyah) || other.totalAyah == totalAyah));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SurahModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.transliteration, transliteration) || other.transliteration == transliteration)&&(identical(other.type, type) || other.type == type)&&(identical(other.totalVerses, totalVerses) || other.totalVerses == totalVerses)&&const DeepCollectionEquality().equals(other.verses, verses));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,surahName,surahNameArabicLong,revelationPlace,totalAyah);
+int get hashCode => Object.hash(runtimeType,id,name,transliteration,type,totalVerses,const DeepCollectionEquality().hash(verses));
 
 @override
 String toString() {
-  return 'SurahModel(surahName: $surahName, surahNameArabicLong: $surahNameArabicLong, revelationPlace: $revelationPlace, totalAyah: $totalAyah)';
+  return 'SurahModel(id: $id, name: $name, transliteration: $transliteration, type: $type, totalVerses: $totalVerses, verses: $verses)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $SurahModelCopyWith<$Res>  {
   factory $SurahModelCopyWith(SurahModel value, $Res Function(SurahModel) _then) = _$SurahModelCopyWithImpl;
 @useResult
 $Res call({
- String surahName, String surahNameArabicLong, RevelationPlace revelationPlace, int totalAyah
+ int id, String name, String transliteration, Type type, int totalVerses, List<VerseModel> verses
 });
 
 
@@ -65,13 +65,15 @@ class _$SurahModelCopyWithImpl<$Res>
 
 /// Create a copy of SurahModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? surahName = null,Object? surahNameArabicLong = null,Object? revelationPlace = null,Object? totalAyah = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? transliteration = null,Object? type = null,Object? totalVerses = null,Object? verses = null,}) {
   return _then(_self.copyWith(
-surahName: null == surahName ? _self.surahName : surahName // ignore: cast_nullable_to_non_nullable
-as String,surahNameArabicLong: null == surahNameArabicLong ? _self.surahNameArabicLong : surahNameArabicLong // ignore: cast_nullable_to_non_nullable
-as String,revelationPlace: null == revelationPlace ? _self.revelationPlace : revelationPlace // ignore: cast_nullable_to_non_nullable
-as RevelationPlace,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
-as int,
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,transliteration: null == transliteration ? _self.transliteration : transliteration // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as Type,totalVerses: null == totalVerses ? _self.totalVerses : totalVerses // ignore: cast_nullable_to_non_nullable
+as int,verses: null == verses ? _self.verses : verses // ignore: cast_nullable_to_non_nullable
+as List<VerseModel>,
   ));
 }
 
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String transliteration,  Type type,  int totalVerses,  List<VerseModel> verses)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SurahModel() when $default != null:
-return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah);case _:
+return $default(_that.id,_that.name,_that.transliteration,_that.type,_that.totalVerses,_that.verses);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String transliteration,  Type type,  int totalVerses,  List<VerseModel> verses)  $default,) {final _that = this;
 switch (_that) {
 case _SurahModel():
-return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah);case _:
+return $default(_that.id,_that.name,_that.transliteration,_that.type,_that.totalVerses,_that.verses);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String surahName,  String surahNameArabicLong,  RevelationPlace revelationPlace,  int totalAyah)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String transliteration,  Type type,  int totalVerses,  List<VerseModel> verses)?  $default,) {final _that = this;
 switch (_that) {
 case _SurahModel() when $default != null:
-return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,_that.totalAyah);case _:
+return $default(_that.id,_that.name,_that.transliteration,_that.type,_that.totalVerses,_that.verses);case _:
   return null;
 
 }
@@ -212,13 +214,21 @@ return $default(_that.surahName,_that.surahNameArabicLong,_that.revelationPlace,
 @JsonSerializable()
 
 class _SurahModel implements SurahModel {
-  const _SurahModel({required this.surahName, required this.surahNameArabicLong, required this.revelationPlace, required this.totalAyah});
+  const _SurahModel({required this.id, required this.name, required this.transliteration, required this.type, required this.totalVerses, required final  List<VerseModel> verses}): _verses = verses;
   factory _SurahModel.fromJson(Map<String, dynamic> json) => _$SurahModelFromJson(json);
 
-@override final  String surahName;
-@override final  String surahNameArabicLong;
-@override final  RevelationPlace revelationPlace;
-@override final  int totalAyah;
+@override final  int id;
+@override final  String name;
+@override final  String transliteration;
+@override final  Type type;
+@override final  int totalVerses;
+ final  List<VerseModel> _verses;
+@override List<VerseModel> get verses {
+  if (_verses is EqualUnmodifiableListView) return _verses;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_verses);
+}
+
 
 /// Create a copy of SurahModel
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +243,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahModel&&(identical(other.surahName, surahName) || other.surahName == surahName)&&(identical(other.surahNameArabicLong, surahNameArabicLong) || other.surahNameArabicLong == surahNameArabicLong)&&(identical(other.revelationPlace, revelationPlace) || other.revelationPlace == revelationPlace)&&(identical(other.totalAyah, totalAyah) || other.totalAyah == totalAyah));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.transliteration, transliteration) || other.transliteration == transliteration)&&(identical(other.type, type) || other.type == type)&&(identical(other.totalVerses, totalVerses) || other.totalVerses == totalVerses)&&const DeepCollectionEquality().equals(other._verses, _verses));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,surahName,surahNameArabicLong,revelationPlace,totalAyah);
+int get hashCode => Object.hash(runtimeType,id,name,transliteration,type,totalVerses,const DeepCollectionEquality().hash(_verses));
 
 @override
 String toString() {
-  return 'SurahModel(surahName: $surahName, surahNameArabicLong: $surahNameArabicLong, revelationPlace: $revelationPlace, totalAyah: $totalAyah)';
+  return 'SurahModel(id: $id, name: $name, transliteration: $transliteration, type: $type, totalVerses: $totalVerses, verses: $verses)';
 }
 
 
@@ -253,7 +263,7 @@ abstract mixin class _$SurahModelCopyWith<$Res> implements $SurahModelCopyWith<$
   factory _$SurahModelCopyWith(_SurahModel value, $Res Function(_SurahModel) _then) = __$SurahModelCopyWithImpl;
 @override @useResult
 $Res call({
- String surahName, String surahNameArabicLong, RevelationPlace revelationPlace, int totalAyah
+ int id, String name, String transliteration, Type type, int totalVerses, List<VerseModel> verses
 });
 
 
@@ -270,13 +280,15 @@ class __$SurahModelCopyWithImpl<$Res>
 
 /// Create a copy of SurahModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? surahName = null,Object? surahNameArabicLong = null,Object? revelationPlace = null,Object? totalAyah = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? transliteration = null,Object? type = null,Object? totalVerses = null,Object? verses = null,}) {
   return _then(_SurahModel(
-surahName: null == surahName ? _self.surahName : surahName // ignore: cast_nullable_to_non_nullable
-as String,surahNameArabicLong: null == surahNameArabicLong ? _self.surahNameArabicLong : surahNameArabicLong // ignore: cast_nullable_to_non_nullable
-as String,revelationPlace: null == revelationPlace ? _self.revelationPlace : revelationPlace // ignore: cast_nullable_to_non_nullable
-as RevelationPlace,totalAyah: null == totalAyah ? _self.totalAyah : totalAyah // ignore: cast_nullable_to_non_nullable
-as int,
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,transliteration: null == transliteration ? _self.transliteration : transliteration // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as Type,totalVerses: null == totalVerses ? _self.totalVerses : totalVerses // ignore: cast_nullable_to_non_nullable
+as int,verses: null == verses ? _self._verses : verses // ignore: cast_nullable_to_non_nullable
+as List<VerseModel>,
   ));
 }
 

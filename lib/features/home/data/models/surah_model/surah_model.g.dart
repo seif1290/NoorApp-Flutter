@@ -7,24 +7,24 @@ part of 'surah_model.dart';
 // **************************************************************************
 
 _SurahModel _$SurahModelFromJson(Map<String, dynamic> json) => _SurahModel(
-  surahName: json['surahName'] as String,
-  surahNameArabicLong: json['surahNameArabicLong'] as String,
-  revelationPlace: $enumDecode(
-    _$RevelationPlaceEnumMap,
-    json['revelationPlace'],
-  ),
-  totalAyah: (json['totalAyah'] as num).toInt(),
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  transliteration: json['transliteration'] as String,
+  type: $enumDecode(_$TypeEnumMap, json['type']),
+  totalVerses: (json['totalVerses'] as num).toInt(),
+  verses: (json['verses'] as List<dynamic>)
+      .map((e) => VerseModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$SurahModelToJson(_SurahModel instance) =>
     <String, dynamic>{
-      'surahName': instance.surahName,
-      'surahNameArabicLong': instance.surahNameArabicLong,
-      'revelationPlace': _$RevelationPlaceEnumMap[instance.revelationPlace]!,
-      'totalAyah': instance.totalAyah,
+      'id': instance.id,
+      'name': instance.name,
+      'transliteration': instance.transliteration,
+      'type': _$TypeEnumMap[instance.type]!,
+      'totalVerses': instance.totalVerses,
+      'verses': instance.verses,
     };
 
-const _$RevelationPlaceEnumMap = {
-  RevelationPlace.Mecca: 'Mecca',
-  RevelationPlace.Madina: 'Madina',
-};
+const _$TypeEnumMap = {Type.meccan: 'meccan', Type.medinan: 'medinan'};

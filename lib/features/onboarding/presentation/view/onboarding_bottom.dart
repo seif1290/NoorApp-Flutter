@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
-import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingBottom extends StatelessWidget {
