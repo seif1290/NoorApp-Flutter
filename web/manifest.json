@@ -3,7 +3,7 @@
     "short_name": "noor",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#004D40",
+    "background_color": "#FFFFFF",
     "theme_color": "#004D40",
     "description": "A new Flutter project.",
     "orientation": "portrait-primary",
