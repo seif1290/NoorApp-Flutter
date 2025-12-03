@@ -12,24 +12,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appName => 'نور';
 
   @override
-  String get onboardingTitle1 => 'اقرأ القرآن الكريم';
+  String get onboardingTitle1 => 'اقرأ القرآن كاملًا بدون إنترنت';
 
   @override
-  String get onboardingTitle2 => 'استمع وتدبر';
+  String get onboardingTitle2 => 'تلاوة بدون تقطيع';
 
   @override
-  String get onboardingTitle3 => 'ابدأ رحلتك الروحانية';
+  String get onboardingTitle3 => 'بحث سريع ودقيق';
 
   @override
-  String get onboardingSubtitle1 =>
-      'استمتع بتلاوة القرآن الكريم بأصوات افضل القراء';
+  String get onboardingSubtitle1 => 'خط جميل وعرض مخصص للمصحف.';
 
   @override
-  String get onboardingSubtitle2 =>
-      'تمتع بالاستماع إلى تلاوات القرآن الكريم في أي وقت وأي مكان';
+  String get onboardingSubtitle2 => 'تحميل تلقائي وصوت واضح لكل السور.';
 
   @override
-  String get onboardingSubtitle3 => 'اجعل القرآن رفيقك اليومى';
+  String get onboardingSubtitle3 => 'ابحث عن أي سورة أو آية بسهولة.';
 
   @override
   String get next => 'التالى';

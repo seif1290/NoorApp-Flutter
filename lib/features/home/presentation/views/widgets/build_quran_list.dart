@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noor/core/theme/app_colors.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
@@ -45,7 +46,9 @@ class BuildQuranList extends StatelessWidget {
               child: Text(
                 localeName == 'ar' ? state.failure.arMsg : state.failure.enMsg,
                 textAlign: TextAlign.center,
-                style: AppTextStyles.font16_20GreenSemiBold(context),
+                style: AppTextStyles.font16_20SemiBold(
+                  context,
+                ).copyWith(color: AppColors.primary),
               ),
             );
           },

@@ -107,37 +107,37 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTitle1.
   ///
   /// In en, this message translates to:
-  /// **'Read the Holy Quran'**
+  /// **'Read the Quran offline'**
   String get onboardingTitle1;
 
   /// No description provided for @onboardingTitle2.
   ///
   /// In en, this message translates to:
-  /// **'Listen and Reflect'**
+  /// **'High-quality audio recitations'**
   String get onboardingTitle2;
 
   /// No description provided for @onboardingTitle3.
   ///
   /// In en, this message translates to:
-  /// **'Begin Your Spiritual Journey'**
+  /// **'Fast and accurate search'**
   String get onboardingTitle3;
 
   /// No description provided for @onboardingSubtitle1.
   ///
   /// In en, this message translates to:
-  /// **'Enjoy recitations of the Holy Quran by the best reciters'**
+  /// **'Beautiful typography and a smooth mushaf-style reading experience.'**
   String get onboardingSubtitle1;
 
   /// No description provided for @onboardingSubtitle2.
   ///
   /// In en, this message translates to:
-  /// **'Listen to Quran recitations anytime, anywhere'**
+  /// **'Stream or download recitations from a wide range of renowned reciters.'**
   String get onboardingSubtitle2;
 
   /// No description provided for @onboardingSubtitle3.
   ///
   /// In en, this message translates to:
-  /// **'Make the Quran your daily companion'**
+  /// **'Find any surah or ayah instantly with a powerful built-in search.'**
   String get onboardingSubtitle3;
 
   /// No description provided for @next.

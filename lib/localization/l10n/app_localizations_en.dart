@@ -12,24 +12,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'Noor';
 
   @override
-  String get onboardingTitle1 => 'Read the Holy Quran';
+  String get onboardingTitle1 => 'Read the Quran offline';
 
   @override
-  String get onboardingTitle2 => 'Listen and Reflect';
+  String get onboardingTitle2 => 'High-quality audio recitations';
 
   @override
-  String get onboardingTitle3 => 'Begin Your Spiritual Journey';
+  String get onboardingTitle3 => 'Fast and accurate search';
 
   @override
   String get onboardingSubtitle1 =>
-      'Enjoy recitations of the Holy Quran by the best reciters';
+      'Beautiful typography and a smooth mushaf-style reading experience.';
 
   @override
   String get onboardingSubtitle2 =>
-      'Listen to Quran recitations anytime, anywhere';
+      'Stream or download recitations from a wide range of renowned reciters.';
 
   @override
-  String get onboardingSubtitle3 => 'Make the Quran your daily companion';
+  String get onboardingSubtitle3 =>
+      'Find any surah or ayah instantly with a powerful built-in search.';
 
   @override
   String get next => 'Next';

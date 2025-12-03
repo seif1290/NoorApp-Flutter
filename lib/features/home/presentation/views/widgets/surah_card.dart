@@ -54,7 +54,9 @@ class SurahCard extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 8.h),
             child: Text(
               localeName == 'ar' ? surah.name : surah.transliteration,
-              style: AppTextStyles.font16_20GreenSemiBold(context),
+              style: AppTextStyles.font16_20SemiBold(
+                context,
+              ).copyWith(color: AppColors.primary),
             ),
           ),
           subtitle: Row(

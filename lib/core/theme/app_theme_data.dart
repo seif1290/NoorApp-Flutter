@@ -34,7 +34,7 @@ class AppThemeData {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: AppTextStyles.title14,
+        textStyle: AppTextStyles.font24_28Regular(context),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(AppValues.radius16)),
         ),
@@ -42,7 +42,6 @@ class AppThemeData {
           horizontal: AppValues.padding16,
           vertical: AppValues.padding8,
         ),
-        // minimumSize: Size.fromHeight(AppValues.buttonHeight),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
       ),
@@ -78,7 +77,7 @@ class AppThemeData {
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
       overlayShape: SliderComponentShape.noOverlay,
       activeTrackColor: AppColors.primary,
-      inactiveTrackColor: AppColors.darkWhite,
+      inactiveTrackColor: AppColors.lightGrey,
       thumbColor: const Color(0XFFF5F5F5),
     ),
   );
