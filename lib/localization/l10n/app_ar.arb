@@ -4,27 +4,27 @@
     "@appName": {
         "description": "الاسم العربي للتطبيق"
     },
-    "onboardingTitle1": "اقرأ القرآن الكريم",
+    "onboardingTitle1": "اقرأ القرآن كاملًا بدون إنترنت",
     "@onboardingTitle1": {
         "description": "عنوان شاشة الترحيب الأولى"
     },
-    "onboardingTitle2": "استمع وتدبر",
+    "onboardingTitle2": "تلاوة بدون تقطيع",
     "@onboardingTitle2": {
         "description": "عنوان شاشة الترحيب الثانية"
     },
-    "onboardingTitle3": "ابدأ رحلتك الروحانية",
+    "onboardingTitle3": "بحث سريع ودقيق",
     "@onboardingTitle3": {
         "description": "عنوان شاشة الترحيب الثالثة"
     },
-    "onboardingSubtitle1": "استمتع بتلاوة القرآن الكريم بأصوات افضل القراء",
+    "onboardingSubtitle1": "خط جميل وعرض مخصص للمصحف.",
     "@onboardingSubtitle1": {
         "description": "النص التوضيحي للشاشة الأولى"
     },
-    "onboardingSubtitle2": "تمتع بالاستماع إلى تلاوات القرآن الكريم في أي وقت وأي مكان",
+    "onboardingSubtitle2": "تحميل تلقائي وصوت واضح لكل السور.",
     "@onboardingSubtitle2": {
         "description": "النص التوضيحي للشاشة الثانية"
     },
-    "onboardingSubtitle3": "اجعل القرآن رفيقك اليومى",
+    "onboardingSubtitle3": "ابحث عن أي سورة أو آية بسهولة.",
     "@onboardingSubtitle3": {
         "description": "النص التوضيحي للشاشة الثالثة"
     },
