@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
-import 'package:noor/features/onboarding/presentation/view/onboarding_details_column.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
+import 'package:noor/features/onboarding/presentation/view/widgets/onboarding_details_column.dart';
 
 class BuildPageView extends StatelessWidget {
   const BuildPageView({
@@ -18,7 +19,10 @@ class BuildPageView extends StatelessWidget {
       controller: pageController,
       onPageChanged: onPageChanged,
       children: List.generate(onboardings.length, (index) {
-        return OnboardingDetailsColumn(onboardingModel: onboardings[index]);
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 34.w),
+          child: OnboardingDetailsColumn(onboardingModel: onboardings[index]),
+        );
       }),
     );
   }

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/routing/routes.dart';
-import 'package:noor/core/ui/ui_utils/app_values.dart';
-import 'package:noor/features/onboarding/data/model/onboarding_model.dart';
+import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
+import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
-import 'package:noor/features/onboarding/presentation/view/build_page_view.dart';
-import 'package:noor/features/onboarding/presentation/view/onboarding_bottom.dart';
+import 'package:noor/features/onboarding/presentation/view/widgets/build_page_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:noor/features/onboarding/presentation/view/widgets/onboarding_footer.dart';
+import 'package:noor/features/onboarding/presentation/view/widgets/onboarding_header.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({
     super.key,
-    required List<OnboardingModel> onboardings,
-    required OnboardingRepo onboardingRepo,
-  }) : _onboardings = onboardings,
-       _onboardingRepo = onboardingRepo;
-  final List<OnboardingModel> _onboardings;
-  final OnboardingRepo _onboardingRepo;
+    required this.onboardings,
+    required this.onboardingRepo,
+  });
+  final List<OnboardingModel> onboardings;
+  final OnboardingRepo onboardingRepo;
 
   @override
   State<OnboardingView> createState() => _OnboardingViewState();
@@ -39,7 +40,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   }
 
   Future<void> _finishOnboarding() async {
-    await widget._onboardingRepo.finishOnboarding();
+    await widget.onboardingRepo.finishOnboarding();
     if (!mounted) return;
     context.go(Routes.home);
   }
@@ -47,49 +48,51 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-          top: AppValues.padding32.h,
-          bottom: AppValues.padding24.h,
-          left: AppValues.padding24.w,
-          right: AppValues.padding24.w,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: BuildPageView(
-                onboardings: widget._onboardings,
-                pageController: _pageController,
-                onPageChanged: (value) {
-                  setState(() {
-                    _currentIndex = value;
-                  });
-                },
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Header
+              OnboardingHeader(currentIndex: _currentIndex),
+
+              Gap(64.h),
+
+              // Page View
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32.w),
+                child: SizedBox(
+                  height: HelperFunctions.screenHeight(context) * 0.5,
+                  child: BuildPageView(
+                    onboardings: widget.onboardings,
+                    pageController: _pageController,
+                    onPageChanged: (value) {
+                      setState(() {
+                        _currentIndex = value;
+                      });
+                    },
+                  ),
+                ),
               ),
-            ),
-            if (_currentIndex != widget._onboardings.length - 1)
-              OnboardingBottom(
-                pageController: _pageController,
-                length: widget._onboardings.length,
-                onNextPressed: () async {
-                  _pageController.animateToPage(
-                    _currentIndex + 1,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.ease,
-                  );
-                },
-                onSkipPressed: _finishOnboarding,
+
+              // Footer
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32.w),
+                child: OnboardingFooter(
+                  isLastPage: _currentIndex == widget.onboardings.length - 1,
+                  onNextPressed: () {
+                    _pageController.animateToPage(
+                      _currentIndex + 1,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                  onFinishPressed: _finishOnboarding,
+                ),
               ),
-            if (_currentIndex == widget._onboardings.length - 1)
-              OnboardingBottom(
-                pageController: _pageController,
-                length: widget._onboardings.length,
-                isLastPage: true,
-                onFinishPressed: _finishOnboarding,
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

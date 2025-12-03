@@ -32,7 +32,9 @@ class BottomPlayer extends StatelessWidget {
                 AppLocalizations.of(context)!.localeName == 'ar'
                     ? 'سورة ${surah.name}'
                     : surah.transliteration,
-                style: AppTextStyles.font16_20GreenSemiBold(context).copyWith(),
+                style: AppTextStyles.font16_20SemiBold(
+                  context,
+                ).copyWith(color: AppColors.primary),
               ),
               subtitle: Text(
                 AppLocalizations.of(context)!.localeName == 'ar'
