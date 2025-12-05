@@ -52,5 +52,29 @@
                 "type": "int"
             }
         }
+    },
+    "recitations": "التلاوات",
+    "@recitations": {
+        "description": "العنوان الخاص بالشاشة التي تعرض التلاوات"
+    },
+    "ahadith": "الاحاديث",
+    "@ahadith": {
+        "description": "العنوان الخاص بالشاشة التي تعرض الاحاديث"
+    },
+    "adhkar": "الاذكار",
+    "@adhkar": {
+        "description": "العنوان الخاص بالشاشة التي تعرض الاذكار"
+    },
+    "settings": "الاعدادات",
+    "@settings": {
+        "description": "العنوان الخاص بالشاشة التي تعرض الاعدادات"
+    },
+    "pickReciter": "اختر القارئ",
+    "@pickReciter": {
+        "description": ""
+    },
+    "language": "اللغة",
+    "@language": {
+        "description": ""
     }
 }

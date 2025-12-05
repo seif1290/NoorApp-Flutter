@@ -18,5 +18,11 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "recitations": "Recitations",
+    "ahadith": "Ahadith",
+    "adhkar": "Adhkar",
+    "settings": "Settings",
+    "pickReciter": "Pick Reciter",
+    "language": "Language"
 }

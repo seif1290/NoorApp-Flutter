@@ -45,4 +45,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String ayah(int count) {
     return '$count آية';
   }
+
+  @override
+  String get recitations => 'التلاوات';
+
+  @override
+  String get ahadith => 'الاحاديث';
+
+  @override
+  String get adhkar => 'الاذكار';
+
+  @override
+  String get settings => 'الاعدادات';
+
+  @override
+  String get pickReciter => 'اختر القارئ';
+
+  @override
+  String get language => 'اللغة';
 }
