@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:noor/core/data/services/shared_prefs_service.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 import 'package:noor/features/settings/presentation/view_models/settings_cubit/reciters_cubit.dart';
+import 'package:noor/features/settings/presentation/views/widgets/select_language_card.dart';
 import 'package:noor/features/settings/presentation/views/widgets/select_reciter_card.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
@@ -27,6 +30,8 @@ class SettingsView extends StatelessWidget {
                   ),
                   child: const SelectReciterCard(),
                 ),
+                Gap(16.h),
+                const SelectLanguageCard(),
               ],
             ),
           ),
