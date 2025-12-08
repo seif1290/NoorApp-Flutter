@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/core/theme/app_colors.dart';
-import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/views/widgets/audio_slider.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
@@ -84,13 +83,21 @@ class AudioControlSet extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            AppLocalizations.of(context)?.localeName == 'ar'
-                ? HelperFunctions.reciterNameToArabic(
-                    reciterName: 'get reciter name from cache',
-                  )
-                : 'get reciter name from cache',
-            style: Theme.of(context).textTheme.labelSmall,
+          BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
+            buildWhen: (previous, current) => current.maybeWhen(
+              reciterLoaded: (_) => true,
+              orElse: () => false,
+            ),
+            builder: (context, state) {
+              final reciterName =
+                  AppLocalizations.of(context)?.localeName == 'ar'
+                  ? context.read<AudioPlayerCubit>().currentReciter?.nameAr
+                  : context.read<AudioPlayerCubit>().currentReciter?.nameEn;
+              return Text(
+                '$reciterName',
+                style: Theme.of(context).textTheme.labelSmall,
+              );
+            },
           ),
         ],
       ),

@@ -11,10 +11,12 @@ class BottomPlayer extends StatelessWidget {
   const BottomPlayer({
     super.key,
     required this.surah,
+    required this.reciterName,
     this.onPlayButtonTap,
     this.onTap,
   });
   final SurahModel surah;
+  final String reciterName;
   final VoidCallback? onPlayButtonTap;
   final VoidCallback? onTap;
   @override
@@ -37,9 +39,7 @@ class BottomPlayer extends StatelessWidget {
                 ).copyWith(color: AppColors.primary),
               ),
               subtitle: Text(
-                AppLocalizations.of(context)!.localeName == 'ar'
-                    ? 'مشارى راشد'
-                    : 'Mishary Rashid',
+                reciterName,
                 style: AppTextStyles.font10_14RegularBlack(context),
               ),
               trailing: InkWell(

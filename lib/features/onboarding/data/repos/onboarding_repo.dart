@@ -1,5 +1,6 @@
-import 'package:noor/core/error_handling/local_exception.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:dartz/dartz.dart';
+import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/error_handling/failure.dart';
 
 class OnboardingRepo {
   late final SharedPrefsService _sharedPrefsService;
@@ -7,11 +8,12 @@ class OnboardingRepo {
   OnboardingRepo({required SharedPrefsService sharedPrefsService})
     : _sharedPrefsService = sharedPrefsService;
 
-  Future<void> finishOnboarding() async {
+  Future<Either<Failure, void>> finishOnboarding() async {
     try {
       await _sharedPrefsService.finishOnBoarding();
-    } on LocalException catch (_) {
-      return;
+      return const Right(null);
+    } catch (_) {
+      return Left(Failure(arMsg: 'فشل في الإنشاء', enMsg: 'Failed to create'));
     }
   }
 }

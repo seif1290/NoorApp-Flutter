@@ -169,6 +169,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} Verses'**
   String ayah(int count);
+
+  /// No description provided for @recitations.
+  ///
+  /// In en, this message translates to:
+  /// **'Recitations'**
+  String get recitations;
+
+  /// No description provided for @ahadith.
+  ///
+  /// In en, this message translates to:
+  /// **'Ahadith'**
+  String get ahadith;
+
+  /// No description provided for @adhkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhkar'**
+  String get adhkar;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @pickReciter.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick Reciter'**
+  String get pickReciter;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate

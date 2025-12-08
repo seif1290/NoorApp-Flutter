@@ -3,4 +3,5 @@ class AppKeys {
   // Loading
   static const String isOnboardingFinished = 'isOnboardingFinished';
   static const String appLanguageCode = 'appLanguageCode';
+  static const String reciterIdentifier = 'reciterIdentifier';
 }

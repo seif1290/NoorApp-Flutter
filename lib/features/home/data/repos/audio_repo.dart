@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:noor/core/data/api_constants.dart';
+import 'package:noor/core/data/services/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/audio_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
 import 'package:noor/features/home/data/data_sources/audio_data_source.dart';
@@ -19,15 +20,19 @@ abstract class AudioRepo {
 
 class AudioRepoImpl implements AudioRepo {
   final AudioDataSource _audioDataSource;
+  final SharedPrefsService _sharedPrefsService;
 
-  AudioRepoImpl({required AudioDataSource audioDataSource})
-    : _audioDataSource = audioDataSource;
+  AudioRepoImpl({
+    required AudioDataSource audioDataSource,
+    required SharedPrefsService sharedPrefsService,
+  }) : _audioDataSource = audioDataSource,
+       _sharedPrefsService = sharedPrefsService;
 
   @override
   Future<Either<Failure, void>> loadSurah({required int surahNumber}) async {
     try {
       await _audioDataSource.load(
-        '${ApiConstants.quranAudioBaseUrl}ar.alafasy/$surahNumber.mp3',
+        '${ApiConstants.quranAudioBaseUrl}${_sharedPrefsService.reciterIdentifier}/$surahNumber.mp3',
       );
       return const Right(null);
     } catch (e) {
