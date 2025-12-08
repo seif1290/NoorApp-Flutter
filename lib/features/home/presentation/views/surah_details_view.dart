@@ -22,7 +22,7 @@ class SurahDetailsView extends StatelessWidget {
       buildWhen: (previous, current) => current.maybeWhen(
         getSurahSuccess: (_) => true,
         getSurahLoading: () => true,
-        failed: (_) => true,
+        getSurahFailed: (_) => true,
         orElse: () => false,
       ),
       builder: (context, state) {

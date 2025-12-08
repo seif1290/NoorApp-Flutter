@@ -48,7 +48,7 @@ class _HomeViewState extends State<HomeView> {
           buildWhen: (previous, current) => current.maybeWhen(
             getSurahLoading: () => true,
             getSurahSuccess: (_) => true,
-            failed: (_) => true,
+            getSurahFailed: (_) => true,
             orElse: () => false,
           ),
           builder: (context, state) {
