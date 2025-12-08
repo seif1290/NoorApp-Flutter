@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/core/routing/routes.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:noor/core/data/services/shared_prefs_service.dart';
 import 'package:noor/features/home/data/repos/audio_repo.dart';
 import 'package:noor/features/home/data/repos/quran_repo.dart';
 import 'package:noor/features/home/domain/use_cases/load_surah_with_audio_use_case.dart';
@@ -12,12 +12,14 @@ import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:noor/features/settings/data/repos/reciters_repo.dart';
+import 'package:noor/features/settings/presentation/views/settings_view.dart';
 
 class AppRouter {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: Routes.onboarding,
+    initialLocation: _initialLocation,
     routes: [
       // Onboarding
       GoRoute(
@@ -40,6 +42,7 @@ class AppRouter {
             BlocProvider(
               create: (context) => AudioPlayerCubit(
                 audioRepo: getIt.get<AudioRepo>(),
+                recitersRepo: getIt.get<RecitersRepo>(),
                 loadSurahWithAudioUseCase: getIt
                     .get<LoadSurahWithAudioUseCase>(),
               ),
@@ -47,6 +50,11 @@ class AppRouter {
           ],
           child: const HomeView(),
         ),
+      ),
+      // Settings
+      GoRoute(
+        path: Routes.settings,
+        builder: (context, state) => const SettingsView(),
       ),
     ],
   );
