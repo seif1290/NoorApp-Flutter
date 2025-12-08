@@ -80,5 +80,22 @@ class AppThemeData {
       inactiveTrackColor: AppColors.lightGrey,
       thumbColor: const Color(0XFFF5F5F5),
     ),
+
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: const Color(0XFFEBEBEB),
+        filled: true,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide.none,
+        ),
+        iconColor: AppColors.lightGrey,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    ),
   );
 }
