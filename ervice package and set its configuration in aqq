@@ -1,0 +1,434 @@
+[33mcommit 3ba5e741eb67d694655d7e31849e15b11f2e2e0b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/backgroundService[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 17 20:07:25 2025 +0200
+
+    added audio service package and set its configuration in android manifest and info.plist
+
+[33mcommit 81764ba9568f6c800f01857c85445e0938b0a337[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 19:22:52 2025 +0200
+
+    created the readme file
+
+[33mcommit 7ab436da635525182ec0330b669b640eb9c5b88f[m
+Merge: beb5d74 c1657e2
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 14:45:26 2025 +0200
+
+    Merge pull request #5 from seif1290/feature/languageSelect
+    
+    - added language select to the settings
+
+[33mcommit c1657e273de92ef79e2d0768e3939585f58ee395[m[33m ([m[1;31morigin/feature/languageSelect[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 14:45:03 2025 +0200
+
+    - added language select to the settings
+    - finished settings view for now
+
+[33mcommit beb5d7416be55143cbc61ac4fda42cd572edf8f4[m
+Merge: 5e4ef57 38ede2a
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 12:02:34 2025 +0200
+
+    Merge pull request #4 from seif1290/feature/settings
+    
+    Feature/settings
+
+[33mcommit 38ede2a1331cb2b4da9895b2b85c3da7b91f2bcd[m[33m ([m[1;31morigin/feature/settings[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 12:02:06 2025 +0200
+
+    changes made during refactoring the code
+
+[33mcommit c79c65b94180a350eead47862021f59eeec32d6f[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 12:01:48 2025 +0200
+
+    finished select reciter in settings view ui
+
+[33mcommit acf803ce646fbf164394bea9ee88db52fc3ca362[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 12:00:27 2025 +0200
+
+    register the dependiencies
+
+[33mcommit 3a80254eed052ebad6312c6cc1081c4f41484290[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:58:41 2025 +0200
+
+    - created reciters cubit
+    - made the audio player cubit get the current reciter
+
+[33mcommit ccb477c55346f67cf8df7feb6f799c903613e398[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:56:51 2025 +0200
+
+    created reciters repo
+
+[33mcommit db30d997feac0f87fed82a6dd11810a7439cc94d[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:54:36 2025 +0200
+
+    replace quran data source with quran assets service to share it in the app
+
+[33mcommit c111bf2577881dc8a232555c66a689158d45d400[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:52:55 2025 +0200
+
+    added setReciterIdentifier and reciterIdentifier to shared preferences service
+
+[33mcommit d08ec40b258165d77f94c78ac5a5946778bcfcfa[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:52:16 2025 +0200
+
+    created reciter model
+
+[33mcommit 039fa8e8ca261616192d4d8c01d148ec7d359cd9[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Dec 8 11:50:35 2025 +0200
+
+    added the reciters to the assets as json file
+
+[33mcommit 2ac0edf2486053113e9b669ae1303a9984de1120[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Sat Dec 6 00:38:42 2025 +0200
+
+    added the text that will be in the drawer
+
+[33mcommit e84c1acbd26e366f40d4f7b8d0369b574bcceaf2[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Sat Dec 6 00:38:13 2025 +0200
+
+    added custom icons from figma as font file
+
+[33mcommit 5e4ef575a7a496803502af2b16ee1c895f4ab04d[m
+Merge: 99c595c 0eaf8eb
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 3 20:34:23 2025 +0200
+
+    Merge pull request #3 from seif1290/edit/onBoarding
+    
+    Edit/on boarding
+
+[33mcommit 0eaf8eb60f71dba0ea50c35f82f2015769bb0239[m[33m ([m[1;31morigin/edit/onBoarding[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 3 20:31:56 2025 +0200
+
+    finished  the new ui for onboarding view
+
+[33mcommit 46e0e45abe455f0c9d7765d90bfb3f5197ad4b55[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 3 20:30:43 2025 +0200
+
+    made some edits in the theme data
+
+[33mcommit 5c7c65bdf309094ce242bbd989ebc29f3986cfb2[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 3 20:30:09 2025 +0200
+
+    removed the onboarding images
+
+[33mcommit 8b3e606a349ef8d420740b8c8e542f216043f6d7[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Dec 3 20:29:29 2025 +0200
+
+    changed the text that will be in onboarding view
+
+[33mcommit 86c17ba7dab209e0fa98483a7c1f6aa582247c9d[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Dec 2 17:51:33 2025 +0200
+
+    used dart Record instead of creating new class to OnboardingModel
+
+[33mcommit 99c595cdad65ee6fbe452b92a1ca18985ba91a3a[m
+Merge: 051164e 7c7dc78
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Dec 2 14:21:23 2025 +0200
+
+    Merge pull request #2 from seif1290/edit/splashAndIcon
+    
+    changed the logo color and run the new launcher icon and flutter nati…
+
+[33mcommit 7c7dc78a71db2f53e3326970a5c113728168165b[m[33m ([m[1;31morigin/edit/splashAndIcon[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Dec 2 14:20:54 2025 +0200
+
+    changed the logo color and run the new launcher icon and flutter native splash
+
+[33mcommit 051164e6a4eefcfb53513b507f5fd5932cfa2087[m
+Merge: 498375e 84353e2
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Sun Nov 30 16:07:24 2025 +0200
+
+    Merge pull request #1 from seif1290/fix/refactoring
+    
+    Fix/refactoring
+
+[33mcommit 84353e288a83a0bd697f2d4c4df76cb5daaa0449[m[33m ([m[1;31morigin/fix/refactoring[m[33m)[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Sun Nov 30 16:06:49 2025 +0200
+
+    refactored the home  feature
+    - fixed navigating from and to SurahDetailsView
+    - fixed playinh the audio and its states
+
+[33mcommit 50c499a194e395e1222684cd3c118b65c6660577[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Nov 28 13:51:04 2025 +0200
+
+    remove sp from text sizes
+
+[33mcommit 1eb968509661aeff9b7a8cef920df4160c20094f[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Nov 28 11:28:01 2025 +0200
+
+    - refactored home view to be responsive for mobile and tablet by dividing it to homeScaffold mobile and home scaffold tablet
+    - made home cubit only responsible for the home states
+
+[33mcommit 6570ae4e80cf607868937eb00e8d11bc989e77e8[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Nov 28 10:43:12 2025 +0200
+
+    changes made due to renaiming some classes
+
+[33mcommit b1c9534d03d21145fc907cad2ec0a2fda3bcde9c[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Nov 28 10:41:50 2025 +0200
+
+    added responsive layout class to make the design responsive
+
+[33mcommit 5a467b68fbbd3fa5dfb862417264394393124e1d[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Nov 28 10:40:49 2025 +0200
+
+    set the text theme and colors for the app
+
+[33mcommit 5b059715ce9ccbcc6501c139fad8db263b279e77[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Nov 27 08:35:44 2025 +0200
+
+    edit routing
+
+[33mcommit 122e7b708c75dea5f6e8d48f706b11a1ab00507c[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Nov 27 08:34:27 2025 +0200
+
+    created Helper_functions class that holds the helper functions for the app
+
+[33mcommit dda7a3947bd086b5683d69c11bd0b2df14192f6c[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Nov 27 08:27:33 2025 +0200
+
+    moved flutter_launcher_icons to separate file from pubspec.yaml
+
+[33mcommit 472e8639ba28279e850af834762d133c0a7b2454[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Nov 4 09:20:54 2025 +0200
+
+    replace SurahModel with SurahMetadataModel to show the metadata that are from assets
+
+[33mcommit fde177cc77f1ef1721d09dac597ae1ddfda947fb[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Nov 4 09:04:54 2025 +0200
+
+    changed the base url to get the audio from api
+
+[33mcommit 2954c49232b2074e3220e614aba0ca01f00dadf5[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Nov 3 18:52:37 2025 +0200
+
+    get the quran data and all the surahs texts in the assets
+
+[33mcommit 498375eb638ef0a2e569575af0e9f312de3810c2[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Fri Oct 31 15:30:57 2025 +0200
+
+    handle play and pause surah with open or close animated surahDetailsView
+
+[33mcommit 327775ba1deccc8e972263c85d66d81671af7ae6[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 23 20:18:13 2025 +0300
+
+    refactored the code of the whole project
+
+[33mcommit 2b35128ee6e72b5e5e98d154be2f50f523cf01ad[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Sun Oct 19 11:32:52 2025 +0300
+
+    enable to go to next and previous surahs
+
+[33mcommit c3e23ad3e2b6ada1721ea5b328ab183edc0be96e[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Oct 15 20:42:15 2025 +0300
+
+    make it play the next surah if the current surah finished
+
+[33mcommit d1734d2c39671cc6299ec4ccb8c242a3647a289f[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Oct 15 19:51:41 2025 +0300
+
+    remove the dark theme
+
+[33mcommit 88f268af634a5d77e67b7a94a330fcfe8568c30a[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Oct 14 09:22:41 2025 +0300
+
+    finished showing all the quran and play the selected surah with bottom player and slider
+
+[33mcommit 5254e4e834f911b98648c090b2c5647effb0b561[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Oct 13 07:05:53 2025 +0300
+
+    Changed quran api service
+
+[33mcommit 6c22772853437500fcddbfcf45c9ab6e18e90a54[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Oct 7 07:35:15 2025 +0300
+
+    edit in the UI to be good
+
+[33mcommit a5a3a5277c8fb177bb8b2e52d52201db1eeff099[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Oct 6 07:24:05 2025 +0300
+
+    added home wrapper widget to wrap the home view and surah details view in a part of the screen and the BottomPlayer is matual between both screens
+
+[33mcommit fa3a18a359b9354b5514e5e3f5b056e3f15aaa16[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:29:04 2025 +0300
+
+    finished home view and all its logic
+
+[33mcommit e883ac1d3cf0dad728acbb4eb64b0eb5d2e3acb0[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:28:13 2025 +0300
+
+    created  home cubit
+
+[33mcommit 0b5a20e0d40dc350f2d9be5a0565191b3b8b1163[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:27:46 2025 +0300
+
+    initialize the dependecies of home feature
+
+[33mcommit 2be5ca32e76045e06ccf16dc75ad644a159f7c60[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:27:07 2025 +0300
+
+    added quran repo
+
+[33mcommit c8411b26d65c52597ee7bb2b21a007b3025bd168[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:26:55 2025 +0300
+
+    created QuranDataSource class to get all the quran
+
+[33mcommit b547ae94eccf9b60df5e6ca5e917b62a8dd949ad[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:26:17 2025 +0300
+
+    handle the server exceptions and in the failure class get a message in arabic or enlgish
+
+[33mcommit 8bcf4a238cf3bf4303845a70ae2df151d44375f0[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Oct 2 11:24:47 2025 +0300
+
+    added DioHandler class to initialize dio
+
+[33mcommit a2941ccf2dd9e3fcada5aa5a24df5f06aee8d33e[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 30 19:52:27 2025 +0300
+
+    made ayah model and surah model immutable by using freezed
+
+[33mcommit 3320a306c823f148005e82f094f3d30939a21ba0[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 30 18:47:06 2025 +0300
+
+    added surahs list view to show all the surahs
+
+[33mcommit 17d6027811156710421855843e34210bf62c9b88[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Sep 29 15:35:10 2025 +0300
+
+    created Surah Card
+
+[33mcommit 4b0b426d423e65be27e8ccfec217b9a873fe8605[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Mon Sep 29 14:43:13 2025 +0300
+
+    added surah and ayah models. and revelatin type detarmine if the surah is meccan of medinan
+
+[33mcommit 21be140ecffb270152ad53d1cdeff4a443b004d6[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Sun Sep 28 07:09:32 2025 +0300
+
+    added localization to the app
+
+[33mcommit 96e1693fc936184b9b3a0925347c1bebc6f7dca6[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Sep 25 09:42:48 2025 +0300
+
+    remove the background of the app logo and update the app icon and native splash
+
+[33mcommit eb09946de9ca305a647baab6acf79eca6d5ec6d4[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Sep 25 09:34:02 2025 +0300
+
+    created splash view
+
+[33mcommit ba9bbdd5fbadde75a84d5b8fb47e89762cba78eb[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Thu Sep 25 09:11:19 2025 +0300
+
+    changed the app logo
+
+[33mcommit 05900e17f2048396338063da5e90c1d7147c9ec4[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Sep 24 20:08:47 2025 +0300
+
+    created the theme of the app and finished onboarding view of three screens
+
+[33mcommit 534420a01d8450e3b10b394c03ac8a7f82fceaa8[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Sep 24 14:48:58 2025 +0300
+
+    set all the text sizes and colors
+
+[33mcommit 8971d78d3458d36935f022ba7fb03d24051362a5[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Wed Sep 24 14:20:24 2025 +0300
+
+    set all the colors
+
+[33mcommit 5f7a9ff57776e565761e60f7f9894cbeb327764f[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 23 14:49:13 2025 +0300
+
+    setup the core folder for the app
+
+[33mcommit e61dc0bb3fdc1ac18ac00a0ef644cf2cbc941b24[m
+Merge: e4a240e 89b7ffc
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 23 12:36:13 2025 +0300
+
+    Merge branch 'main' of https://github.com/seif1290/NoorApp
+
+[33mcommit e4a240eb9c1810395b8866e90e21ba3aa4b7ed31[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 23 12:36:06 2025 +0300
+
+    added dependencies
+
+[33mcommit 89b7ffccff2b56cd5638aca5d10ebb3b1540745b[m
+Author: Seif-Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 23 12:07:43 2025 +0300
+
+    Update README.md
+
+[33mcommit a3c71d72fc9f1ad6ecf11560f21a05e369c161be[m
+Author: Seif Elnawawy <elnawawyseif@gmail.com>
+Date:   Tue Sep 23 12:06:25 2025 +0300
+
+    first commit
