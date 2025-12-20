@@ -27,9 +27,9 @@ class BuildQuranList extends StatelessWidget {
               onCardTab: (surahMetadata) async {
                 if (audioPlayerCubit.currentSurahNumber != surahMetadata.id) {
                   await audioPlayerCubit.getSurah(surahId: surahMetadata.id);
-                  audioPlayerCubit.openSurahDetails();
+                  //TODO: open bottom sheet
                 } else {
-                  audioPlayerCubit.openSurahDetails();
+                  //TODO: open bottom sheet
                 }
               },
               onPlayButtonTap: (surahMetadata) async {
