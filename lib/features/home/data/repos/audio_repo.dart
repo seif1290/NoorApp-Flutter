@@ -1,39 +1,55 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:noor/core/data/api_constants.dart';
-import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/services/audio_player_handler.dart';
+import 'package:noor/core/services/quran_assets_service.dart';
+import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/audio_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
-import 'package:noor/features/home/data/data_sources/audio_data_source.dart';
 
 abstract class AudioRepo {
   Future<Either<Failure, void>> loadSurah({required int surahNumber});
   Future<Either<Failure, void>> play();
   Future<Either<Failure, void>> pause();
   Future<Either<Failure, void>> seek({required Duration position});
-  Stream<Duration> get positionStream;
-  Stream<Duration?> get durationStream;
-  Stream<PlayerState> get playerStateStream;
-  bool get isPlaying;
+  Future<Either<Failure, void>> stop();
+  Stream<PlaybackState> get playbackStateStream;
+  Duration get duration;
   Future<Either<Failure, void>> dispose();
 }
 
 class AudioRepoImpl implements AudioRepo {
-  final AudioDataSource _audioDataSource;
-  final SharedPrefsService _sharedPrefsService;
-
+  final SharedPrefsService _prefs;
+  final QuranAssetsService _quranAssetsService;
+  final AudioPlayerHandler _audioPlayerHandler;
   AudioRepoImpl({
-    required AudioDataSource audioDataSource,
     required SharedPrefsService sharedPrefsService,
-  }) : _audioDataSource = audioDataSource,
-       _sharedPrefsService = sharedPrefsService;
+    required QuranAssetsService quranAssetsService,
+    required AudioPlayerHandler audioPlayerHandler,
+  }) : _prefs = sharedPrefsService,
+       _quranAssetsService = quranAssetsService,
+       _audioPlayerHandler = audioPlayerHandler;
 
   @override
   Future<Either<Failure, void>> loadSurah({required int surahNumber}) async {
     try {
-      await _audioDataSource.load(
-        '${ApiConstants.quranAudioBaseUrl}${_sharedPrefsService.reciterIdentifier}/$surahNumber.mp3',
+      final String url =
+          '${ApiConstants.quranAudioBaseUrl}${_prefs.reciterIdentifier}/$surahNumber.mp3';
+
+      final reciter = await _quranAssetsService.getReciter(
+        identifier: _prefs.reciterIdentifier ?? '',
       );
+
+      final surah = await _quranAssetsService.getSurah(surahId: surahNumber);
+      MediaItem item = MediaItem(
+        id: url,
+        title: surah.name,
+        artist: reciter.nameAr,
+      );
+
+      _audioPlayerHandler.setAudioSource(item: item);
+
       return const Right(null);
     } catch (e) {
       return Left(_handleError(e));
@@ -43,7 +59,7 @@ class AudioRepoImpl implements AudioRepo {
   @override
   Future<Either<Failure, void>> play() async {
     try {
-      await _audioDataSource.play();
+      await _audioPlayerHandler.play();
       return const Right(null);
     } catch (e) {
       return Left(_handleError(e));
@@ -53,7 +69,7 @@ class AudioRepoImpl implements AudioRepo {
   @override
   Future<Either<Failure, void>> pause() async {
     try {
-      await _audioDataSource.pause();
+      await _audioPlayerHandler.pause();
       return const Right(null);
     } catch (e) {
       return Left(_handleError(e));
@@ -63,7 +79,7 @@ class AudioRepoImpl implements AudioRepo {
   @override
   Future<Either<Failure, void>> seek({required Duration position}) async {
     try {
-      await _audioDataSource.seek(position: position);
+      await _audioPlayerHandler.seek(position);
       return const Right(null);
     } catch (e) {
       return Left(_handleError(e));
@@ -71,18 +87,26 @@ class AudioRepoImpl implements AudioRepo {
   }
 
   @override
-  Stream<Duration> get positionStream => _audioDataSource.positionStream;
+  Future<Either<Failure, void>> stop() async {
+    try {
+      await _audioPlayerHandler.stop();
+      return const Right(null);
+    } catch (e) {
+      return Left(_handleError(e));
+    }
+  }
+
   @override
-  Stream<Duration?> get durationStream => _audioDataSource.durationStream;
+  Stream<PlaybackState> get playbackStateStream =>
+      _audioPlayerHandler.playbackStateStream;
+
   @override
-  Stream<PlayerState> get playerStateStream =>
-      _audioDataSource.playerStateStream;
-  @override
-  bool get isPlaying => _audioDataSource.isPlaying;
+  Duration get duration => _audioPlayerHandler.duration;
+
   @override
   Future<Either<Failure, void>> dispose() async {
     try {
-      await _audioDataSource.dispose();
+      await _audioPlayerHandler.dispose();
       return const Right(null);
     } catch (e) {
       return Left(_handleError(e));

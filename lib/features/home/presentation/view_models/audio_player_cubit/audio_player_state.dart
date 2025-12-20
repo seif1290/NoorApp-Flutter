@@ -10,18 +10,15 @@ class AudioPlayerState with _$AudioPlayerState {
   const factory AudioPlayerState.getSurahFailed({required Failure failure}) =
       _GetSurahFailedfailed;
 
-  const factory AudioPlayerState.audioPlaying() = _AudioPlaying;
-  const factory AudioPlayerState.audioFinished() = _AudioFinished;
-  const factory AudioPlayerState.audioPaused() = _AudioPaused;
-  const factory AudioPlayerState.audioProgressUpdated({
+  const factory AudioPlayerState.audioPlaying({
     required Duration position,
     required Duration duration,
-  }) = _AudioProgressUpdated;
+  }) = _AudioPlaying;
+  const factory AudioPlayerState.audioPaused() = _AudioPaused;
+
+  const factory AudioPlayerState.audioFinished() = _AudioFinished;
 
   const factory AudioPlayerState.reciterLoaded({
     required ReciterModel reciter,
   }) = _ReciterLoaded;
-
-  const factory AudioPlayerState.surahDetailsOpened() = _SurahDetailsOpened;
-  const factory AudioPlayerState.surahDetailsClosed() = _SurahDetailsClosed;
 }
