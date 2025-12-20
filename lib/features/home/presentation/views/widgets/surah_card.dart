@@ -95,13 +95,6 @@ class SurahCard extends StatelessWidget {
                 color: AppColors.offWhite,
               ),
               child: BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-                buildWhen: (previous, current) => current.maybeMap(
-                  audioPlaying: (_) => true,
-                  audioPaused: (_) => true,
-                  audioProgressUpdated: (_) => true,
-                  orElse: () => false,
-                ),
-
                 builder: (context, state) {
                   return state.maybeMap(
                     audioPlaying: (_) {
@@ -118,20 +111,7 @@ class SurahCard extends StatelessWidget {
                         );
                       }
                     },
-                    audioProgressUpdated: (state) {
-                      if (context.read<AudioPlayerCubit>().currentSurahNumber ==
-                          index + 1) {
-                        return const Icon(
-                          Icons.pause,
-                          color: AppColors.secondary,
-                        );
-                      } else {
-                        return const Icon(
-                          Icons.play_arrow,
-                          color: AppColors.secondary,
-                        );
-                      }
-                    },
+
                     orElse: () => const Icon(
                       Icons.play_arrow,
                       color: AppColors.secondary,
