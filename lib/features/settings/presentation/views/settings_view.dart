@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 import 'package:noor/features/settings/presentation/view_models/settings_cubit/reciters_cubit.dart';

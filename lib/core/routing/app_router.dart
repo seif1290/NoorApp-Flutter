@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/core/routing/routes.dart';
-import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/features/home/data/repos/audio_repo.dart';
 import 'package:noor/features/home/data/repos/quran_repo.dart';
 import 'package:noor/features/home/domain/use_cases/load_surah_with_audio_use_case.dart';

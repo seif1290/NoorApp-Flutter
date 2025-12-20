@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:noor/core/error_handling/assets_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
-import 'package:noor/core/data/services/quran_assets_service.dart';
+import 'package:noor/core/services/quran_assets_service.dart';
 import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
 import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 
