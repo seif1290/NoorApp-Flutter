@@ -6,7 +6,7 @@ import 'package:noor/localization/l10n/app_localizations.dart';
 import 'package:noor/localization/l10n/l_10n.dart';
 import 'package:noor/localization/locale_provider.dart';
 import 'package:noor/core/routing/app_router.dart';
-import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/core/theme/app_theme_data.dart';
 import 'package:provider/provider.dart';
 

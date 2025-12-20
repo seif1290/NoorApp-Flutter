@@ -55,7 +55,7 @@ extension AudioPlayerStatePatterns on AudioPlayerState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _SurahDetailsLoading value)?  getSurahLoading,TResult Function( _SurahDetailsSuccess value)?  getSurahSuccess,TResult Function( _GetSurahFailedfailed value)?  getSurahFailed,TResult Function( _AudioPlaying value)?  audioPlaying,TResult Function( _AudioFinished value)?  audioFinished,TResult Function( _AudioPaused value)?  audioPaused,TResult Function( _AudioProgressUpdated value)?  audioProgressUpdated,TResult Function( _ReciterLoaded value)?  reciterLoaded,TResult Function( _SurahDetailsOpened value)?  surahDetailsOpened,TResult Function( _SurahDetailsClosed value)?  surahDetailsClosed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _SurahDetailsLoading value)?  getSurahLoading,TResult Function( _SurahDetailsSuccess value)?  getSurahSuccess,TResult Function( _GetSurahFailedfailed value)?  getSurahFailed,TResult Function( _AudioPlaying value)?  audioPlaying,TResult Function( _AudioPaused value)?  audioPaused,TResult Function( _AudioFinished value)?  audioFinished,TResult Function( _ReciterLoaded value)?  reciterLoaded,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -63,13 +63,10 @@ return initial(_that);case _SurahDetailsLoading() when getSurahLoading != null:
 return getSurahLoading(_that);case _SurahDetailsSuccess() when getSurahSuccess != null:
 return getSurahSuccess(_that);case _GetSurahFailedfailed() when getSurahFailed != null:
 return getSurahFailed(_that);case _AudioPlaying() when audioPlaying != null:
-return audioPlaying(_that);case _AudioFinished() when audioFinished != null:
-return audioFinished(_that);case _AudioPaused() when audioPaused != null:
-return audioPaused(_that);case _AudioProgressUpdated() when audioProgressUpdated != null:
-return audioProgressUpdated(_that);case _ReciterLoaded() when reciterLoaded != null:
-return reciterLoaded(_that);case _SurahDetailsOpened() when surahDetailsOpened != null:
-return surahDetailsOpened(_that);case _SurahDetailsClosed() when surahDetailsClosed != null:
-return surahDetailsClosed(_that);case _:
+return audioPlaying(_that);case _AudioPaused() when audioPaused != null:
+return audioPaused(_that);case _AudioFinished() when audioFinished != null:
+return audioFinished(_that);case _ReciterLoaded() when reciterLoaded != null:
+return reciterLoaded(_that);case _:
   return orElse();
 
 }
@@ -87,7 +84,7 @@ return surahDetailsClosed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _SurahDetailsLoading value)  getSurahLoading,required TResult Function( _SurahDetailsSuccess value)  getSurahSuccess,required TResult Function( _GetSurahFailedfailed value)  getSurahFailed,required TResult Function( _AudioPlaying value)  audioPlaying,required TResult Function( _AudioFinished value)  audioFinished,required TResult Function( _AudioPaused value)  audioPaused,required TResult Function( _AudioProgressUpdated value)  audioProgressUpdated,required TResult Function( _ReciterLoaded value)  reciterLoaded,required TResult Function( _SurahDetailsOpened value)  surahDetailsOpened,required TResult Function( _SurahDetailsClosed value)  surahDetailsClosed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _SurahDetailsLoading value)  getSurahLoading,required TResult Function( _SurahDetailsSuccess value)  getSurahSuccess,required TResult Function( _GetSurahFailedfailed value)  getSurahFailed,required TResult Function( _AudioPlaying value)  audioPlaying,required TResult Function( _AudioPaused value)  audioPaused,required TResult Function( _AudioFinished value)  audioFinished,required TResult Function( _ReciterLoaded value)  reciterLoaded,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -95,13 +92,10 @@ return initial(_that);case _SurahDetailsLoading():
 return getSurahLoading(_that);case _SurahDetailsSuccess():
 return getSurahSuccess(_that);case _GetSurahFailedfailed():
 return getSurahFailed(_that);case _AudioPlaying():
-return audioPlaying(_that);case _AudioFinished():
-return audioFinished(_that);case _AudioPaused():
-return audioPaused(_that);case _AudioProgressUpdated():
-return audioProgressUpdated(_that);case _ReciterLoaded():
-return reciterLoaded(_that);case _SurahDetailsOpened():
-return surahDetailsOpened(_that);case _SurahDetailsClosed():
-return surahDetailsClosed(_that);case _:
+return audioPlaying(_that);case _AudioPaused():
+return audioPaused(_that);case _AudioFinished():
+return audioFinished(_that);case _ReciterLoaded():
+return reciterLoaded(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -118,7 +112,7 @@ return surahDetailsClosed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _SurahDetailsLoading value)?  getSurahLoading,TResult? Function( _SurahDetailsSuccess value)?  getSurahSuccess,TResult? Function( _GetSurahFailedfailed value)?  getSurahFailed,TResult? Function( _AudioPlaying value)?  audioPlaying,TResult? Function( _AudioFinished value)?  audioFinished,TResult? Function( _AudioPaused value)?  audioPaused,TResult? Function( _AudioProgressUpdated value)?  audioProgressUpdated,TResult? Function( _ReciterLoaded value)?  reciterLoaded,TResult? Function( _SurahDetailsOpened value)?  surahDetailsOpened,TResult? Function( _SurahDetailsClosed value)?  surahDetailsClosed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _SurahDetailsLoading value)?  getSurahLoading,TResult? Function( _SurahDetailsSuccess value)?  getSurahSuccess,TResult? Function( _GetSurahFailedfailed value)?  getSurahFailed,TResult? Function( _AudioPlaying value)?  audioPlaying,TResult? Function( _AudioPaused value)?  audioPaused,TResult? Function( _AudioFinished value)?  audioFinished,TResult? Function( _ReciterLoaded value)?  reciterLoaded,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -126,13 +120,10 @@ return initial(_that);case _SurahDetailsLoading() when getSurahLoading != null:
 return getSurahLoading(_that);case _SurahDetailsSuccess() when getSurahSuccess != null:
 return getSurahSuccess(_that);case _GetSurahFailedfailed() when getSurahFailed != null:
 return getSurahFailed(_that);case _AudioPlaying() when audioPlaying != null:
-return audioPlaying(_that);case _AudioFinished() when audioFinished != null:
-return audioFinished(_that);case _AudioPaused() when audioPaused != null:
-return audioPaused(_that);case _AudioProgressUpdated() when audioProgressUpdated != null:
-return audioProgressUpdated(_that);case _ReciterLoaded() when reciterLoaded != null:
-return reciterLoaded(_that);case _SurahDetailsOpened() when surahDetailsOpened != null:
-return surahDetailsOpened(_that);case _SurahDetailsClosed() when surahDetailsClosed != null:
-return surahDetailsClosed(_that);case _:
+return audioPlaying(_that);case _AudioPaused() when audioPaused != null:
+return audioPaused(_that);case _AudioFinished() when audioFinished != null:
+return audioFinished(_that);case _ReciterLoaded() when reciterLoaded != null:
+return reciterLoaded(_that);case _:
   return null;
 
 }
@@ -149,20 +140,17 @@ return surahDetailsClosed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getSurahLoading,TResult Function( SurahModel surah)?  getSurahSuccess,TResult Function( Failure failure)?  getSurahFailed,TResult Function()?  audioPlaying,TResult Function()?  audioFinished,TResult Function()?  audioPaused,TResult Function( Duration position,  Duration duration)?  audioProgressUpdated,TResult Function( ReciterModel reciter)?  reciterLoaded,TResult Function()?  surahDetailsOpened,TResult Function()?  surahDetailsClosed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  getSurahLoading,TResult Function( SurahModel surah)?  getSurahSuccess,TResult Function( Failure failure)?  getSurahFailed,TResult Function( Duration position,  Duration duration)?  audioPlaying,TResult Function()?  audioPaused,TResult Function()?  audioFinished,TResult Function( ReciterModel reciter)?  reciterLoaded,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _SurahDetailsLoading() when getSurahLoading != null:
 return getSurahLoading();case _SurahDetailsSuccess() when getSurahSuccess != null:
 return getSurahSuccess(_that.surah);case _GetSurahFailedfailed() when getSurahFailed != null:
 return getSurahFailed(_that.failure);case _AudioPlaying() when audioPlaying != null:
-return audioPlaying();case _AudioFinished() when audioFinished != null:
-return audioFinished();case _AudioPaused() when audioPaused != null:
-return audioPaused();case _AudioProgressUpdated() when audioProgressUpdated != null:
-return audioProgressUpdated(_that.position,_that.duration);case _ReciterLoaded() when reciterLoaded != null:
-return reciterLoaded(_that.reciter);case _SurahDetailsOpened() when surahDetailsOpened != null:
-return surahDetailsOpened();case _SurahDetailsClosed() when surahDetailsClosed != null:
-return surahDetailsClosed();case _:
+return audioPlaying(_that.position,_that.duration);case _AudioPaused() when audioPaused != null:
+return audioPaused();case _AudioFinished() when audioFinished != null:
+return audioFinished();case _ReciterLoaded() when reciterLoaded != null:
+return reciterLoaded(_that.reciter);case _:
   return orElse();
 
 }
@@ -180,20 +168,17 @@ return surahDetailsClosed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getSurahLoading,required TResult Function( SurahModel surah)  getSurahSuccess,required TResult Function( Failure failure)  getSurahFailed,required TResult Function()  audioPlaying,required TResult Function()  audioFinished,required TResult Function()  audioPaused,required TResult Function( Duration position,  Duration duration)  audioProgressUpdated,required TResult Function( ReciterModel reciter)  reciterLoaded,required TResult Function()  surahDetailsOpened,required TResult Function()  surahDetailsClosed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  getSurahLoading,required TResult Function( SurahModel surah)  getSurahSuccess,required TResult Function( Failure failure)  getSurahFailed,required TResult Function( Duration position,  Duration duration)  audioPlaying,required TResult Function()  audioPaused,required TResult Function()  audioFinished,required TResult Function( ReciterModel reciter)  reciterLoaded,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _SurahDetailsLoading():
 return getSurahLoading();case _SurahDetailsSuccess():
 return getSurahSuccess(_that.surah);case _GetSurahFailedfailed():
 return getSurahFailed(_that.failure);case _AudioPlaying():
-return audioPlaying();case _AudioFinished():
-return audioFinished();case _AudioPaused():
-return audioPaused();case _AudioProgressUpdated():
-return audioProgressUpdated(_that.position,_that.duration);case _ReciterLoaded():
-return reciterLoaded(_that.reciter);case _SurahDetailsOpened():
-return surahDetailsOpened();case _SurahDetailsClosed():
-return surahDetailsClosed();case _:
+return audioPlaying(_that.position,_that.duration);case _AudioPaused():
+return audioPaused();case _AudioFinished():
+return audioFinished();case _ReciterLoaded():
+return reciterLoaded(_that.reciter);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -210,20 +195,17 @@ return surahDetailsClosed();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getSurahLoading,TResult? Function( SurahModel surah)?  getSurahSuccess,TResult? Function( Failure failure)?  getSurahFailed,TResult? Function()?  audioPlaying,TResult? Function()?  audioFinished,TResult? Function()?  audioPaused,TResult? Function( Duration position,  Duration duration)?  audioProgressUpdated,TResult? Function( ReciterModel reciter)?  reciterLoaded,TResult? Function()?  surahDetailsOpened,TResult? Function()?  surahDetailsClosed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  getSurahLoading,TResult? Function( SurahModel surah)?  getSurahSuccess,TResult? Function( Failure failure)?  getSurahFailed,TResult? Function( Duration position,  Duration duration)?  audioPlaying,TResult? Function()?  audioPaused,TResult? Function()?  audioFinished,TResult? Function( ReciterModel reciter)?  reciterLoaded,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _SurahDetailsLoading() when getSurahLoading != null:
 return getSurahLoading();case _SurahDetailsSuccess() when getSurahSuccess != null:
 return getSurahSuccess(_that.surah);case _GetSurahFailedfailed() when getSurahFailed != null:
 return getSurahFailed(_that.failure);case _AudioPlaying() when audioPlaying != null:
-return audioPlaying();case _AudioFinished() when audioFinished != null:
-return audioFinished();case _AudioPaused() when audioPaused != null:
-return audioPaused();case _AudioProgressUpdated() when audioProgressUpdated != null:
-return audioProgressUpdated(_that.position,_that.duration);case _ReciterLoaded() when reciterLoaded != null:
-return reciterLoaded(_that.reciter);case _SurahDetailsOpened() when surahDetailsOpened != null:
-return surahDetailsOpened();case _SurahDetailsClosed() when surahDetailsClosed != null:
-return surahDetailsClosed();case _:
+return audioPlaying(_that.position,_that.duration);case _AudioPaused() when audioPaused != null:
+return audioPaused();case _AudioFinished() when audioFinished != null:
+return audioFinished();case _ReciterLoaded() when reciterLoaded != null:
+return reciterLoaded(_that.reciter);case _:
   return null;
 
 }
@@ -440,7 +422,75 @@ as Failure,
 
 
 class _AudioPlaying implements AudioPlayerState {
-  const _AudioPlaying();
+  const _AudioPlaying({required this.position, required this.duration});
+  
+
+ final  Duration position;
+ final  Duration duration;
+
+/// Create a copy of AudioPlayerState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AudioPlayingCopyWith<_AudioPlaying> get copyWith => __$AudioPlayingCopyWithImpl<_AudioPlaying>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AudioPlaying&&(identical(other.position, position) || other.position == position)&&(identical(other.duration, duration) || other.duration == duration));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,position,duration);
+
+@override
+String toString() {
+  return 'AudioPlayerState.audioPlaying(position: $position, duration: $duration)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AudioPlayingCopyWith<$Res> implements $AudioPlayerStateCopyWith<$Res> {
+  factory _$AudioPlayingCopyWith(_AudioPlaying value, $Res Function(_AudioPlaying) _then) = __$AudioPlayingCopyWithImpl;
+@useResult
+$Res call({
+ Duration position, Duration duration
+});
+
+
+
+
+}
+/// @nodoc
+class __$AudioPlayingCopyWithImpl<$Res>
+    implements _$AudioPlayingCopyWith<$Res> {
+  __$AudioPlayingCopyWithImpl(this._self, this._then);
+
+  final _AudioPlaying _self;
+  final $Res Function(_AudioPlaying) _then;
+
+/// Create a copy of AudioPlayerState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? position = null,Object? duration = null,}) {
+  return _then(_AudioPlaying(
+position: null == position ? _self.position : position // ignore: cast_nullable_to_non_nullable
+as Duration,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _AudioPaused implements AudioPlayerState {
+  const _AudioPaused();
   
 
 
@@ -450,7 +500,7 @@ class _AudioPlaying implements AudioPlayerState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AudioPlaying);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AudioPaused);
 }
 
 
@@ -459,7 +509,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AudioPlayerState.audioPlaying()';
+  return 'AudioPlayerState.audioPaused()';
 }
 
 
@@ -499,106 +549,6 @@ String toString() {
 
 
 
-
-/// @nodoc
-
-
-class _AudioPaused implements AudioPlayerState {
-  const _AudioPaused();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AudioPaused);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AudioPlayerState.audioPaused()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _AudioProgressUpdated implements AudioPlayerState {
-  const _AudioProgressUpdated({required this.position, required this.duration});
-  
-
- final  Duration position;
- final  Duration duration;
-
-/// Create a copy of AudioPlayerState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$AudioProgressUpdatedCopyWith<_AudioProgressUpdated> get copyWith => __$AudioProgressUpdatedCopyWithImpl<_AudioProgressUpdated>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AudioProgressUpdated&&(identical(other.position, position) || other.position == position)&&(identical(other.duration, duration) || other.duration == duration));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,position,duration);
-
-@override
-String toString() {
-  return 'AudioPlayerState.audioProgressUpdated(position: $position, duration: $duration)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$AudioProgressUpdatedCopyWith<$Res> implements $AudioPlayerStateCopyWith<$Res> {
-  factory _$AudioProgressUpdatedCopyWith(_AudioProgressUpdated value, $Res Function(_AudioProgressUpdated) _then) = __$AudioProgressUpdatedCopyWithImpl;
-@useResult
-$Res call({
- Duration position, Duration duration
-});
-
-
-
-
-}
-/// @nodoc
-class __$AudioProgressUpdatedCopyWithImpl<$Res>
-    implements _$AudioProgressUpdatedCopyWith<$Res> {
-  __$AudioProgressUpdatedCopyWithImpl(this._self, this._then);
-
-  final _AudioProgressUpdated _self;
-  final $Res Function(_AudioProgressUpdated) _then;
-
-/// Create a copy of AudioPlayerState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? position = null,Object? duration = null,}) {
-  return _then(_AudioProgressUpdated(
-position: null == position ? _self.position : position // ignore: cast_nullable_to_non_nullable
-as Duration,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
-as Duration,
-  ));
-}
-
-
-}
 
 /// @nodoc
 
@@ -674,69 +624,5 @@ $ReciterModelCopyWith<$Res> get reciter {
   });
 }
 }
-
-/// @nodoc
-
-
-class _SurahDetailsOpened implements AudioPlayerState {
-  const _SurahDetailsOpened();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahDetailsOpened);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AudioPlayerState.surahDetailsOpened()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _SurahDetailsClosed implements AudioPlayerState {
-  const _SurahDetailsClosed();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SurahDetailsClosed);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AudioPlayerState.surahDetailsClosed()';
-}
-
-
-}
-
-
-
 
 // dart format on

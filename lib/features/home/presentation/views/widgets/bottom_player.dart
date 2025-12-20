@@ -52,19 +52,11 @@ class BottomPlayer extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(AppValues.padding4),
                     child: BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-                      buildWhen: (previous, current) => current.maybeMap(
-                        audioPlaying: (_) => true,
-                        audioPaused: (_) => true,
-                        audioProgressUpdated: (_) => true,
-                        orElse: () => false,
-                      ),
-
                       builder: (context, state) {
                         return state.maybeMap(
                           audioPlaying: (_) =>
                               const Icon(Icons.pause, color: AppColors.white),
-                          audioProgressUpdated: (_) =>
-                              const Icon(Icons.pause, color: AppColors.white),
+
                           orElse: () => const Icon(
                             Icons.play_arrow,
                             color: AppColors.white,

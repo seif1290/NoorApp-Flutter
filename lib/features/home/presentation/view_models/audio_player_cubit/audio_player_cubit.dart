@@ -1,6 +1,8 @@
+import 'dart:async';
+
+import 'package:audio_service/audio_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:noor/core/error_handling/failure.dart';
 import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/home/data/repos/audio_repo.dart';
@@ -16,6 +18,8 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
   final RecitersRepo _recitersRepo;
   final LoadSurahWithAudioUseCase _loadSurahWithAudioUseCase;
 
+  late final StreamSubscription _playbackSub;
+
   AudioPlayerCubit({
     required AudioRepo audioRepo,
     required RecitersRepo recitersRepo,
@@ -24,15 +28,13 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
        _audioRepo = audioRepo,
        _recitersRepo = recitersRepo,
        super(const AudioPlayerState.initial()) {
-    _listenToAudioEvents();
+    _listenToPlayback();
   }
 
   int? _currentSurahNumber;
   int? get currentSurahNumber => _currentSurahNumber;
-  Duration _duration = Duration.zero;
 
   Future<void> getSurah({required int surahId}) async {
-    emit(const AudioPlayerState.getSurahLoading());
     final result = await _loadSurahWithAudioUseCase.call(surahId: surahId);
     result.fold(
       (failure) {
@@ -42,10 +44,17 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
         _currentSurahNumber = surahId;
         _getCurrentReciter();
         emit(AudioPlayerState.getSurahSuccess(surah: surah));
-        await playOrPause();
       },
     );
   }
+
+  Future<void> play() async => await _audioRepo.play();
+  Future<void> pause() async => await _audioRepo.pause();
+  Future<void> playOrPause() async => _isPlaying ? pause() : play();
+
+  Future<void> seek({required Duration position}) async =>
+      await _audioRepo.seek(position: position);
+  Future<void> stop() async => await _audioRepo.stop();
 
   ReciterModel? _currentReciter;
   ReciterModel? get currentReciter => _currentReciter;
@@ -76,54 +85,41 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
     await getSurah(surahId: _currentSurahNumber!);
   }
 
-  Future<void> playOrPause() async {
-    if (_audioRepo.isPlaying) {
-      await _audioRepo.pause();
-      emit(const AudioPlayerState.audioPaused());
-    } else {
-      if (_currentSurahNumber != null) {
-        emit(const AudioPlayerState.audioPlaying());
+  bool _isPlaying = false;
+
+  void _listenToPlayback() {
+    _playbackSub = _audioRepo.playbackStateStream.listen((state) {
+      _isPlaying = state.playing;
+      if (state.playing) {
+        emit(
+          AudioPlayerState.audioPlaying(
+            position: state.position,
+            duration: _audioRepo.duration,
+          ),
+        );
       }
-      await _audioRepo.play();
-    }
-  }
-
-  Future<void> seek({required Duration position}) async {
-    await _audioRepo.seek(position: position);
-  }
-
-  void _listenToAudioEvents() {
-    _audioRepo.positionStream.listen((pos) {
-      emit(
-        AudioPlayerState.audioProgressUpdated(
-          position: pos,
-          duration: _duration,
-        ),
-      );
-    });
-
-    _audioRepo.durationStream.listen((duration) {
-      _duration = duration ?? Duration.zero;
-    });
-
-    _audioRepo.playerStateStream.listen((playerState) {
-      if (playerState.processingState == ProcessingState.completed) {
+      if (state.processingState == AudioProcessingState.ready &&
+          state.position > Duration.zero &&
+          !state.playing) {
+        emit(const AudioPlayerState.audioPaused());
+      }
+      if (state.processingState == AudioProcessingState.ready &&
+          state.position == Duration.zero) {
+        play();
+      }
+      if (state.processingState == AudioProcessingState.completed) {
         emit(const AudioPlayerState.audioFinished());
+      }
+      if (state.processingState == AudioProcessingState.loading) {
+        emit(const AudioPlayerState.getSurahLoading());
       }
     });
   }
 
   @override
   Future<void> close() async {
+    _playbackSub.cancel();
     await _audioRepo.dispose();
     return super.close();
-  }
-
-  void openSurahDetails() {
-    emit(const AudioPlayerState.surahDetailsOpened());
-  }
-
-  void closeSurahDetails() {
-    emit(const AudioPlayerState.surahDetailsClosed());
   }
 }

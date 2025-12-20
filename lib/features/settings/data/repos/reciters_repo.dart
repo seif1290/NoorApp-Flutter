@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:noor/core/data/services/quran_assets_service.dart';
-import 'package:noor/core/data/services/shared_prefs_service.dart';
+import 'package:noor/core/services/quran_assets_service.dart';
+import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/assets_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
 import 'package:noor/core/data/models/reciter_model/reciter_model.dart';

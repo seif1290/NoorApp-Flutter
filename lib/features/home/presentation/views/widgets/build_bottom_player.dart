@@ -15,12 +15,8 @@ class _BuildBottomPlayerState extends State<BuildBottomPlayer> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-      buildWhen: (previous, current) => current.maybeWhen(
-        getSurahSuccess: (_) => true,
-        getSurahLoading: () => true,
-        getSurahFailed: (_) => true,
-        orElse: () => false,
-      ),
+      buildWhen: (previous, current) =>
+          current.maybeWhen(getSurahSuccess: (_) => true, orElse: () => false),
       builder: (context, state) {
         return state.maybeMap(
           getSurahSuccess: (state) {
@@ -34,9 +30,7 @@ class _BuildBottomPlayerState extends State<BuildBottomPlayer> {
                 await context.read<AudioPlayerCubit>().playOrPause();
               },
               onTap: () {
-                setState(() {
-                  context.read<AudioPlayerCubit>().openSurahDetails();
-                });
+                //TODO: open bottom sheet
               },
             );
           },

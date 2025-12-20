@@ -7,7 +7,6 @@ import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubi
 import 'package:noor/features/home/presentation/views/widgets/build_bottom_player.dart';
 import 'package:noor/features/home/presentation/views/widgets/home_scaffold_tablet.dart';
 import 'package:noor/features/home/presentation/views/widgets/home_scaffold_mobile.dart';
-import 'package:noor/features/home/presentation/views/widgets/surah_details_animated_layer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,15 +41,8 @@ class _HomeViewState extends State<HomeView> {
           right: AppValues.padding8,
           child: BuildBottomPlayer(),
         ),
-        const SurahDetailsAnimatedLayer(),
 
         BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
-          buildWhen: (previous, current) => current.maybeWhen(
-            getSurahLoading: () => true,
-            getSurahSuccess: (_) => true,
-            getSurahFailed: (_) => true,
-            orElse: () => false,
-          ),
           builder: (context, state) {
             return state.maybeWhen(
               getSurahLoading: () => Container(
