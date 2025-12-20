@@ -3,7 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsService {
   final SharedPreferences _prefs;
-  SharedPrefsService(this._prefs);
+  SharedPrefsService(this._prefs) {
+    if (reciterIdentifier == null) {
+      _prefs.setString(AppKeys.reciterIdentifier, 'ar.alafasy');
+    }
+  }
 
   Future<bool> startOnBoarding() async =>
       await _prefs.setBool(AppKeys.isOnboardingFinished, false);

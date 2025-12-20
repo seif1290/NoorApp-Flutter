@@ -28,8 +28,7 @@ class RecitersRepo {
 
   Future<Either<Failure, ReciterModel>> getCurrentReciter() async {
     try {
-      final String reciterIdentifier =
-          _sharedPrefsService.reciterIdentifier ?? 'ar.alafasy';
+      final String reciterIdentifier = _sharedPrefsService.reciterIdentifier!;
       final result = await _quranAssetsService.getReciter(
         identifier: reciterIdentifier,
       );
