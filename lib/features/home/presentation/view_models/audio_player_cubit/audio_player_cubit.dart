@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:audio_service/audio_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,10 +28,20 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
        _recitersRepo = recitersRepo,
        super(const AudioPlayerState.initial()) {
     _listenToPlayback();
+    _audioRepo.positionStream.listen((position) {
+      if (!_isPlaying) return;
+      emit(
+        AudioPlayerState.audioPlaying(
+          position: position,
+          duration: _audioRepo.duration,
+        ),
+      );
+    });
   }
 
   int? _currentSurahNumber;
-  int? get currentSurahNumber => _currentSurahNumber;
+  SurahModel? _currentSurah;
+  SurahModel? get currentSurah => _currentSurah;
 
   Future<void> getSurah({required int surahId}) async {
     final result = await _loadSurahWithAudioUseCase.call(surahId: surahId);
@@ -42,6 +51,7 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
       },
       (surah) async {
         _currentSurahNumber = surahId;
+        _currentSurah = surah;
         _getCurrentReciter();
         emit(AudioPlayerState.getSurahSuccess(surah: surah));
       },
@@ -51,9 +61,10 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
   Future<void> play() async => await _audioRepo.play();
   Future<void> pause() async => await _audioRepo.pause();
   Future<void> playOrPause() async => _isPlaying ? pause() : play();
-
   Future<void> seek({required Duration position}) async =>
       await _audioRepo.seek(position: position);
+  Future<void> fastForward() async => await _audioRepo.fastForward();
+  Future<void> rewind() async => await _audioRepo.rewind();
   Future<void> stop() async => await _audioRepo.stop();
 
   ReciterModel? _currentReciter;
@@ -90,14 +101,7 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
   void _listenToPlayback() {
     _playbackSub = _audioRepo.playbackStateStream.listen((state) {
       _isPlaying = state.playing;
-      if (state.playing) {
-        emit(
-          AudioPlayerState.audioPlaying(
-            position: state.position,
-            duration: _audioRepo.duration,
-          ),
-        );
-      }
+
       if (state.processingState == AudioProcessingState.ready &&
           state.position > Duration.zero &&
           !state.playing) {
@@ -109,6 +113,7 @@ class AudioPlayerCubit extends Cubit<AudioPlayerState> {
       }
       if (state.processingState == AudioProcessingState.completed) {
         emit(const AudioPlayerState.audioFinished());
+        getNextSurah();
       }
       if (state.processingState == AudioProcessingState.loading) {
         emit(const AudioPlayerState.getSurahLoading());

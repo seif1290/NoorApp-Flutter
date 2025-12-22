@@ -1,5 +1,6 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:noor/core/data/api_constants.dart';
 import 'package:noor/core/services/audio_player_handler.dart';
@@ -10,13 +11,16 @@ import 'package:noor/core/error_handling/failure.dart';
 
 abstract class AudioRepo {
   Future<Either<Failure, void>> loadSurah({required int surahNumber});
-  Future<Either<Failure, void>> play();
-  Future<Either<Failure, void>> pause();
-  Future<Either<Failure, void>> seek({required Duration position});
-  Future<Either<Failure, void>> stop();
+  Future<void> play();
+  Future<void> pause();
+  Future<void> seek({required Duration position});
+  Future<void> fastForward();
+  Future<void> rewind();
+  Future<void> stop();
   Stream<PlaybackState> get playbackStateStream;
+  Stream<Duration> get positionStream;
   Duration get duration;
-  Future<Either<Failure, void>> dispose();
+  Future<void> dispose();
 }
 
 class AudioRepoImpl implements AudioRepo {
@@ -48,75 +52,46 @@ class AudioRepoImpl implements AudioRepo {
         artist: reciter.nameAr,
       );
 
-      _audioPlayerHandler.setAudioSource(item: item);
+      await _audioPlayerHandler.setAudioSource(item: item);
 
       return const Right(null);
+    } on PlayerException catch (e) {
+      return Left(AudioFailure.fromPlayerException(e));
+    } on PlatformException catch (e) {
+      return Left(AudioFailure.fromPlatformException(e));
     } catch (e) {
-      return Left(_handleError(e));
+      return Left(AudioFailure.unknown());
     }
   }
 
   @override
-  Future<Either<Failure, void>> play() async {
-    try {
-      await _audioPlayerHandler.play();
-      return const Right(null);
-    } catch (e) {
-      return Left(_handleError(e));
-    }
-  }
+  Future<void> play() async => await _audioPlayerHandler.play();
 
   @override
-  Future<Either<Failure, void>> pause() async {
-    try {
-      await _audioPlayerHandler.pause();
-      return const Right(null);
-    } catch (e) {
-      return Left(_handleError(e));
-    }
-  }
+  Future<void> pause() async => await _audioPlayerHandler.pause();
 
   @override
-  Future<Either<Failure, void>> seek({required Duration position}) async {
-    try {
+  Future<void> seek({required Duration position}) async =>
       await _audioPlayerHandler.seek(position);
-      return const Right(null);
-    } catch (e) {
-      return Left(_handleError(e));
-    }
-  }
 
   @override
-  Future<Either<Failure, void>> stop() async {
-    try {
-      await _audioPlayerHandler.stop();
-      return const Right(null);
-    } catch (e) {
-      return Left(_handleError(e));
-    }
-  }
+  Future<void> fastForward() async => await _audioPlayerHandler.fastForward();
+
+  @override
+  Future<void> rewind() async => await _audioPlayerHandler.rewind();
+
+  @override
+  Future<void> stop() async => await _audioPlayerHandler.stop();
 
   @override
   Stream<PlaybackState> get playbackStateStream =>
       _audioPlayerHandler.playbackStateStream;
+  @override
+  Stream<Duration> get positionStream => _audioPlayerHandler.positionStream;
 
   @override
   Duration get duration => _audioPlayerHandler.duration;
 
   @override
-  Future<Either<Failure, void>> dispose() async {
-    try {
-      await _audioPlayerHandler.dispose();
-      return const Right(null);
-    } catch (e) {
-      return Left(_handleError(e));
-    }
-  }
-
-  AudioFailure _handleError(dynamic error) {
-    if (error is PlayerException) {
-      return AudioFailure.fromPlayerException(error);
-    }
-    return AudioFailure.unknown();
-  }
+  Future<void> dispose() async => await _audioPlayerHandler.dispose();
 }
