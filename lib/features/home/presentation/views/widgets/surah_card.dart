@@ -98,7 +98,7 @@ class SurahCard extends StatelessWidget {
                 builder: (context, state) {
                   return state.maybeMap(
                     audioPlaying: (_) {
-                      if (context.read<AudioPlayerCubit>().currentSurahNumber ==
+                      if (context.read<AudioPlayerCubit>().currentSurah!.id ==
                           index + 1) {
                         return const Icon(
                           Icons.pause,
