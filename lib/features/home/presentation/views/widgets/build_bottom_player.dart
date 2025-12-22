@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/views/widgets/bottom_player.dart';
+import 'package:noor/features/home/presentation/views/widgets/show_surah_details_bottom_sheet.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
-class BuildBottomPlayer extends StatefulWidget {
+class BuildBottomPlayer extends StatelessWidget {
   const BuildBottomPlayer({super.key});
 
-  @override
-  State<BuildBottomPlayer> createState() => _BuildBottomPlayerState();
-}
-
-class _BuildBottomPlayerState extends State<BuildBottomPlayer> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AudioPlayerCubit, AudioPlayerState>(
@@ -29,8 +25,8 @@ class _BuildBottomPlayerState extends State<BuildBottomPlayer> {
               onPlayButtonTap: () async {
                 await context.read<AudioPlayerCubit>().playOrPause();
               },
-              onTap: () {
-                //TODO: open bottom sheet
+              onTap: () async {
+                await showSurahDetailsBottomSheet(context);
               },
             );
           },

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:noor/core/theme/app_colors.dart';
-import 'package:noor/core/theme/app_text_styles.dart';
 import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:noor/core/ui/ui_utils/snack_bar_state.dart';
 
@@ -23,12 +22,7 @@ class HelperFunctions {
           : snackBarState == SnackBarState.error
           ? AppColors.error
           : AppColors.warning,
-      content: Text(
-        snackMessage,
-        style: AppTextStyles.font10_14RegularBlack(
-          context,
-        ).copyWith(color: AppColors.white),
-      ),
+      content: Text(snackMessage),
       duration: duration,
     ),
   );

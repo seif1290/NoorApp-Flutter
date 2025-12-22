@@ -16,6 +16,9 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
   }
 
   Future<void> setAudioSource({required MediaItem item}) async {
+    if (playbackState.value.processingState == AudioProcessingState.loading) {
+      return;
+    }
     mediaItem.add(item);
     await _player.setAudioSource(AudioSource.uri(Uri.parse(item.id)));
   }
@@ -26,10 +29,27 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
   Future<void> pause() async => await _player.pause();
   @override
   Future<void> seek(Duration position) => _player.seek(position);
+
+  @override
+  Future<void> fastForward() async {
+    const step = Duration(seconds: 10);
+    final max = _player.duration ?? Duration.zero;
+    final target = _player.position + step;
+    await seek(target > max ? max : target);
+  }
+
+  @override
+  Future<void> rewind() async {
+    const step = Duration(seconds: 10);
+    final target = _player.position - step;
+    await seek(target < Duration.zero ? Duration.zero : target);
+  }
+
   @override
   Future<void> stop() async => await _player.stop();
 
   Stream<PlaybackState> get playbackStateStream => playbackState.stream;
+  Stream<Duration> get positionStream => _player.positionStream;
   Duration get duration => _player.duration ?? Duration.zero;
 
   /// Transform a just_audio event into an audio_service state.
@@ -43,13 +63,13 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
         controls: [
           if (_player.playing) MediaControl.pause else MediaControl.play,
           MediaControl.stop,
-          MediaControl.skipToPrevious,
-          MediaControl.skipToNext,
+          MediaControl.fastForward,
+          MediaControl.rewind,
         ],
         systemActions: const {
           MediaAction.seek,
-          MediaAction.seekForward,
-          MediaAction.seekBackward,
+          MediaAction.fastForward,
+          MediaAction.rewind,
           MediaAction.pause,
           MediaAction.play,
           MediaAction.stop,

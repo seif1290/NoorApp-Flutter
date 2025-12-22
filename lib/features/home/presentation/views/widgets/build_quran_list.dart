@@ -5,6 +5,7 @@ import 'package:noor/core/theme/app_text_styles.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
 import 'package:noor/features/home/presentation/views/widgets/quran_list_view.dart';
+import 'package:noor/features/home/presentation/views/widgets/show_surah_details_bottom_sheet.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class BuildQuranList extends StatelessWidget {
@@ -25,15 +26,16 @@ class BuildQuranList extends StatelessWidget {
               key: const PageStorageKey<String>('home'),
               surahs: state.surahs,
               onCardTab: (surahMetadata) async {
-                if (audioPlayerCubit.currentSurahNumber != surahMetadata.id) {
+                if (audioPlayerCubit.currentSurah?.id != surahMetadata.id) {
                   await audioPlayerCubit.getSurah(surahId: surahMetadata.id);
-                  //TODO: open bottom sheet
+                  if (!context.mounted) return;
+                  await showSurahDetailsBottomSheet(context);
                 } else {
-                  //TODO: open bottom sheet
+                  await showSurahDetailsBottomSheet(context);
                 }
               },
               onPlayButtonTap: (surahMetadata) async {
-                if (audioPlayerCubit.currentSurahNumber != surahMetadata.id) {
+                if (audioPlayerCubit.currentSurah?.id != surahMetadata.id) {
                   await audioPlayerCubit.getSurah(surahId: surahMetadata.id);
                 } else {
                   await audioPlayerCubit.playOrPause();
