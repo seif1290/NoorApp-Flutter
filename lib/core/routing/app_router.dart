@@ -2,12 +2,12 @@ import 'package:go_router/go_router.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/core/routing/routes.dart';
 import 'package:noor/core/services/shared_prefs_service.dart';
-import 'package:noor/features/home/data/repos/audio_repo.dart';
-import 'package:noor/features/home/data/repos/quran_repo.dart';
-import 'package:noor/features/home/domain/use_cases/load_surah_with_audio_use_case.dart';
-import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
-import 'package:noor/features/home/presentation/views/home_view.dart';
+import 'package:noor/features/tarteel/data/repos/audio_repo.dart';
+import 'package:noor/features/tarteel/data/repos/quran_repo.dart';
+import 'package:noor/features/tarteel/domain/use_cases/load_surah_with_audio_use_case.dart';
+import 'package:noor/features/tarteel/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
+import 'package:noor/features/tarteel/presentation/view_models/tarteel_bloc/tarteel_bloc.dart';
+import 'package:noor/features/tarteel/presentation/views/tarteel_view.dart';
 import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/view/onboarding_view.dart';
@@ -36,7 +36,7 @@ class AppRouter {
         builder: (context, state) => MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => HomeCubit(quranRepo: getIt.get<QuranRepo>()),
+              create: (context) => TarteelBloc(getIt.get<QuranRepo>()),
             ),
 
             BlocProvider(
@@ -48,7 +48,7 @@ class AppRouter {
               ),
             ),
           ],
-          child: const HomeView(),
+          child: const TarteelView(),
         ),
       ),
       // Settings

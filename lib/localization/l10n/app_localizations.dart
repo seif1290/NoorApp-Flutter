@@ -158,11 +158,17 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get skip;
 
-  /// No description provided for @homeTitle.
+  /// No description provided for @tarteelTitle.
   ///
   /// In en, this message translates to:
-  /// **'Holy Quran'**
-  String get homeTitle;
+  /// **'Tarteel'**
+  String get tarteelTitle;
+
+  /// No description provided for @searhForSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Search with surah id or name'**
+  String get searhForSurah;
 
   /// No description provided for @ayah.
   ///

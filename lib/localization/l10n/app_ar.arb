@@ -40,9 +40,13 @@
     "@skip": {
         "description": "زر لتخطي الشاشات التعريفية"
     },
-    "homeTitle": "القرآن الكريم",
-    "@homeTitle": {
+    "tarteelTitle": "الترتيل",
+    "@tarteelTitle": {
         "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
+    },
+    "searhForSurah": "ابحث عن سورة",
+    "@searhForSurah": {
+        "description": "نص العنصر النائب في شريط البحث للبحث عن السور"
     },
     "ayah": "{count} آية",
     "@ayah": {

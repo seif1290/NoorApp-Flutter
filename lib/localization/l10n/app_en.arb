@@ -1,16 +1,29 @@
 {
     "@@locale": "en",
     "appName": "Noor",
+    "@appName": {},
     "onboardingTitle1": "Read the Quran offline",
+    "@onboardingTitle1": {},
     "onboardingTitle2": "High-quality audio recitations",
+    "@onboardingTitle2": {},
     "onboardingTitle3": "Fast and accurate search",
+    "@onboardingTitle3": {},
     "onboardingSubtitle1": "Beautiful typography and a smooth mushaf-style reading experience.",
+    "@onboardingSubtitle1": {},
     "onboardingSubtitle2": "Stream or download recitations from a wide range of renowned reciters.",
+    "@onboardingSubtitle2": {},
     "onboardingSubtitle3": "Find any surah or ayah instantly with a powerful built-in search.",
+    "@onboardingSubtitle3": {},
     "next": "Next",
+    "@next": {},
     "getStarted": "Get Started",
+    "@getStarted": {},
     "skip": "Skip",
-    "homeTitle": "Holy Quran",
+    "@skip": {},
+    "tarteelTitle": "Tarteel",
+    "@tarteelTitle": {},
+    "searhForSurah": "Search with surah id or name",
+    "@searhForSurah": {},
     "ayah": "{count} Verses",
     "@ayah": {
         "placeholders": {
@@ -20,9 +33,15 @@
         }
     },
     "recitations": "Recitations",
+    "@recitations": {},
     "ahadith": "Ahadith",
+    "@ahadith": {},
     "adhkar": "Adhkar",
+    "@adhkar": {},
     "settings": "Settings",
+    "@settings": {},
     "pickReciter": "Pick Reciter",
-    "language": "Language"
+    "@pickReciter": {},
+    "language": "Language",
+    "@language": {}
 }

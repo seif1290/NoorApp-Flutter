@@ -39,7 +39,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skip => 'تخطى';
 
   @override
-  String get homeTitle => 'القرآن الكريم';
+  String get tarteelTitle => 'الترتيل';
+
+  @override
+  String get searhForSurah => 'ابحث عن سورة';
 
   @override
   String ayah(int count) {

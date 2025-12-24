@@ -97,5 +97,18 @@ class AppThemeData {
         ),
       ),
     ),
+    searchBarTheme: SearchBarThemeData(
+      hintStyle: WidgetStateProperty.all(
+        AppTextStyles.font12_16RegularYellow(
+          context,
+        ).copyWith(color: AppColors.lightGrey),
+      ),
+      shape: WidgetStateProperty.all(
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppValues.radius12)),
+        ),
+      ),
+      elevation: WidgetStateProperty.all(1.0),
+    ),
   );
 }
