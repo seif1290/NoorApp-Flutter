@@ -6,7 +6,7 @@ import 'package:noor/features/home/data/repos/audio_repo.dart';
 import 'package:noor/features/home/data/repos/quran_repo.dart';
 import 'package:noor/features/home/domain/use_cases/load_surah_with_audio_use_case.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
+import 'package:noor/features/home/presentation/view_models/home_bloc/home_bloc.dart';
 import 'package:noor/features/home/presentation/views/home_view.dart';
 import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
@@ -35,9 +35,7 @@ class AppRouter {
         path: Routes.home,
         builder: (context, state) => MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (context) => HomeCubit(quranRepo: getIt.get<QuranRepo>()),
-            ),
+            BlocProvider(create: (context) => HomeBloc(getIt.get<QuranRepo>())),
 
             BlocProvider(
               create: (context) => AudioPlayerCubit(

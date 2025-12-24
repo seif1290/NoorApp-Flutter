@@ -1,8 +1,9 @@
-part of 'home_cubit.dart';
+part of 'home_bloc.dart';
 
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
+
   const factory HomeState.getQuranLoading() = _GetQuranLoading;
   const factory HomeState.getQuranSuccess({
     required List<SurahMetadataModel> surahs,
