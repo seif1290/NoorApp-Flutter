@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:noor/core/data/models/reciter_model/reciter_model.dart';
 import 'package:noor/core/error_handling/assets_failure.dart';
-import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
-import 'package:noor/features/home/data/models/surah_model/surah_model.dart';
+import 'package:noor/features/tarteel/data/models/surah_metadata_model/surah_metadata_model.dart';
+import 'package:noor/features/tarteel/data/models/surah_model/surah_model.dart';
 
 class QuranAssetsService {
   final String _quranMetadataPath = 'assets/quran/metadata.json';

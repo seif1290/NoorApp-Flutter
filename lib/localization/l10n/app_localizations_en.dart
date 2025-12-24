@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skip => 'Skip';
 
   @override
-  String get homeTitle => 'Holy Quran';
+  String get tarteelTitle => 'Tarteel';
 
   @override
   String get searhForSurah => 'Search with surah id or name';
