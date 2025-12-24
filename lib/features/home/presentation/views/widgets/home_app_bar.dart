@@ -6,16 +6,6 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(AppLocalizations.of(context)!.homeTitle),
-      actions: [
-        IconButton(
-          onPressed: () {
-            //
-          },
-          icon: const Icon(Icons.search),
-        ),
-      ],
-    );
+    return AppBar(title: Text(AppLocalizations.of(context)!.homeTitle));
   }
 }

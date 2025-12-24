@@ -14,12 +14,12 @@ class SurahCard extends StatelessWidget {
   const SurahCard({
     super.key,
     required this.surah,
-    required this.index,
     this.onCardTab,
     this.onPlayButtonTap,
+    this.isPlaying = false,
   });
   final SurahMetadataModel surah;
-  final int index;
+  final bool isPlaying;
   final VoidCallback? onCardTab;
   final VoidCallback? onPlayButtonTap;
 
@@ -29,6 +29,7 @@ class SurahCard extends StatelessWidget {
     return SizedBox(
       height: 100,
       child: Card(
+        margin: EdgeInsets.zero,
         child: ListTile(
           onTap: onCardTab,
           contentPadding: EdgeInsets.symmetric(
@@ -99,7 +100,7 @@ class SurahCard extends StatelessWidget {
                   return state.maybeMap(
                     audioPlaying: (_) {
                       if (context.read<AudioPlayerCubit>().currentSurah!.id ==
-                          index + 1) {
+                          surah.id) {
                         return const Icon(
                           Icons.pause,
                           color: AppColors.secondary,

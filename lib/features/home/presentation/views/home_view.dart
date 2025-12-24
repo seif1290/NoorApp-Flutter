@@ -5,7 +5,7 @@ import 'package:noor/core/ui/ui_utils/app_values.dart';
 import 'package:noor/core/ui/ui_utils/responsive_layout.dart';
 import 'package:noor/core/ui/ui_utils/snack_bar_state.dart';
 import 'package:noor/features/home/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/home/presentation/view_models/home_cubit/home_cubit.dart';
+import 'package:noor/features/home/presentation/view_models/home_bloc/home_bloc.dart';
 import 'package:noor/features/home/presentation/views/widgets/build_bottom_player.dart';
 import 'package:noor/features/home/presentation/views/widgets/home_scaffold_tablet.dart';
 import 'package:noor/features/home/presentation/views/widgets/home_scaffold_mobile.dart';
@@ -22,11 +22,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    _getQuran();
-  }
-
-  Future<void> _getQuran() async {
-    await context.read<HomeCubit>().getQuran();
+    context.read<HomeBloc>().add(const GetQuran());
   }
 
   @override

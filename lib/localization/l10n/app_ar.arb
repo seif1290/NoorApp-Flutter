@@ -44,6 +44,10 @@
     "@homeTitle": {
         "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
     },
+    "searhForSurah": "ابحث عن سورة",
+    "@searhForSurah": {
+        "description": "نص العنصر النائب في شريط البحث للبحث عن السور"
+    },
     "ayah": "{count} آية",
     "@ayah": {
         "description": "عدد الآيات في السورة",

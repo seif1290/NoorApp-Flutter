@@ -11,6 +11,7 @@
     "getStarted": "Get Started",
     "skip": "Skip",
     "homeTitle": "Holy Quran",
+    "searhForSurah": "Search with surah id or name",
     "ayah": "{count} Verses",
     "@ayah": {
         "placeholders": {

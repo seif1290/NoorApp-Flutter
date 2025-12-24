@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:noor/features/home/data/models/surah_metadata_model/surah_metadata_model.dart';
 import 'package:noor/features/home/presentation/views/widgets/surah_card.dart';
 
@@ -14,13 +15,13 @@ class QuranListView extends StatelessWidget {
   final Function(SurahMetadataModel surah)? onPlayButtonTap;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       itemCount: surahs.length,
       physics: const BouncingScrollPhysics(),
+      separatorBuilder: (context, index) => const Gap(8.0),
       itemBuilder: (context, index) {
         return SurahCard(
           surah: surahs[index],
-          index: index,
           onCardTab: onCardTab != null
               ? () {
                   onCardTab!(surahs[index]);

@@ -45,6 +45,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTitle => 'Holy Quran';
 
   @override
+  String get searhForSurah => 'Search with surah id or name';
+
+  @override
   String ayah(int count) {
     return '$count Verses';
   }

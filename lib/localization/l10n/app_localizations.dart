@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Holy Quran'**
   String get homeTitle;
 
+  /// No description provided for @searhForSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Search with surah id or name'**
+  String get searhForSurah;
+
   /// No description provided for @ayah.
   ///
   /// In en, this message translates to:
