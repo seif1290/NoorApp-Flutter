@@ -40,7 +40,7 @@ Future<void> setup() async {
       androidNotificationChannelName: 'Audio playback',
       androidNotificationOngoing: true,
       androidNotificationIcon: 'mipmap/launcher_icon',
-      notificationColor: AppColors.primary,
+      notificationColor: AppColors.primary500,
     ),
   );
   getIt.registerLazySingleton<AudioPlayerHandler>(() => audioHandler);

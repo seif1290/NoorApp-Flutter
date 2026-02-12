@@ -89,7 +89,7 @@ class TarteelViewBody extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font16_20SemiBold(
                   context,
-                ).copyWith(color: AppColors.primary),
+                ).copyWith(color: AppColors.primary500),
               ),
             );
           },

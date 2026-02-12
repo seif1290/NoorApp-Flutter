@@ -19,7 +19,7 @@ class AppDrawerContent extends StatelessWidget {
         child: Column(
           children: [
             DrawerItem(
-              icon: CustomIcons.bookOpen,
+              icon: Icons.headphones_outlined,
               title: '${AppLocalizations.of(context)?.recitations}',
               onTap: () {},
             ),
@@ -29,7 +29,7 @@ class AppDrawerContent extends StatelessWidget {
               onTap: () {},
             ),
             DrawerItem(
-              icon: CustomIcons.noteBook,
+              icon: CustomIcons.tasbih,
               title: '${AppLocalizations.of(context)?.ahadith}',
               onTap: () {},
             ),

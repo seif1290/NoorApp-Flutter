@@ -12,25 +12,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'Noor';
 
   @override
-  String get onboardingTitle1 => 'Read the Quran offline';
+  String get arabic => 'Arabic';
 
   @override
-  String get onboardingTitle2 => 'High-quality audio recitations';
+  String get english => 'English';
 
   @override
-  String get onboardingTitle3 => 'Fast and accurate search';
+  String get pickLanguage => 'Pick Language';
+
+  @override
+  String get onboardingTitle1 => 'Easy Listening';
+
+  @override
+  String get onboardingTitle2 => 'Fast Download';
+
+  @override
+  String get onboardingTitle3 => 'Comfortable Reading';
+
+  @override
+  String get onboardingTitle4 => 'Daily Adhkar';
 
   @override
   String get onboardingSubtitle1 =>
-      'Beautiful typography and a smooth mushaf-style reading experience.';
+      'Listen to Quran recitations by your favorite reciters seamlessly.';
 
   @override
   String get onboardingSubtitle2 =>
-      'Stream or download recitations from a wide range of renowned reciters.';
+      'Download Surahs and listen to them anytime offline.';
 
   @override
   String get onboardingSubtitle3 =>
-      'Find any surah or ayah instantly with a powerful built-in search.';
+      'Read Quran verses clearly and navigate between Surahs easily and calmly.';
+
+  @override
+  String get onboardingSubtitle4 => 'Make Adhkar a part of your daily routine.';
 
   @override
   String get next => 'Next';
@@ -45,7 +60,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tarteelTitle => 'Tarteel';
 
   @override
-  String get searhForSurah => 'Search with surah id or name';
+  String get searhForSurah => 'Search for a surah';
 
   @override
   String ayah(int count) {

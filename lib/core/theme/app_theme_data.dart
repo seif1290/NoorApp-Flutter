@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:noor/core/theme/app_colors.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
-import 'package:noor/core/ui/ui_utils/app_fonts.dart';
 import 'package:noor/core/ui/ui_utils/app_values.dart';
 
 class AppThemeData {
@@ -12,18 +11,29 @@ class AppThemeData {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    fontFamily: AppFonts.cairo,
-    scaffoldBackgroundColor: AppColors.background,
+    scaffoldBackgroundColor: AppColors.white,
     colorScheme: const ColorScheme.light(
-      primary: AppColors.primary,
-      secondary: AppColors.secondary,
+      primary: AppColors.primary500,
+      onPrimary: AppColors.white,
+      secondary: AppColors.secondary500,
+      onSecondary: AppColors.white,
       surface: AppColors.white,
+      onSurface: AppColors.black,
       brightness: Brightness.light,
       error: AppColors.error,
+      onError: AppColors.white,
     ),
-    textTheme: ThemeData.light().textTheme.apply(
-      bodyColor: AppColors.primary,
-      displayColor: AppColors.primary,
+    textTheme: TextTheme(
+      headlineLarge: AppTextStyles.h4(),
+      headlineMedium: AppTextStyles.h5(),
+      headlineSmall: AppTextStyles.h6(),
+      titleLarge: AppTextStyles.subtitle1(),
+      titleMedium: AppTextStyles.subtitle2(),
+      bodyLarge: AppTextStyles.body1(),
+      bodyMedium: AppTextStyles.body2(),
+      labelLarge: AppTextStyles.button(),
+      labelMedium: AppTextStyles.caption(),
+      labelSmall: AppTextStyles.overline(),
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.white,
@@ -34,22 +44,21 @@ class AppThemeData {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: AppTextStyles.font24_28Regular(context),
+        textStyle: AppTextStyles.button(),
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(AppValues.radius16)),
+          borderRadius: BorderRadius.all(Radius.circular(AppValues.radius24)),
         ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppValues.padding16,
-          vertical: AppValues.padding8,
-        ),
-        backgroundColor: AppColors.primary,
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
+        backgroundColor: AppColors.primary500,
         foregroundColor: AppColors.white,
+        shadowColor: AppColors.neutral900,
+        elevation: 4,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: AppTextStyles.title14,
-        foregroundColor: AppColors.primary,
+        foregroundColor: AppColors.primary500,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -62,7 +71,7 @@ class AppThemeData {
           horizontal: AppValues.padding16,
           vertical: AppValues.padding8,
         ),
-        foregroundColor: AppColors.primary,
+        foregroundColor: AppColors.primary500,
         side: const BorderSide(),
       ),
     ),
@@ -76,7 +85,7 @@ class AppThemeData {
       trackHeight: 16.h,
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
       overlayShape: SliderComponentShape.noOverlay,
-      activeTrackColor: AppColors.primary,
+      activeTrackColor: AppColors.primary500,
       inactiveTrackColor: AppColors.lightGrey,
       thumbColor: const Color(0XFFF5F5F5),
     ),

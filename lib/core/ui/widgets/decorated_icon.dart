@@ -15,7 +15,7 @@ class DecoratedIcon extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(6),
-        child: Icon(icon, color: AppColors.primary),
+        child: Icon(icon, color: AppColors.primary500),
       ),
     );
   }

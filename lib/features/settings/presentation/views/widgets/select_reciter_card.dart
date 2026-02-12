@@ -30,7 +30,7 @@ class SelectReciterCard extends StatelessWidget {
                   child: Text(
                     '${AppLocalizations.of(context)?.pickReciter}',
                     style: AppTextStyles.font16_20SemiBold(context).copyWith(
-                      color: AppColors.primary,
+                      color: AppColors.primary500,
                       fontWeight: FontWeight.w500,
                     ),
                     overflow: TextOverflow.ellipsis,

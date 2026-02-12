@@ -36,7 +36,7 @@ class BottomPlayer extends StatelessWidget {
                     : surah.transliteration,
                 style: AppTextStyles.font16_20SemiBold(
                   context,
-                ).copyWith(color: AppColors.primary),
+                ).copyWith(color: AppColors.primary500),
               ),
               subtitle: Text(
                 reciterName,
@@ -47,7 +47,7 @@ class BottomPlayer extends StatelessWidget {
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColors.primary,
+                    color: AppColors.primary500,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(AppValues.padding4),

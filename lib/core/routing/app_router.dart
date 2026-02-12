@@ -10,7 +10,7 @@ import 'package:noor/features/tarteel/presentation/view_models/tarteel_bloc/tart
 import 'package:noor/features/tarteel/presentation/views/tarteel_view.dart';
 import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
-import 'package:noor/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:noor/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 import 'package:noor/features/settings/presentation/views/settings_view.dart';

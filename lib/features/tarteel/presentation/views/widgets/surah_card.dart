@@ -57,7 +57,7 @@ class SurahCard extends StatelessWidget {
               localeName == 'ar' ? surah.name : surah.transliteration,
               style: AppTextStyles.font16_20SemiBold(
                 context,
-              ).copyWith(color: AppColors.primary),
+              ).copyWith(color: AppColors.primary500),
             ),
           ),
           subtitle: Row(
@@ -80,7 +80,7 @@ class SurahCard extends StatelessWidget {
                   surah.type.getRevelationPlace(locleName: localeName),
                   style: AppTextStyles.font12_16RegularYellow(
                     context,
-                  ).copyWith(color: AppColors.secondary),
+                  ).copyWith(color: AppColors.secondary500),
                 ),
               ),
             ],
@@ -103,19 +103,19 @@ class SurahCard extends StatelessWidget {
                           surah.id) {
                         return const Icon(
                           Icons.pause,
-                          color: AppColors.secondary,
+                          color: AppColors.secondary500,
                         );
                       } else {
                         return const Icon(
                           Icons.play_arrow,
-                          color: AppColors.secondary,
+                          color: AppColors.secondary500,
                         );
                       }
                     },
 
                     orElse: () => const Icon(
                       Icons.play_arrow,
-                      color: AppColors.secondary,
+                      color: AppColors.secondary500,
                     ),
                   );
                 },

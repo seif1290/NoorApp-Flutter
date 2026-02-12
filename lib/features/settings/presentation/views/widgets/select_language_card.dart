@@ -27,7 +27,7 @@ class SelectLanguageCard extends StatelessWidget {
               child: Text(
                 '${AppLocalizations.of(context)?.language}',
                 style: AppTextStyles.font16_20SemiBold(context).copyWith(
-                  color: AppColors.primary,
+                  color: AppColors.primary500,
                   fontWeight: FontWeight.w500,
                 ),
                 overflow: TextOverflow.ellipsis,
