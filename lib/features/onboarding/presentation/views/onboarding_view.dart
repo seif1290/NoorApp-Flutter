@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:noor/core/theme/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -33,12 +34,22 @@ class _OnboardingViewState extends State<OnboardingView> {
   void initState() {
     super.initState();
     _pageController = PageController();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   @override
   void dispose() {
     super.dispose();
     _pageController.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   Future<void> _finishOnboarding() async {

@@ -34,10 +34,4 @@ List<OnboardingModel> onboardingsList(BuildContext context) => [
     subTitle: AppLocalizations.of(context)!.onboardingSubtitle4,
     isLastPage: true,
   ),
-  (
-    icon: Icons.settings,
-    title: AppLocalizations.of(context)!.onboardingTitle4,
-    subTitle: AppLocalizations.of(context)!.onboardingSubtitle4,
-    isLastPage: true,
-  ),
 ];
