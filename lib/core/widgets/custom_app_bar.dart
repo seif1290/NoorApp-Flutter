@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/routing/routes.dart';
-import 'package:noor/core/ui/widgets/default_search_bar.dart';
+import 'package:noor/core/widgets/default_search_bar.dart';
 
 /// widget that displays a custom app bar with a title, subtitle, and search bar.
 /// if searchController and onChanged are not null, it will display a search bar.

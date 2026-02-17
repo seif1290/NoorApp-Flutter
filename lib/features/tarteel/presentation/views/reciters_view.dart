@@ -11,14 +11,14 @@ import 'package:noor/core/widgets/custom_app_bar.dart';
 import 'package:noor/features/tarteel/presentation/widgets/tarteel_view_body_body.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
-class TarteelView extends StatefulWidget {
-  const TarteelView({super.key});
+class RecitersView extends StatefulWidget {
+  const RecitersView({super.key});
 
   @override
-  State<TarteelView> createState() => _TarteelViewState();
+  State<RecitersView> createState() => _RecitersViewState();
 }
 
-class _TarteelViewState extends State<TarteelView>
+class _RecitersViewState extends State<RecitersView>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/ui/widgets/default_elevated_button.dart';
-import 'package:noor/core/ui/widgets/default_icon_button.dart';
+import 'package:noor/core/widgets/default_elevated_button.dart';
+import 'package:noor/core/widgets/default_icon_button.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class OnboardingFooter extends StatelessWidget {

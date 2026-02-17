@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
-import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
+import 'package:noor/core/utils/ui_helper_functions.dart';
 import 'package:noor/features/tarteel/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 
 class AudioSlider extends StatefulWidget {

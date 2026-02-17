@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
-import 'package:noor/core/ui/ui_utils/app_images.dart';
+import 'package:noor/core/utils/app_images.dart';
 import 'package:noor/features/tarteel/data/models/type.dart';
 import 'package:noor/features/tarteel/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 import 'package:noor/features/tarteel/presentation/widgets/audio_control_set.dart';
-import 'package:noor/core/ui/widgets/custom_app_bar.dart';
+import 'package:noor/core/widgets/custom_app_bar.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class SurahDetailsView extends StatefulWidget {

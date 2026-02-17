@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/ui/ui_utils/custom_icons.dart';
+import 'package:noor/core/utils/custom_icons.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 typedef OnboardingModel = ({

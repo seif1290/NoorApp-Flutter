@@ -6,7 +6,7 @@ import 'package:noor/core/error_handling/failure.dart';
 import 'package:noor/features/tarteel/data/models/surah_model/surah_model.dart';
 import 'package:noor/features/tarteel/data/repos/audio_repo.dart';
 import 'package:noor/features/tarteel/domain/use_cases/load_surah_with_audio_use_case.dart';
-import 'package:noor/core/data/models/reciter_model/reciter_model.dart';
+import 'package:noor/core/models/reciter_model/reciter_model.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 
 part 'audio_player_state.dart';

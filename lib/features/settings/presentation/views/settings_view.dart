@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noor/features/settings/presentation/widgets/select_language_card.dart';
-import 'package:noor/core/ui/widgets/custom_app_bar.dart';
+import 'package:noor/core/widgets/custom_app_bar.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class SettingsView extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/failure.dart';
-import 'package:noor/core/data/models/reciter_model/reciter_model.dart';
+import 'package:noor/core/models/reciter_model/reciter_model.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 
 part 'reciters_state.dart';

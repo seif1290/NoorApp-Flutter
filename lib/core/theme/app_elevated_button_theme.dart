@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/theme/app_colors.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
-import 'package:noor/core/ui/ui_utils/app_values.dart';
+import 'package:noor/core/utils/app_values.dart';
 
 class AppElevatedButtonTheme {
   static ElevatedButtonThemeData lightTheme = ElevatedButtonThemeData(

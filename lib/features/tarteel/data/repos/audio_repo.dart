@@ -1,11 +1,9 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:noor/core/data/api_constants.dart';
-import 'package:noor/core/services/audio_player_handler.dart';
-import 'package:noor/core/services/quran_assets_service.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:noor/core/utils/api_constants.dart';
+import 'package:noor/core/services/remote/audio_player_handler.dart';
+import 'package:noor/core/services/local/local_assets_service.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/audio_failure.dart';
 import 'package:noor/core/error_handling/failure.dart';
 
@@ -25,11 +23,11 @@ abstract class AudioRepo {
 
 class AudioRepoImpl implements AudioRepo {
   final SharedPrefsService _prefs;
-  final QuranAssetsService _quranAssetsService;
+  final LocalAssetsService _quranAssetsService;
   final AudioPlayerHandler _audioPlayerHandler;
   AudioRepoImpl({
     required SharedPrefsService sharedPrefsService,
-    required QuranAssetsService quranAssetsService,
+    required LocalAssetsService quranAssetsService,
     required AudioPlayerHandler audioPlayerHandler,
   }) : _prefs = sharedPrefsService,
        _quranAssetsService = quranAssetsService,
@@ -40,27 +38,19 @@ class AudioRepoImpl implements AudioRepo {
     try {
       final String url =
           '${ApiConstants.quranAudioBaseUrl}${_prefs.reciterIdentifier}/$surahNumber.mp3';
-
       final reciter = await _quranAssetsService.getReciter(
         identifier: _prefs.reciterIdentifier ?? '',
       );
-
       final surah = await _quranAssetsService.getSurah(surahId: surahNumber);
       MediaItem item = MediaItem(
         id: url,
         title: surah.name,
         artist: reciter.nameAr,
       );
-
       await _audioPlayerHandler.setAudioSource(item: item);
-
       return const Right(null);
-    } on PlayerException catch (e) {
-      return Left(AudioFailure.fromPlayerException(e));
-    } on PlatformException catch (e) {
-      return Left(AudioFailure.fromPlatformException(e));
     } catch (e) {
-      return Left(AudioFailure.unknown());
+      return Left(AudioFailure.fromDynamic(e));
     }
   }
 

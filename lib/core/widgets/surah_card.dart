@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
+import 'package:noor/core/utils/ui_helper_functions.dart';
 import 'package:noor/core/theme/app_colors.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';

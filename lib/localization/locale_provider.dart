@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
 import 'package:noor/localization/l10n/l_10n.dart';
 
 class LocaleProvider extends ChangeNotifier {

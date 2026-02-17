@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/failure.dart';
 
 class OnboardingRepo {

@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
-import 'package:noor/core/services/quran_assets_service.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/assets_failure.dart';
+import 'package:noor/core/services/local/local_assets_service.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
 import 'package:noor/core/error_handling/failure.dart';
-import 'package:noor/core/data/models/reciter_model/reciter_model.dart';
+import 'package:noor/core/models/reciter_model/reciter_model.dart';
 
 class RecitersRepo {
-  final QuranAssetsService _quranAssetsService;
+  final LocalAssetsService _quranAssetsService;
   final SharedPrefsService _sharedPrefsService;
 
   RecitersRepo({
-    required QuranAssetsService quranAssetsService,
+    required LocalAssetsService quranAssetsService,
     required SharedPrefsService sharedPrefsService,
   }) : _quranAssetsService = quranAssetsService,
        _sharedPrefsService = sharedPrefsService;
@@ -19,10 +19,8 @@ class RecitersRepo {
     try {
       final result = await _quranAssetsService.getReciters();
       return Right(result);
-    } on AssetFailure catch (e) {
-      return Left(AssetFailure.fromException(e));
     } catch (e) {
-      return Left(AssetFailure.unknown());
+      return Left(AssetsFailure.fromDynamic(e));
     }
   }
 
@@ -33,10 +31,8 @@ class RecitersRepo {
         identifier: reciterIdentifier,
       );
       return Right(result);
-    } on AssetFailure catch (e) {
-      return Left(AssetFailure.fromException(e));
     } catch (e) {
-      return Left(AssetFailure.unknown());
+      return Left(AssetsFailure.fromDynamic(e));
     }
   }
 }

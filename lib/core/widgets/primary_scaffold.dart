@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:noor/core/di/setup.dart';
-import 'package:noor/core/ui/ui_utils/custom_icons.dart';
+import 'package:noor/core/utils/custom_icons.dart';
 import 'package:noor/features/settings/data/repos/reciters_repo.dart';
 import 'package:noor/features/settings/presentation/views/settings_view.dart';
 import 'package:noor/features/tarteel/data/repos/audio_repo.dart';

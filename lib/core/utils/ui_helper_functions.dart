@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:noor/core/theme/app_colors.dart';
-import 'package:noor/core/ui/ui_utils/app_values.dart';
-import 'package:noor/core/ui/ui_utils/snack_bar_state.dart';
+import 'package:noor/core/utils/app_values.dart';
+import 'package:noor/core/utils/snack_bar_state.dart';
 
 class HelperFunctions {
   HelperFunctions._();

@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:noor/core/di/setup.dart';
 import 'package:noor/core/routing/routes.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
-import 'package:noor/core/ui/widgets/primary_scaffold.dart';
+import 'package:noor/core/services/local/shared_prefs_service.dart';
+import 'package:noor/core/widgets/primary_scaffold.dart';
 import 'package:noor/features/onboarding/data/data_source/onboarings_list.dart';
 import 'package:noor/features/onboarding/data/repos/onboarding_repo.dart';
 import 'package:noor/features/onboarding/presentation/views/onboarding_view.dart';
