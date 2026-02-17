@@ -16,6 +16,10 @@
     "@pickLanguage": {
         "description": "عنوان شاشة اختيار اللغة"
     },
+    "pickAppLanguage": "اختر لغة التطبيق",
+    "@pickAppLanguage": {
+        "description": "عنوان شاشة اختيار لغة التطبيق"
+    },
     "onboardingTitle1": "استماع سهل",
     "@onboardingTitle1": {
         "description": "عنوان شاشة الترحيب الأولى"
@@ -60,11 +64,19 @@
     "@skip": {
         "description": "زر لتخطي الشاشات التعريفية"
     },
+    "reciter": "قارئ",
+    "@reciter": {
+        "description": " القارئ"
+    },
+    "surah": "سورة",
+    "@surah": {
+        "description": " "
+    },
     "tarteelTitle": "الترتيل",
     "@tarteelTitle": {
         "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
     },
-    "searhForSurah": "ابحث عن سورة",
+    "searhForSurah": "ابحث عن سورة...",
     "@searhForSurah": {
         "description": "نص العنصر النائب في شريط البحث للبحث عن السور"
     },

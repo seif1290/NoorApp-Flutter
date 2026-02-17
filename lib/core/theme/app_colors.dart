@@ -14,13 +14,6 @@ class AppColors {
   static const Color neutral500 = Color(0xFF6B7280);
   static const Color neutral900 = Color(0xFF2D3036);
 
-  static const Color lightGreen = Color(0x1A004D40);
-  static const Color lightGrey = Color(0xFF6B7280);
-  static Color lightYellow = const Color(0xFFCDA434).withAlpha(26);
-
-  static const Color lightBlack = Color(0x33000000);
-  static const Color offWhite = Color(0xFAFAFAFA);
-
   static const Color success = Color(0xFF4CAF50);
   static const Color error = Color(0xFFF44336);
   static const Color warning = Color(0xFFFFC107);

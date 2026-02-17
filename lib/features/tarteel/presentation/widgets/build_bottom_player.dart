@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noor/features/tarteel/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
-import 'package:noor/features/tarteel/presentation/views/widgets/bottom_player.dart';
-import 'package:noor/features/tarteel/presentation/views/widgets/show_surah_details_bottom_sheet.dart';
+import 'package:noor/features/tarteel/presentation/widgets/bottom_player.dart';
+import 'package:noor/features/tarteel/presentation/widgets/show_surah_details_bottom_sheet.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class BuildBottomPlayer extends StatelessWidget {

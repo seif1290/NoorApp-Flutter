@@ -10,6 +10,8 @@
     "@english": {},
     "pickLanguage": "Pick Language",
     "@pickLanguage": {},
+    "pickAppLanguage": "Pick App Language",
+    "@pickAppLanguage": {},
     "onboardingTitle1": "Easy Listening",
     "@onboardingTitle1": {},
     "onboardingTitle2": "Fast Download",
@@ -32,9 +34,17 @@
     "@getStarted": {},
     "skip": "Skip",
     "@skip": {},
+    "reciter": "reciters",
+    "@reciter": {
+        "description": ""
+    },
+    "surah": "surah",
+    "@surah": {
+        "description": ""
+    },
     "tarteelTitle": "Tarteel",
     "@tarteelTitle": {},
-    "searhForSurah": "Search for a surah",
+    "searhForSurah": "Search for a surah...",
     "@searhForSurah": {},
     "ayah": "{count} Verses",
     "@ayah": {

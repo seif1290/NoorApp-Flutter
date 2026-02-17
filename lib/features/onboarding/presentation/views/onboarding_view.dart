@@ -44,7 +44,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Future<void> _finishOnboarding() async {
     await widget.onboardingRepo.finishOnboarding();
     if (!mounted) return;
-    context.go(Routes.home);
+    context.go(Routes.primaryScaffold);
   }
 
   @override
@@ -86,11 +86,11 @@ class _OnboardingViewState extends State<OnboardingView> {
                 child: SmoothPageIndicator(
                   controller: _pageController,
                   count: widget.onboardings.length,
-                  effect: const WormEffect(
+                  effect: WormEffect(
                     dotHeight: 10,
                     dotWidth: 10,
                     activeDotColor: AppColors.primary500,
-                    dotColor: AppColors.secondary200,
+                    dotColor: Theme.of(context).colorScheme.onPrimaryFixed,
                   ),
                 ),
               ),

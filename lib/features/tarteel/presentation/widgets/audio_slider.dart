@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
-import 'package:noor/core/theme/app_colors.dart';
 import 'package:noor/core/theme/app_text_styles.dart';
 import 'package:noor/core/ui/ui_helpers/ui_helper_functions.dart';
 import 'package:noor/features/tarteel/presentation/view_models/audio_player_cubit/audio_player_cubit.dart';
 
 class AudioSlider extends StatefulWidget {
-  const AudioSlider({super.key, required this.surahName});
-  final String surahName;
+  const AudioSlider({super.key});
   @override
   State<AudioSlider> createState() => _AudioSliderState();
 }
@@ -42,31 +39,8 @@ class _AudioSliderState extends State<AudioSlider> {
           orElse: () {},
         );
         return Column(
+          spacing: 4.0,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  HelperFunctions.formatDuration(duration: currentPosition),
-                  style: AppTextStyles.font12_16RegularYellow(
-                    context,
-                  ).copyWith(color: AppColors.lightGrey),
-                ),
-                Text(
-                  widget.surahName,
-                  style: AppTextStyles.font12_16RegularYellow(
-                    context,
-                  ).copyWith(color: AppColors.lightGrey),
-                ),
-                Text(
-                  HelperFunctions.formatDuration(duration: currentDuration),
-                  style: AppTextStyles.font12_16RegularYellow(
-                    context,
-                  ).copyWith(color: AppColors.lightGrey),
-                ),
-              ],
-            ),
-            const Gap(8),
             Slider.adaptive(
               min: 0.0,
               max: lastDuration,
@@ -77,6 +51,23 @@ class _AudioSliderState extends State<AudioSlider> {
                 );
                 lastPosition = value;
               },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  HelperFunctions.formatDuration(duration: currentPosition),
+                  style: AppTextStyles.overline().copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                Text(
+                  HelperFunctions.formatDuration(duration: currentDuration),
+                  style: AppTextStyles.overline().copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
             ),
           ],
         );

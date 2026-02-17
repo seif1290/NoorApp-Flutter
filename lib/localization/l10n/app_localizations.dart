@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Pick Language'**
   String get pickLanguage;
 
+  /// No description provided for @pickAppLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick App Language'**
+  String get pickAppLanguage;
+
   /// No description provided for @onboardingTitle1.
   ///
   /// In en, this message translates to:
@@ -188,6 +194,18 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get skip;
 
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'reciters'**
+  String get reciter;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'surah'**
+  String get surah;
+
   /// No description provided for @tarteelTitle.
   ///
   /// In en, this message translates to:
@@ -197,7 +215,7 @@ abstract class AppLocalizations {
   /// No description provided for @searhForSurah.
   ///
   /// In en, this message translates to:
-  /// **'Search for a surah'**
+  /// **'Search for a surah...'**
   String get searhForSurah;
 
   /// No description provided for @ayah.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:noor/features/tarteel/data/models/surah_metadata_model/surah_metadata_model.dart';
-import 'package:noor/features/tarteel/presentation/views/widgets/surah_card.dart';
+import 'package:noor/core/ui/widgets/surah_card.dart';
 
 class QuranListView extends StatelessWidget {
   const QuranListView({
@@ -25,11 +25,6 @@ class QuranListView extends StatelessWidget {
           onCardTab: onCardTab != null
               ? () {
                   onCardTab!(surahs[index]);
-                }
-              : () {},
-          onPlayButtonTap: onPlayButtonTap != null
-              ? () {
-                  onPlayButtonTap!(surahs[index]);
                 }
               : () {},
         );

@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pickLanguage => 'Pick Language';
 
   @override
+  String get pickAppLanguage => 'Pick App Language';
+
+  @override
   String get onboardingTitle1 => 'Easy Listening';
 
   @override
@@ -57,10 +60,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skip => 'Skip';
 
   @override
+  String get reciter => 'reciters';
+
+  @override
+  String get surah => 'surah';
+
+  @override
   String get tarteelTitle => 'Tarteel';
 
   @override
-  String get searhForSurah => 'Search for a surah';
+  String get searhForSurah => 'Search for a surah...';
 
   @override
   String ayah(int count) {
