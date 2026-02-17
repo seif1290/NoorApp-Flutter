@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import 'package:noor/core/services/shared_prefs_service.dart';
-import 'package:noor/core/di/setup.dart';
-import 'package:noor/features/settings/data/repos/reciters_repo.dart';
-import 'package:noor/features/settings/presentation/view_models/settings_cubit/reciters_cubit.dart';
-import 'package:noor/features/settings/presentation/views/widgets/select_language_card.dart';
-import 'package:noor/features/settings/presentation/views/widgets/select_reciter_card.dart';
+import 'package:noor/features/settings/presentation/widgets/select_language_card.dart';
+import 'package:noor/core/ui/widgets/custom_app_bar.dart';
 import 'package:noor/localization/l10n/app_localizations.dart';
 
 class SettingsView extends StatelessWidget {
@@ -16,22 +9,25 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('${AppLocalizations.of(context)?.settings}')),
-      body: SafeArea(
+      appBar: CustomAppBar(
+        title: AppLocalizations.of(context)!.settings,
+        actions: const [],
+      ),
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                BlocProvider(
-                  create: (context) => RecitersCubit(
-                    recitersRepo: getIt.get<RecitersRepo>(),
-                    sharedPrefsService: getIt.get<SharedPrefsService>(),
-                  ),
-                  child: const SelectReciterCard(),
-                ),
-                Gap(16.h),
-                const SelectLanguageCard(),
+                // BlocProvider(
+                //   create: (context) => RecitersCubit(
+                //     recitersRepo: getIt.get<RecitersRepo>(),
+                //     sharedPrefsService: getIt.get<SharedPrefsService>(),
+                //   ),
+                //   child: const SelectReciterCard(),
+                // ),
+                // Gap(16.h),
+                SelectLanguageCard(),
               ],
             ),
           ),

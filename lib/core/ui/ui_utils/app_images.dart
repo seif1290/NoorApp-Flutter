@@ -3,4 +3,5 @@ class AppImages {
 
   static const String noorSplashImage = 'assets/images/noor_splash_image.png';
   static const String appLogo = 'assets/logos/app_logo.png';
+  static const String mosqueImage = 'assets/images/mosque.png';
 }

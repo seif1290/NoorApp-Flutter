@@ -98,47 +98,83 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @appName.
+  /// The English name of the application
   ///
   /// In en, this message translates to:
   /// **'Noor'**
   String get appName;
 
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @pickLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick Language'**
+  String get pickLanguage;
+
+  /// No description provided for @pickAppLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick App Language'**
+  String get pickAppLanguage;
+
   /// No description provided for @onboardingTitle1.
   ///
   /// In en, this message translates to:
-  /// **'Read the Quran offline'**
+  /// **'Easy Listening'**
   String get onboardingTitle1;
 
   /// No description provided for @onboardingTitle2.
   ///
   /// In en, this message translates to:
-  /// **'High-quality audio recitations'**
+  /// **'Fast Download'**
   String get onboardingTitle2;
 
   /// No description provided for @onboardingTitle3.
   ///
   /// In en, this message translates to:
-  /// **'Fast and accurate search'**
+  /// **'Comfortable Reading'**
   String get onboardingTitle3;
+
+  /// No description provided for @onboardingTitle4.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Adhkar'**
+  String get onboardingTitle4;
 
   /// No description provided for @onboardingSubtitle1.
   ///
   /// In en, this message translates to:
-  /// **'Beautiful typography and a smooth mushaf-style reading experience.'**
+  /// **'Listen to Quran recitations by your favorite reciters seamlessly.'**
   String get onboardingSubtitle1;
 
   /// No description provided for @onboardingSubtitle2.
   ///
   /// In en, this message translates to:
-  /// **'Stream or download recitations from a wide range of renowned reciters.'**
+  /// **'Download Surahs and listen to them anytime offline.'**
   String get onboardingSubtitle2;
 
   /// No description provided for @onboardingSubtitle3.
   ///
   /// In en, this message translates to:
-  /// **'Find any surah or ayah instantly with a powerful built-in search.'**
+  /// **'Read Quran verses clearly and navigate between Surahs easily and calmly.'**
   String get onboardingSubtitle3;
+
+  /// No description provided for @onboardingSubtitle4.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Adhkar a part of your daily routine.'**
+  String get onboardingSubtitle4;
 
   /// No description provided for @next.
   ///
@@ -158,6 +194,18 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get skip;
 
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'reciters'**
+  String get reciter;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'surah'**
+  String get surah;
+
   /// No description provided for @tarteelTitle.
   ///
   /// In en, this message translates to:
@@ -167,7 +215,7 @@ abstract class AppLocalizations {
   /// No description provided for @searhForSurah.
   ///
   /// In en, this message translates to:
-  /// **'Search with surah id or name'**
+  /// **'Search for a surah...'**
   String get searhForSurah;
 
   /// No description provided for @ayah.

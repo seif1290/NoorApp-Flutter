@@ -4,29 +4,53 @@
     "@appName": {
         "description": "الاسم العربي للتطبيق"
     },
-    "onboardingTitle1": "اقرأ القرآن كاملًا بدون إنترنت",
+    "arabic": "العربية",
+    "@arabic": {
+        "description": "اللغة العربية"
+    },
+    "english": "الإنجليزية",
+    "@english": {
+        "description": "اللغة الإنجليزية"
+    },
+    "pickLanguage": "اختر اللغة",
+    "@pickLanguage": {
+        "description": "عنوان شاشة اختيار اللغة"
+    },
+    "pickAppLanguage": "اختر لغة التطبيق",
+    "@pickAppLanguage": {
+        "description": "عنوان شاشة اختيار لغة التطبيق"
+    },
+    "onboardingTitle1": "استماع سهل",
     "@onboardingTitle1": {
         "description": "عنوان شاشة الترحيب الأولى"
     },
-    "onboardingTitle2": "تلاوة بدون تقطيع",
+    "onboardingTitle2": "تحميل سريع",
     "@onboardingTitle2": {
         "description": "عنوان شاشة الترحيب الثانية"
     },
-    "onboardingTitle3": "بحث سريع ودقيق",
+    "onboardingTitle3": "قراءة مريحة",
     "@onboardingTitle3": {
         "description": "عنوان شاشة الترحيب الثالثة"
     },
-    "onboardingSubtitle1": "خط جميل وعرض مخصص للمصحف.",
+    "onboardingTitle4": "أذكار يومية",
+    "@onboardingTitle4": {
+        "description": "عنوان شاشة الترحيب الرابعة"
+    },
+    "onboardingSubtitle1": "استمع إلى تلاوات القرآن الكريم بأصوات قرّائك المفضلين بكل سلاسة.",
     "@onboardingSubtitle1": {
         "description": "النص التوضيحي للشاشة الأولى"
     },
-    "onboardingSubtitle2": "تحميل تلقائي وصوت واضح لكل السور.",
+    "onboardingSubtitle2": "حمّل السور واستمع إليها في أي وقت بدون اتصال بالإنترنت.",
     "@onboardingSubtitle2": {
         "description": "النص التوضيحي للشاشة الثانية"
     },
-    "onboardingSubtitle3": "ابحث عن أي سورة أو آية بسهولة.",
+    "onboardingSubtitle3": "اقرأ آيات القرآن بوضوح وتنقّل بين السور بسهولة وهدوء.",
     "@onboardingSubtitle3": {
         "description": "النص التوضيحي للشاشة الثالثة"
+    },
+    "onboardingSubtitle4": "اجعل الأذكار جزءًا من روتينك اليومي.",
+    "@onboardingSubtitle4": {
+        "description": "النص التوضيحي للشاشة الرابعة"
     },
     "next": "التالى",
     "@next": {
@@ -40,11 +64,19 @@
     "@skip": {
         "description": "زر لتخطي الشاشات التعريفية"
     },
+    "reciter": "قارئ",
+    "@reciter": {
+        "description": " القارئ"
+    },
+    "surah": "سورة",
+    "@surah": {
+        "description": " "
+    },
     "tarteelTitle": "الترتيل",
     "@tarteelTitle": {
         "description": "عنوان الشاشة الرئيسية التي تعرض محتوى القرآن"
     },
-    "searhForSurah": "ابحث عن سورة",
+    "searhForSurah": "ابحث عن سورة...",
     "@searhForSurah": {
         "description": "نص العنصر النائب في شريط البحث للبحث عن السور"
     },
